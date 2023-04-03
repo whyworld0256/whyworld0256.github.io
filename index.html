@@ -324,7 +324,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  252
                 </span>
               
 
@@ -363,7 +363,13 @@
       
         
           
-            
+            <h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>输入一个长度为 <em>n</em>的整数序列。接下来再输入 <em>m</em>个询问，每个询问输入一对 <em>l</em> , <em>r</em>。对于每个询问，输出原序列中从第 <em>l</em>个数到第 <em>r</em> 个数的和。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">sumlist=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(sumlist)):</span><br><span class="line">    sumlist[i]=sumlist[i-<span class="number">1</span>]+nums[i-<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="built_in">print</span>(sumlist[r]-sumlist[l-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<h1 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h1><p>输入一个长度为 <em>n</em>的整数序列。接下来输入 <em>m</em>个操作，每个操作包含三个整数 <em>l</em>,<em>r</em>,<em>c</em>，表示将序列中 [<em>l</em>,<em>r</em>] 之间的每个数加上 <em>c</em>。请你输出进行完所有操作后的序列。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">b=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    b[i]=nums[i]-nums[i-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r,c=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    b[l]+=c</span><br><span class="line">    b[r+<span class="number">1</span>]-=c</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    ans+=b[i]</span><br><span class="line">    <span class="built_in">print</span>(ans,end=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
           
         
       
@@ -1079,7 +1085,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4.7k</span>
+    <span title="Site words total count">5k</span>
   
 </div>
 <!--
