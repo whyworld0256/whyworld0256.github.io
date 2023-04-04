@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>“Lebesgue测度练习题”</title>
+    <url>/2023/04/04/%E2%80%9CLebesgue%E6%B5%8B%E5%BA%A6%E7%BB%83%E4%B9%A0%E9%A2%98%E2%80%9D/</url>
+    <content><![CDATA[<p><img src="实变练习题.png" alt=""></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Lebesgue可测集的若干等价刻画</title>
     <url>/2023/04/03/Lebesgue%E5%8F%AF%E6%B5%8B%E9%9B%86%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%AD%89%E4%BB%B7%E5%88%BB%E7%94%BB/</url>
     <content><![CDATA[<p>$E\subset R^n$, 下列等价：</p>
@@ -22,19 +28,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据范围反推时间复杂度以及算法内容</title>
-    <url>/2023/04/03/%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4%E5%8F%8D%E6%8E%A8%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%AE%97%E6%B3%95%E5%86%85%E5%AE%B9/</url>
-    <content><![CDATA[<p><a href="https://www.acwing.com/blog/content/32/">转载</a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>时间复杂度</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>前缀和与差分</title>
     <url>/2023/04/03/%E5%89%8D%E7%BC%80%E5%92%8C/</url>
     <content><![CDATA[<h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>输入一个长度为 <em>n</em>的整数序列。接下来再输入 <em>m</em>个询问，每个询问输入一对 <em>l</em> , <em>r</em>。对于每个询问，输出原序列中从第 <em>l</em>个数到第 <em>r</em> 个数的和。</p>
@@ -50,6 +43,55 @@
         <tag>算法</tag>
         <tag>前缀和</tag>
         <tag>差分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据范围反推时间复杂度以及算法内容</title>
+    <url>/2023/04/03/%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4%E5%8F%8D%E6%8E%A8%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%AE%97%E6%B3%95%E5%86%85%E5%AE%B9/</url>
+    <content><![CDATA[<p><a href="https://www.acwing.com/blog/content/32/">转载</a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>时间复杂度</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>跳跃</title>
+    <url>/2023/04/02/%E8%B7%B3%E8%B7%83/</url>
+    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小蓝在一个 n 行 m 列的方格图中玩一个游戏。</p>
+<p>开始时，小蓝站在方格图的左上角，即第 1 行第 1 列。</p>
+<p>小蓝可以在方格图上走动，走动时，如果当前在第 r 行第 c 列，他不能走到行号比 r 小的行，也不能走到列号比 c 小的列。同时，他一步走的直线距离不超过 3。</p>
+<p>例如，如果当前小蓝在第 3 行第 5 列，他下一步可以走到第 3 行第 6 列、第 3 行第 7 列、第 3 行第 8 列、第 4 行第 5 列、第 4 行第 6 列、第 4 行第 7 列、第 5 行第 5 列、第 5 行第 6 列、第 6 行第 5 列之一。</p>
+<p>小蓝最终要走到第 n 行第 m 列。</p>
+<p>在图中，有的位置有奖励，走上去即可获得，有的位置有惩罚，走上去就要接受惩罚。奖励和惩罚最终抽象成一个权值，奖励为正，惩罚为负。</p>
+<p>小蓝希望，从第 1 行第 1 列走到第 n 行第 m 列后，总的权值和最大。请问最大是多少？</p>
+<span id="more"></span>
+<p>题目链接：<a href="https://www.lanqiao.cn/problems/553/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=%E8%B7%B3%E8%B7%83">跳跃</a></p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h2><p>输入的第一行包含两个整数 n,m，表示图的大小。</p>
+<p>接下来 n 行，每行 m 个整数，表示方格图中每个点的权值。</p>
+<p>其中，1$\le$n $\le$100，$-10^4\le$ 权值 $\le$ $10^4$.</p>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h2><p>输出一个整数，表示最大权值和。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><p>输入</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span> <span class="number">5</span></span><br><span class="line">-<span class="number">4</span> -<span class="number">5</span> -<span class="number">10</span> -<span class="number">3</span> <span class="number">1</span></span><br><span class="line"><span class="number">7</span> <span class="number">5</span> -<span class="number">9</span> <span class="number">3</span> -<span class="number">10</span></span><br><span class="line"><span class="number">10</span> -<span class="number">2</span> <span class="number">6</span> -<span class="number">10</span> -<span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">15</span></span><br></pre></td></tr></table></figure>
+<h2 id="运行限制"><a href="#运行限制" class="headerlink" title="运行限制"></a>运行限制</h2><ul>
+<li>最大运行时间：1s </li>
+<li>最大运行内存: 128M</li>
+</ul>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>$f[i][j]$ 表示走到第$i$ 行第 $j$ 列的最大权值和。$(i,j)$ 可以从其余6个前继点走到它，并且对于每个点，其走到 $(i,j)$ 的线路可以有多条，由此产生不同的权值。因此对于每个前继点，使用$dfs$ 求出其到 $(i,j)$ 的所有线路中得到的最大权值和，然后再选出每个最大权值和的最大值，并赋值给$f[i][j]$即可。最后输出$f[n][m]$.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">102</span></span><br><span class="line">w=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  w[i][<span class="number">1</span>:]=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">1</span>][<span class="number">1</span>]=w[<span class="number">1</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">son = [(-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">1</span>), (-<span class="number">2</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">2</span>), (-<span class="number">2</span>, -<span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">2</span>), (-<span class="number">3</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">3</span>)]</span><br><span class="line">dic = [(<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>),(<span class="number">2</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">2</span>),(<span class="number">3</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">x,y,cnt</span>):</span><br><span class="line">  <span class="keyword">global</span> ans,index_x,index_y,res</span><br><span class="line">  <span class="keyword">if</span> cnt&lt;=<span class="number">3</span> <span class="keyword">and</span> x==end_x <span class="keyword">and</span> y==end_y:</span><br><span class="line">    <span class="keyword">if</span> ans+f[start_x][start_y]&gt;res:</span><br><span class="line">      res=ans+f[start_x][start_y]</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">if</span> cnt&gt;<span class="number">3</span>:</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> i,j <span class="keyword">in</span> dic:</span><br><span class="line">    nx,ny=x+i,y+j</span><br><span class="line">    <span class="keyword">if</span> <span class="number">1</span>&lt;=nx&lt;=n <span class="keyword">and</span> <span class="number">1</span>&lt;=ny&lt;=m:</span><br><span class="line">      ans=ans+w[nx][ny]</span><br><span class="line">      search(nx,ny,cnt+<span class="number">1</span>)</span><br><span class="line">      ans=ans-w[nx][ny]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,m+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">1</span> <span class="keyword">and</span> j==<span class="number">1</span>:</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">    res = -<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">    end_x,end_y=i,j</span><br><span class="line">    <span class="keyword">for</span> k, s <span class="keyword">in</span> son:</span><br><span class="line">      x,y=i+k,j+s</span><br><span class="line">      ans = <span class="number">0</span></span><br><span class="line">      <span class="keyword">if</span> <span class="number">1</span>&lt;=x&lt;n+<span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span>&lt;=y&lt;m+<span class="number">1</span>:</span><br><span class="line">        start_x, start_y = x, y</span><br><span class="line">        search(x,y,<span class="number">0</span>)</span><br><span class="line">    f[i][j]=res</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(f[n][m])</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -154,47 +196,5 @@
         <tag>算法</tag>
         <tag>最长上升子序列</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>跳跃</title>
-    <url>/2023/04/02/%E8%B7%B3%E8%B7%83/</url>
-    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小蓝在一个 n 行 m 列的方格图中玩一个游戏。</p>
-<p>开始时，小蓝站在方格图的左上角，即第 1 行第 1 列。</p>
-<p>小蓝可以在方格图上走动，走动时，如果当前在第 r 行第 c 列，他不能走到行号比 r 小的行，也不能走到列号比 c 小的列。同时，他一步走的直线距离不超过 3。</p>
-<p>例如，如果当前小蓝在第 3 行第 5 列，他下一步可以走到第 3 行第 6 列、第 3 行第 7 列、第 3 行第 8 列、第 4 行第 5 列、第 4 行第 6 列、第 4 行第 7 列、第 5 行第 5 列、第 5 行第 6 列、第 6 行第 5 列之一。</p>
-<p>小蓝最终要走到第 n 行第 m 列。</p>
-<p>在图中，有的位置有奖励，走上去即可获得，有的位置有惩罚，走上去就要接受惩罚。奖励和惩罚最终抽象成一个权值，奖励为正，惩罚为负。</p>
-<p>小蓝希望，从第 1 行第 1 列走到第 n 行第 m 列后，总的权值和最大。请问最大是多少？</p>
-<span id="more"></span>
-<p>题目链接：<a href="https://www.lanqiao.cn/problems/553/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=%E8%B7%B3%E8%B7%83">跳跃</a></p>
-<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h2><p>输入的第一行包含两个整数 n,m，表示图的大小。</p>
-<p>接下来 n 行，每行 m 个整数，表示方格图中每个点的权值。</p>
-<p>其中，1$\le$n $\le$100，$-10^4\le$ 权值 $\le$ $10^4$.</p>
-<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h2><p>输出一个整数，表示最大权值和。</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><p>输入</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span> <span class="number">5</span></span><br><span class="line">-<span class="number">4</span> -<span class="number">5</span> -<span class="number">10</span> -<span class="number">3</span> <span class="number">1</span></span><br><span class="line"><span class="number">7</span> <span class="number">5</span> -<span class="number">9</span> <span class="number">3</span> -<span class="number">10</span></span><br><span class="line"><span class="number">10</span> -<span class="number">2</span> <span class="number">6</span> -<span class="number">10</span> -<span class="number">4</span></span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">15</span></span><br></pre></td></tr></table></figure>
-<h2 id="运行限制"><a href="#运行限制" class="headerlink" title="运行限制"></a>运行限制</h2><ul>
-<li>最大运行时间：1s </li>
-<li>最大运行内存: 128M</li>
-</ul>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>$f[i][j]$ 表示走到第$i$ 行第 $j$ 列的最大权值和。$(i,j)$ 可以从其余6个前继点走到它，并且对于每个点，其走到 $(i,j)$ 的线路可以有多条，由此产生不同的权值。因此对于每个前继点，使用$dfs$ 求出其到 $(i,j)$ 的所有线路中得到的最大权值和，然后再选出每个最大权值和的最大值，并赋值给$f[i][j]$即可。最后输出$f[n][m]$.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">102</span></span><br><span class="line">w=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  w[i][<span class="number">1</span>:]=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">1</span>][<span class="number">1</span>]=w[<span class="number">1</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">son = [(-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">1</span>), (-<span class="number">2</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">2</span>), (-<span class="number">2</span>, -<span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">2</span>), (-<span class="number">3</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">3</span>)]</span><br><span class="line">dic = [(<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>),(<span class="number">2</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">2</span>),(<span class="number">3</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">x,y,cnt</span>):</span><br><span class="line">  <span class="keyword">global</span> ans,index_x,index_y,res</span><br><span class="line">  <span class="keyword">if</span> cnt&lt;=<span class="number">3</span> <span class="keyword">and</span> x==end_x <span class="keyword">and</span> y==end_y:</span><br><span class="line">    <span class="keyword">if</span> ans+f[start_x][start_y]&gt;res:</span><br><span class="line">      res=ans+f[start_x][start_y]</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">if</span> cnt&gt;<span class="number">3</span>:</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> i,j <span class="keyword">in</span> dic:</span><br><span class="line">    nx,ny=x+i,y+j</span><br><span class="line">    <span class="keyword">if</span> <span class="number">1</span>&lt;=nx&lt;=n <span class="keyword">and</span> <span class="number">1</span>&lt;=ny&lt;=m:</span><br><span class="line">      ans=ans+w[nx][ny]</span><br><span class="line">      search(nx,ny,cnt+<span class="number">1</span>)</span><br><span class="line">      ans=ans-w[nx][ny]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,m+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">1</span> <span class="keyword">and</span> j==<span class="number">1</span>:</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">    res = -<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">    end_x,end_y=i,j</span><br><span class="line">    <span class="keyword">for</span> k, s <span class="keyword">in</span> son:</span><br><span class="line">      x,y=i+k,j+s</span><br><span class="line">      ans = <span class="number">0</span></span><br><span class="line">      <span class="keyword">if</span> <span class="number">1</span>&lt;=x&lt;n+<span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span>&lt;=y&lt;m+<span class="number">1</span>:</span><br><span class="line">        start_x, start_y = x, y</span><br><span class="line">        search(x,y,<span class="number">0</span>)</span><br><span class="line">    f[i][j]=res</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(f[n][m])</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>“Lebesgue测度练习题”</title>
-    <url>/2023/04/04/%E2%80%9CLebesgue%E6%B5%8B%E5%BA%A6%E7%BB%83%E4%B9%A0%E9%A2%98%E2%80%9D/</url>
-    <content><![CDATA[<p><img src="实变函数练习题.png" alt=""></p>
-]]></content>
   </entry>
 </search>
