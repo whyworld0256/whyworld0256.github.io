@@ -1859,7 +1859,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a7e3ff;
+  background: #ffffde;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3056,4 +3056,11 @@ pre .javascript .function {
   padding: 25px;
   -webkit-box-shadow: 0 0 5px #cacbcb;
   -moz-box-shadow: 0 0 5px #cacbcc;
+}
+body {
+  background: url("/images/bizhi.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: cover;
 }
