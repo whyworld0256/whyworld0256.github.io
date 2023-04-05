@@ -42,10 +42,22 @@
       </tags>
   </entry>
   <entry>
-    <title>Lebesgue测度练习题</title>
-    <url>/2023/04/04/%E2%80%9CLebesgue%E6%B5%8B%E5%BA%A6%E7%BB%83%E4%B9%A0%E9%A2%98%E2%80%9D/</url>
-    <content><![CDATA[<img src="/2023/04/04/%E2%80%9CLebesgue%E6%B5%8B%E5%BA%A6%E7%BB%83%E4%B9%A0%E9%A2%98%E2%80%9D/%E5%AE%9E%E5%8F%98%E7%BB%83%E4%B9%A0%E9%A2%98.png" class="">
+    <title>二分</title>
+    <url>/2023/04/05/%E4%BA%8C%E5%88%86/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个按照升序排列的长度为 <em>n</em> 的整数数组，以及 <em>q</em>个查询。对于每个查询，返回一个元素 <em>k</em>的起始位置和终止位置（位置从 0开始计数）。如果数组中不存在该元素，则返回 <code>-1 -1</code>。</p>
+<span id="more"></span>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含整数 <em>n</em> 和 <em>q</em>，表示数组长度和询问个数。第二行包含 <em>n</em>个整数（均在 1∼10000范围内），表示完整数组。接下来 q 行，每行包含一个整数 k，表示一个询问元素。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>对于一个固定的K，找到K的起始位置相当于给定条件: 大于等于K， 则我们要去找满足条件的第一个数</p>
+<p>同理，找到K的终止位置相当于给定条件：小于等于K， 则我们要去找满足条件的最后那个数</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_first</span>(<span class="params">k</span>):</span><br><span class="line">    l=<span class="number">0</span></span><br><span class="line">    r=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        mid=(l+r)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid]&gt;=k:</span><br><span class="line">            r=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l=mid+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> nums[l]!=k:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search_second</span>(<span class="params">k</span>):</span><br><span class="line">    l=<span class="number">0</span></span><br><span class="line">    r=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        mid=(l+r+<span class="number">1</span>)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid]&lt;=k:</span><br><span class="line">            l=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r=mid-<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> nums[l]!=k:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">            </span><br><span class="line">n,q=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(q):</span><br><span class="line">    k=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    a=search_first(k)</span><br><span class="line">    b=search_second(k)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125; &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(a,b))</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二分</tag>
+      </tags>
   </entry>
   <entry>
     <title>前缀和与差分</title>
@@ -364,27 +376,37 @@
       </tags>
   </entry>
   <entry>
-    <title>二分</title>
-    <url>/2023/04/05/%E4%BA%8C%E5%88%86/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个按照升序排列的长度为 <em>n</em> 的整数数组，以及 <em>q</em>个查询。对于每个查询，返回一个元素 <em>k</em>的起始位置和终止位置（位置从 0开始计数）。如果数组中不存在该元素，则返回 <code>-1 -1</code>。</p>
+    <title>选数异或</title>
+    <url>/2023/04/05/%E9%80%89%E6%95%B0%E5%BC%82%E6%88%96/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>n</em> 的数列 $A_1, A_2, \cdots A_n$ 和一个非负整数 x，给定 m次查询，每次询问能否从某个区间 $[l,r]$中选择两个下标不同的数使得他们的异或等于 x。</p>
 <span id="more"></span>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含整数 <em>n</em> 和 <em>q</em>，表示数组长度和询问个数。第二行包含 <em>n</em>个整数（均在 1∼10000范围内），表示完整数组。接下来 q 行，每行包含一个整数 k，表示一个询问元素。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>对于一个固定的K，找到K的起始位置相当于给定条件: 大于等于K， 则我们要去找满足条件的第一个数</p>
-<p>同理，找到K的终止位置相当于给定条件：小于等于K， 则我们要去找满足条件的最后那个数</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_first</span>(<span class="params">k</span>):</span><br><span class="line">    l=<span class="number">0</span></span><br><span class="line">    r=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        mid=(l+r)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid]&gt;=k:</span><br><span class="line">            r=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l=mid+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> nums[l]!=k:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search_second</span>(<span class="params">k</span>):</span><br><span class="line">    l=<span class="number">0</span></span><br><span class="line">    r=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        mid=(l+r+<span class="number">1</span>)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid]&lt;=k:</span><br><span class="line">            l=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r=mid-<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> nums[l]!=k:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">            </span><br><span class="line">n,q=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(q):</span><br><span class="line">    k=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    a=search_first(k)</span><br><span class="line">    b=search_second(k)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125; &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(a,b))</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入的第一行包含三个整数 n,m,x。第二行包含 <em>n</em>个整数$A_1, A_2, \cdots A_n$ 。接下来 <em>m</em>行，每行包含两个整数$l_i,r_i$表示询问区间$[l_i,r_i]$.</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>异或：【如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。在python中用^表示】</p>
+<p>异或的运算性质：</p>
+<ul>
+<li>交换律：A ^ B = B ^ A;</li>
+<li>结合律：A ^ (B ^ C) = (A ^ B) ^ C;</li>
+<li>恒等律：X ^ 0 = X;</li>
+<li>归零律：X ^ X = 0;</li>
+<li>自反：A ^ B ^ B = A ^ 0 = A;</li>
+<li>对于任意的 X： X ^ (-1) = ~X；</li>
+<li>如果 A ^ B = C 成立，那么 A ^ B = C，B ^ C = A；</li>
+</ul>
+<p>暴力做法：直接枚举所有情况，如果找到符合条件的就break，超时。</p>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>二分</tag>
+        <tag>蓝桥杯</tag>
       </tags>
   </entry>
   <entry>
     <title>青蛙过河</title>
     <url>/2023/04/05/%E9%9D%92%E8%9B%99%E8%BF%87%E6%B2%B3/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>小青蛙住在一条河边，它想到河对岸的学校去学习。小青蛙打算经过河里的石头跳到对岸。河里的石头排成了一条直线，小青蛙每次跳跃必须落在一块石头或者岸上。不过，每块石头有一个高度，每次小青蛙从一块石头起跳，这块石头的高度就会下降 1，当石头的高度下降到 0 时小青蛙不能再跳到这块石头上（某次跳跃后使石头高度下降到 0是允许的）。小青蛙一共需要去学校上 x天课，所以它需要往返 2x次。当小青蛙具有一个跳跃能力 y时，它能跳不超过 <em>y</em>的距离， 请问小青蛙的跳跃能力至少是多少才能用这些石头上完 x 次课。</p>
+<span id="more"></span>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ul>
 <li><p>首先，假设跳跃能力为y时满足题目条件，那么当跳跃能力大于y时同样也满足题目条件。</p>
 </li>
@@ -405,8 +427,8 @@
       <tags>
         <tag>算法</tag>
         <tag>蓝桥杯</tag>
-        <tag>贪心</tag>
         <tag>二分</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
 </search>
