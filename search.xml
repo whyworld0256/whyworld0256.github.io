@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>K倍区间</title>
+    <url>/2023/04/05/K%E5%80%8D%E5%8C%BA%E9%97%B4/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为  N 的数列，$A_1,A_2, \dots A_N$，如果其中一段连续的子序列 $A_i, A_{i+1}, \cdots A_j$ 之和是 K的倍数，我们就称这个区间 $[i,j]$是 K 倍区间。  你能求出数列中总共有多少个 K 倍区间吗？  </p>
+<span id="more"></span>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含两个整数 <em>N</em> 和 <em>K</em>。以下 N 行每行包含一个整数 $A_i$。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一个整数，代表 <em>K</em> 倍区间的数目。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先求一个区间里的数的和，我们马上想到了前缀和 $s[i]-s[j-1]$。但是如果我们去遍历所有区间的左右端点然后判断是否为K倍区间，这依然会超时.</p>
+<p>若 $K$ 整除$(s[i]-s[j-1])$ , 则有 $s[i]==s[j-1] (mod k)$  , 因此当我们固定$i$ 时，我们似乎只要知道在 $i$ 之前有多少 $s[j]$ 与$s[i]$ 除K的余数相同即可，当我们向前遍历的时候，只需存下每个 $s[j]mod K$  的个数即可.</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,k=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">s=[<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    x=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    s[i]=s[i-<span class="number">1</span>]+x</span><br><span class="line">st=[<span class="number">0</span>]*k</span><br><span class="line">st[<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">res=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    res+=st[s[i]%k]</span><br><span class="line">    st[s[i]%k]+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>前缀和</tag>
+        <tag>蓝桥杯</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lebesgue可测集的若干等价刻画</title>
     <url>/2023/04/03/Lebesgue%E5%8F%AF%E6%B5%8B%E9%9B%86%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%AD%89%E4%BB%B7%E5%88%BB%E7%94%BB/</url>
     <content><![CDATA[<p>$E\subset R^n$, 下列等价：</p>
@@ -19,26 +39,6 @@
       </categories>
       <tags>
         <tag>实变函数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>K倍区间</title>
-    <url>/2023/04/05/K%E5%80%8D%E5%8C%BA%E9%97%B4/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为  N 的数列，$A_1,A_2, \dots A_N$，如果其中一段连续的子序列 $A_i, A_{i+1}, \cdots A_j$ 之和是 K的倍数，我们就称这个区间 $[i,j]$是 K 倍区间。  你能求出数列中总共有多少个 K 倍区间吗？  </p>
-<span id="more"></span>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含两个整数 <em>N</em> 和 <em>K</em>。以下 N 行每行包含一个整数 $A_i$。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一个整数，代表 <em>K</em> 倍区间的数目。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先求一个区间里的数的和，我们马上想到了前缀和 $s[i]-s[j-1]$。但是如果我们去遍历所有区间的左右端点然后判断是否为K倍区间，这依然会超时.</p>
-<p>若 $K$ 整除$(s[i]-s[j-1])$ , 则有 $s[i]==s<a href="mod K">j-1</a>$, 因此当我们固定$i$ 时，我们似乎只要知道在 $i$ 之前有多少 $s[j]$ 与$s[i]$ 除K的余数相同即可，当我们向前遍历的时候，只需存下每个 $s[j]mod K$  的个数即可.</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,k=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">s=[<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    x=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    s[i]=s[i-<span class="number">1</span>]+x</span><br><span class="line">st=[<span class="number">0</span>]*k</span><br><span class="line">st[<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">res=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    res+=st[s[i]%k]</span><br><span class="line">    st[s[i]%k]+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>前缀和</tag>
-        <tag>蓝桥杯</tag>
       </tags>
   </entry>
   <entry>
@@ -287,6 +287,25 @@
       </tags>
   </entry>
   <entry>
+    <title>股票买卖</title>
+    <url>/2023/04/05/%E8%82%A1%E7%A5%A8%E4%B9%B0%E5%8D%96/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>N</em> 的数组，数组中的第 i 个数字表示一个给定股票在第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心策略：</p>
+<p>只要第二天股票价格下降那么今天就卖掉，只要股票价格明天涨，那么保持仓位。这一定是最优策略.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">gupiao=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">    <span class="keyword">if</span> gupiao[i]&gt;gupiao[i-<span class="number">1</span>]:</span><br><span class="line">        ans+=(gupiao[i]-gupiao[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>超级质数</title>
     <url>/2023/04/05/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>如果一个质数 PP 的每位数字都是质数, 而且每两个相邻的数字组成的两位 数是质数, 而且每三位相邻的数字组成的三位数是质数, 依次类推, 如果每相 邻的 kk 位数字组成的 kk 位数都是质数, 则 PP 称为超级质数。</p>
@@ -306,25 +325,6 @@
         <tag>算法</tag>
         <tag>蓝桥杯</tag>
         <tag>dfs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>股票买卖</title>
-    <url>/2023/04/05/%E8%82%A1%E7%A5%A8%E4%B9%B0%E5%8D%96/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>N</em> 的数组，数组中的第 i 个数字表示一个给定股票在第 i 天的价格。</p>
-<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
-<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心策略：</p>
-<p>只要第二天股票价格下降那么今天就卖掉，只要股票价格明天涨，那么保持仓位。这一定是最优策略.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">gupiao=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">    <span class="keyword">if</span> gupiao[i]&gt;gupiao[i-<span class="number">1</span>]:</span><br><span class="line">        ans+=(gupiao[i]-gupiao[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
