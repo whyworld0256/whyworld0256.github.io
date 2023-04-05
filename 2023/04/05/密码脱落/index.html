@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,动态规划,最长回文子序列,蓝桥杯,区间DP," />
 
 
 
@@ -79,12 +79,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="最伟大的博客">
-<meta property="og:url" content="http://example.com/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/index.html">
+<meta name="description" content="题目描述X 星球的考古学家发现了一批古代留下来的密码。这些密码是由 A、B、C、D 四种植物的种子串成的序列。仔细分析发现，这些密码串当初应该是前后对称的（也就是我们说的镜像串）。由于年代久远，其中许多种子脱落了，因而可能会失去镜像的特征。你的任务是：给定一个现在看到的密码串，计算一下从当初的状态，它要至少脱落多少个种子，才可能会变成现在的样子。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码脱落">
+<meta property="og:url" content="http://example.com/2023/04/05/%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/index.html">
 <meta property="og:site_name" content="最伟大的博客">
+<meta property="og:description" content="题目描述X 星球的考古学家发现了一批古代留下来的密码。这些密码是由 A、B、C、D 四种植物的种子串成的序列。仔细分析发现，这些密码串当初应该是前后对称的（也就是我们说的镜像串）。由于年代久远，其中许多种子脱落了，因而可能会失去镜像的特征。你的任务是：给定一个现在看到的密码串，计算一下从当初的状态，它要至少脱落多少个种子，才可能会变成现在的样子。">
 <meta property="og:locale">
+<meta property="article:published_time" content="2023-04-04T16:13:02.000Z">
+<meta property="article:modified_time" content="2023-04-05T01:55:14.954Z">
 <meta property="article:author" content="Haiyu Wang">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="最长回文子序列">
+<meta property="article:tag" content="蓝桥杯">
+<meta property="article:tag" content="区间DP">
 <meta name="twitter:card" content="summary">
 
 
@@ -115,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/tags/蓝桥杯/"/>
+  <link rel="canonical" href="http://example.com/2023/04/05/密码脱落/"/>
 
 
 
 
 
-  <title>标签: 蓝桥杯 | 最伟大的博客</title>
+  <title>密码脱落 | 最伟大的博客</title>
   
 
 
@@ -140,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -258,82 +267,247 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>蓝桥杯<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/05/%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/56bea9245ac1272f2d5b6de248ddc819.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="最伟大的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2023/04/05/%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/" itemprop="url">
-              
-                <span itemprop="name">密码脱落</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">密码脱落</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2023-04-05T00:13:02+08:00"
-              content="2023-04-05" >
-          04-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-05T00:13:02+08:00">
+                2023-04-05
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  991
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2023/04/02/%E8%B7%B3%E8%B7%83/" itemprop="url">
-              
-                <span itemprop="name">跳跃</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2023-04-02T17:43:32+08:00"
-              content="2023-04-02" >
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>X 星球的考古学家发现了一批古代留下来的密码。这些密码是由 A、B、C、D 四种植物的种子串成的序列。仔细分析发现，这些密码串当初应该是前后对称的（也就是我们说的镜像串）。由于年代久远，其中许多种子脱落了，因而可能会失去镜像的特征。你的任务是：给定一个现在看到的密码串，计算一下从当初的状态，它要至少脱落多少个种子，才可能会变成现在的样子。</p>
+<span id="more"></span>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h2><p>输入一行，表示现在看到的密码串（长度不大于 1000）。</p>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h2><p>要求输出一个正整数，表示至少脱落了多少个种子</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>拿“ ABDCDCBABC “来分析，易知该序列由 “<font color="red">CB</font>ABDCDC<font color="red">D</font>BABC ” 删掉3个字母变成.原问题等价于给我们一个序列，求出至少增加几个字母使其成为一个回文序列. </p>
+<p> 当我们拿到一个序列，并且考虑增加其中若干字母使其称为一个回文序列，我们往往直觉上会去找那些在这个序列两端不同时出现的字母， 然后使其在两端同时出现即可，这表明对于这样的异常字母，我们可以选择增加它，也可以选择减去它。因此原问题又等价于： 给我们一个序列，求出至少减去几个字母使其成为一个回文子序列。</p>
+<p>所以我们要求出那些异常字母有几个，反之就是求该序列的最长回文子序列的长度即可.</p>
+<p>状态表示： $f[i][j]$ 表示从 第i个位置到第j个位置 中包含的最长回文子序列的长度。</p>
+<p>状态转移： 我们根据回文子序列的首尾元素来划分。</p>
+<ul>
+<li>$i,j$ 均在回文序列中, 条件是$s[i]=s[j]$——$f[i+1][j-1]+2$</li>
+<li>$i$在回文序列中，但$j$ 不在回文序列中， 条件是存在某个$i&lt;k&lt;j$ 使得 $s[i]=s[k]$</li>
+<li>$i$ 不在回文序列中，但$j$ 在回文序列中， 条件是存在某个$i&lt;k&lt;j$ 使得 $s[k]=s[j]$</li>
+<li>$i,j$ 均不在回文序列中——$f[i+1][j-1]$</li>
+</ul>
+<p>对于从第i个位置到第j个位置中包含的所有回文子序列，可以被唯一的分到上面四种之一，那么$f[i][j]$ 便是上面四种中长度的最大值。</p>
+<p>现在问题是第二种和第三种状态很难去表示，对于这种情况有一个很好的办法。</p>
+<p>我们考虑 $f[i][j-1]$,它表示从$i$ 到 $j-1$ 中包含的所有回文子序列长度的最大值， 则第二种状态完全包含在其中，同理，第三种状态也完全包含在 $f[i+1][j]$ 中。然后，$f[i-1][j-1]$ 也包含在 $f[i][j-1],f[i+1][j] $ 的并之中。</p>
+<p>现在我们想用$max(f[i+1][j-1]+2,f[i][j-1],f[i+1][j])$ 来求得 $f[i][j]$ 。本来我们想把全体分为四个互不相交的部分，但现在却把它分为了三个可以相交的部分, 但犹豫我们想求的是最大值，因此结果不会有影响。</p>
+<p>当我们想求$f[i][j]$ 时，我们会需要 $f[i+1][j]$ 因此按照普通的遍历顺序肯定不行，因此我们先去枚举区间的长度，再去枚举左端点。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">s=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">n=<span class="built_in">len</span>(s)</span><br><span class="line">N=<span class="number">1010</span></span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> lenth <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n-lenth+<span class="number">1</span>):</span><br><span class="line">    r=l+lenth-<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> lenth==<span class="number">1</span>:</span><br><span class="line">      f[l][r]=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      f[l][r]=<span class="built_in">max</span>(f[l][r-<span class="number">1</span>],f[l+<span class="number">1</span>][r],f[l][r])</span><br><span class="line">      <span class="keyword">if</span> s[l]==s[r]:</span><br><span class="line">        f[l][r]=<span class="built_in">max</span>(f[l][r], f[l+<span class="number">1</span>][r-<span class="number">1</span>]+<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(n-f[<span class="number">0</span>][n-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+          
+            <a href="/tags/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97/" rel="tag"># 最长回文子序列</a>
+          
+            <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" rel="tag"># 蓝桥杯</a>
+          
+            <a href="/tags/%E5%8C%BA%E9%97%B4DP/" rel="tag"># 区间DP</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/04/04/%E2%80%9CLebesgue%E6%B5%8B%E5%BA%A6%E7%BB%83%E4%B9%A0%E9%A2%98%E2%80%9D/" rel="next" title="Lebesgue测度练习题">
+                <i class="fa fa-chevron-left"></i> Lebesgue测度练习题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/04/05/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" rel="prev" title="最长公共子序列">
+                最长公共子序列 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -341,6 +515,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -361,8 +539,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -448,6 +635,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">输出描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -620,6 +823,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

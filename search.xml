@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Lebesgue测度练习题</title>
-    <url>/2023/04/04/%E2%80%9CLebesgue%E6%B5%8B%E5%BA%A6%E7%BB%83%E4%B9%A0%E9%A2%98%E2%80%9D/</url>
-    <content><![CDATA[<img src="/2023/04/04/%E2%80%9CLebesgue%E6%B5%8B%E5%BA%A6%E7%BB%83%E4%B9%A0%E9%A2%98%E2%80%9D/%E5%AE%9E%E5%8F%98%E7%BB%83%E4%B9%A0%E9%A2%98.png" class="">
-]]></content>
-  </entry>
-  <entry>
     <title>Lebesgue可测集的若干等价刻画</title>
     <url>/2023/04/03/Lebesgue%E5%8F%AF%E6%B5%8B%E9%9B%86%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%AD%89%E4%BB%B7%E5%88%BB%E7%94%BB/</url>
     <content><![CDATA[<p>$E\subset R^n$, 下列等价：</p>
@@ -59,39 +53,45 @@
       </tags>
   </entry>
   <entry>
-    <title>跳跃</title>
-    <url>/2023/04/02/%E8%B7%B3%E8%B7%83/</url>
-    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小蓝在一个 n 行 m 列的方格图中玩一个游戏。</p>
-<p>开始时，小蓝站在方格图的左上角，即第 1 行第 1 列。</p>
-<p>小蓝可以在方格图上走动，走动时，如果当前在第 r 行第 c 列，他不能走到行号比 r 小的行，也不能走到列号比 c 小的列。同时，他一步走的直线距离不超过 3。</p>
-<p>例如，如果当前小蓝在第 3 行第 5 列，他下一步可以走到第 3 行第 6 列、第 3 行第 7 列、第 3 行第 8 列、第 4 行第 5 列、第 4 行第 6 列、第 4 行第 7 列、第 5 行第 5 列、第 5 行第 6 列、第 6 行第 5 列之一。</p>
-<p>小蓝最终要走到第 n 行第 m 列。</p>
-<p>在图中，有的位置有奖励，走上去即可获得，有的位置有惩罚，走上去就要接受惩罚。奖励和惩罚最终抽象成一个权值，奖励为正，惩罚为负。</p>
-<p>小蓝希望，从第 1 行第 1 列走到第 n 行第 m 列后，总的权值和最大。请问最大是多少？</p>
+    <title>Lebesgue测度练习题</title>
+    <url>/2023/04/04/%E2%80%9CLebesgue%E6%B5%8B%E5%BA%A6%E7%BB%83%E4%B9%A0%E9%A2%98%E2%80%9D/</url>
+    <content><![CDATA[<img src="/2023/04/04/%E2%80%9CLebesgue%E6%B5%8B%E5%BA%A6%E7%BB%83%E4%B9%A0%E9%A2%98%E2%80%9D/%E5%AE%9E%E5%8F%98%E7%BB%83%E4%B9%A0%E9%A2%98.png" class="">
+]]></content>
+  </entry>
+  <entry>
+    <title>密码脱落</title>
+    <url>/2023/04/05/%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>X 星球的考古学家发现了一批古代留下来的密码。这些密码是由 A、B、C、D 四种植物的种子串成的序列。仔细分析发现，这些密码串当初应该是前后对称的（也就是我们说的镜像串）。由于年代久远，其中许多种子脱落了，因而可能会失去镜像的特征。你的任务是：给定一个现在看到的密码串，计算一下从当初的状态，它要至少脱落多少个种子，才可能会变成现在的样子。</p>
 <span id="more"></span>
-<p>题目链接：<a href="https://www.lanqiao.cn/problems/553/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=%E8%B7%B3%E8%B7%83">跳跃</a></p>
-<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h2><p>输入的第一行包含两个整数 n,m，表示图的大小。</p>
-<p>接下来 n 行，每行 m 个整数，表示方格图中每个点的权值。</p>
-<p>其中，1$\le$n $\le$100，$-10^4\le$ 权值 $\le$ $10^4$.</p>
-<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h2><p>输出一个整数，表示最大权值和。</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><p>输入</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span> <span class="number">5</span></span><br><span class="line">-<span class="number">4</span> -<span class="number">5</span> -<span class="number">10</span> -<span class="number">3</span> <span class="number">1</span></span><br><span class="line"><span class="number">7</span> <span class="number">5</span> -<span class="number">9</span> <span class="number">3</span> -<span class="number">10</span></span><br><span class="line"><span class="number">10</span> -<span class="number">2</span> <span class="number">6</span> -<span class="number">10</span> -<span class="number">4</span></span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">15</span></span><br></pre></td></tr></table></figure>
-<h2 id="运行限制"><a href="#运行限制" class="headerlink" title="运行限制"></a>运行限制</h2><ul>
-<li>最大运行时间：1s </li>
-<li>最大运行内存: 128M</li>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h2><p>输入一行，表示现在看到的密码串（长度不大于 1000）。</p>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h2><p>要求输出一个正整数，表示至少脱落了多少个种子</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>拿“ ABDCDCBABC “来分析，易知该序列由 “<font color="red">CB</font>ABDCDC<font color="red">D</font>BABC ” 删掉3个字母变成.原问题等价于给我们一个序列，求出至少增加几个字母使其成为一个回文序列. </p>
+<p> 当我们拿到一个序列，并且考虑增加其中若干字母使其称为一个回文序列，我们往往直觉上会去找那些在这个序列两端不同时出现的字母， 然后使其在两端同时出现即可，这表明对于这样的异常字母，我们可以选择增加它，也可以选择减去它。因此原问题又等价于： 给我们一个序列，求出至少减去几个字母使其成为一个回文子序列。</p>
+<p>所以我们要求出那些异常字母有几个，反之就是求该序列的最长回文子序列的长度即可.</p>
+<p>状态表示： $f[i][j]$ 表示从 第i个位置到第j个位置 中包含的最长回文子序列的长度。</p>
+<p>状态转移： 我们根据回文子序列的首尾元素来划分。</p>
+<ul>
+<li>$i,j$ 均在回文序列中, 条件是$s[i]=s[j]$——$f[i+1][j-1]+2$</li>
+<li>$i$在回文序列中，但$j$ 不在回文序列中， 条件是存在某个$i&lt;k&lt;j$ 使得 $s[i]=s[k]$</li>
+<li>$i$ 不在回文序列中，但$j$ 在回文序列中， 条件是存在某个$i&lt;k&lt;j$ 使得 $s[k]=s[j]$</li>
+<li>$i,j$ 均不在回文序列中——$f[i+1][j-1]$</li>
 </ul>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>$f[i][j]$ 表示走到第$i$ 行第 $j$ 列的最大权值和。$(i,j)$ 可以从其余6个前继点走到它，并且对于每个点，其走到 $(i,j)$ 的线路可以有多条，由此产生不同的权值。因此对于每个前继点，使用$dfs$ 求出其到 $(i,j)$ 的所有线路中得到的最大权值和，然后再选出每个最大权值和的最大值，并赋值给$f[i][j]$即可。最后输出$f[n][m]$.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">102</span></span><br><span class="line">w=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  w[i][<span class="number">1</span>:]=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">1</span>][<span class="number">1</span>]=w[<span class="number">1</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">son = [(-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">1</span>), (-<span class="number">2</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">2</span>), (-<span class="number">2</span>, -<span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">2</span>), (-<span class="number">3</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">3</span>)]</span><br><span class="line">dic = [(<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>),(<span class="number">2</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">2</span>),(<span class="number">3</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">x,y,cnt</span>):</span><br><span class="line">  <span class="keyword">global</span> ans,index_x,index_y,res</span><br><span class="line">  <span class="keyword">if</span> cnt&lt;=<span class="number">3</span> <span class="keyword">and</span> x==end_x <span class="keyword">and</span> y==end_y:</span><br><span class="line">    <span class="keyword">if</span> ans+f[start_x][start_y]&gt;res:</span><br><span class="line">      res=ans+f[start_x][start_y]</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">if</span> cnt&gt;<span class="number">3</span>:</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> i,j <span class="keyword">in</span> dic:</span><br><span class="line">    nx,ny=x+i,y+j</span><br><span class="line">    <span class="keyword">if</span> <span class="number">1</span>&lt;=nx&lt;=n <span class="keyword">and</span> <span class="number">1</span>&lt;=ny&lt;=m:</span><br><span class="line">      ans=ans+w[nx][ny]</span><br><span class="line">      search(nx,ny,cnt+<span class="number">1</span>)</span><br><span class="line">      ans=ans-w[nx][ny]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,m+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">1</span> <span class="keyword">and</span> j==<span class="number">1</span>:</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">    res = -<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">    end_x,end_y=i,j</span><br><span class="line">    <span class="keyword">for</span> k, s <span class="keyword">in</span> son:</span><br><span class="line">      x,y=i+k,j+s</span><br><span class="line">      ans = <span class="number">0</span></span><br><span class="line">      <span class="keyword">if</span> <span class="number">1</span>&lt;=x&lt;n+<span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span>&lt;=y&lt;m+<span class="number">1</span>:</span><br><span class="line">        start_x, start_y = x, y</span><br><span class="line">        search(x,y,<span class="number">0</span>)</span><br><span class="line">    f[i][j]=res</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(f[n][m])</span><br></pre></td></tr></table></figure>
+<p>对于从第i个位置到第j个位置中包含的所有回文子序列，可以被唯一的分到上面四种之一，那么$f[i][j]$ 便是上面四种中长度的最大值。</p>
+<p>现在问题是第二种和第三种状态很难去表示，对于这种情况有一个很好的办法。</p>
+<p>我们考虑 $f[i][j-1]$,它表示从$i$ 到 $j-1$ 中包含的所有回文子序列长度的最大值， 则第二种状态完全包含在其中，同理，第三种状态也完全包含在 $f[i+1][j]$ 中。然后，$f[i-1][j-1]$ 也包含在 $f[i][j-1],f[i+1][j] $ 的并之中。</p>
+<p>现在我们想用$max(f[i+1][j-1]+2,f[i][j-1],f[i+1][j])$ 来求得 $f[i][j]$ 。本来我们想把全体分为四个互不相交的部分，但现在却把它分为了三个可以相交的部分, 但犹豫我们想求的是最大值，因此结果不会有影响。</p>
+<p>当我们想求$f[i][j]$ 时，我们会需要 $f[i+1][j]$ 因此按照普通的遍历顺序肯定不行，因此我们先去枚举区间的长度，再去枚举左端点。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">s=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">n=<span class="built_in">len</span>(s)</span><br><span class="line">N=<span class="number">1010</span></span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> lenth <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n-lenth+<span class="number">1</span>):</span><br><span class="line">    r=l+lenth-<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> lenth==<span class="number">1</span>:</span><br><span class="line">      f[l][r]=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      f[l][r]=<span class="built_in">max</span>(f[l][r-<span class="number">1</span>],f[l+<span class="number">1</span>][r],f[l][r])</span><br><span class="line">      <span class="keyword">if</span> s[l]==s[r]:</span><br><span class="line">        f[l][r]=<span class="built_in">max</span>(f[l][r], f[l+<span class="number">1</span>][r-<span class="number">1</span>]+<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(n-f[<span class="number">0</span>][n-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>蓝桥杯</tag>
         <tag>动态规划</tag>
+        <tag>最长回文子序列</tag>
+        <tag>蓝桥杯</tag>
+        <tag>区间DP</tag>
       </tags>
   </entry>
   <entry>
@@ -195,6 +195,90 @@
       <tags>
         <tag>算法</tag>
         <tag>最长上升子序列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>跳跃</title>
+    <url>/2023/04/02/%E8%B7%B3%E8%B7%83/</url>
+    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小蓝在一个 n 行 m 列的方格图中玩一个游戏。</p>
+<p>开始时，小蓝站在方格图的左上角，即第 1 行第 1 列。</p>
+<p>小蓝可以在方格图上走动，走动时，如果当前在第 r 行第 c 列，他不能走到行号比 r 小的行，也不能走到列号比 c 小的列。同时，他一步走的直线距离不超过 3。</p>
+<p>例如，如果当前小蓝在第 3 行第 5 列，他下一步可以走到第 3 行第 6 列、第 3 行第 7 列、第 3 行第 8 列、第 4 行第 5 列、第 4 行第 6 列、第 4 行第 7 列、第 5 行第 5 列、第 5 行第 6 列、第 6 行第 5 列之一。</p>
+<p>小蓝最终要走到第 n 行第 m 列。</p>
+<p>在图中，有的位置有奖励，走上去即可获得，有的位置有惩罚，走上去就要接受惩罚。奖励和惩罚最终抽象成一个权值，奖励为正，惩罚为负。</p>
+<p>小蓝希望，从第 1 行第 1 列走到第 n 行第 m 列后，总的权值和最大。请问最大是多少？</p>
+<span id="more"></span>
+<p>题目链接：<a href="https://www.lanqiao.cn/problems/553/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=%E8%B7%B3%E8%B7%83">跳跃</a></p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h2><p>输入的第一行包含两个整数 n,m，表示图的大小。</p>
+<p>接下来 n 行，每行 m 个整数，表示方格图中每个点的权值。</p>
+<p>其中，1$\le$n $\le$100，$-10^4\le$ 权值 $\le$ $10^4$.</p>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h2><p>输出一个整数，表示最大权值和。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><p>输入</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span> <span class="number">5</span></span><br><span class="line">-<span class="number">4</span> -<span class="number">5</span> -<span class="number">10</span> -<span class="number">3</span> <span class="number">1</span></span><br><span class="line"><span class="number">7</span> <span class="number">5</span> -<span class="number">9</span> <span class="number">3</span> -<span class="number">10</span></span><br><span class="line"><span class="number">10</span> -<span class="number">2</span> <span class="number">6</span> -<span class="number">10</span> -<span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">15</span></span><br></pre></td></tr></table></figure>
+<h2 id="运行限制"><a href="#运行限制" class="headerlink" title="运行限制"></a>运行限制</h2><ul>
+<li>最大运行时间：1s </li>
+<li>最大运行内存: 128M</li>
+</ul>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>$f[i][j]$ 表示走到第$i$ 行第 $j$ 列的最大权值和。$(i,j)$ 可以从其余6个前继点走到它，并且对于每个点，其走到 $(i,j)$ 的线路可以有多条，由此产生不同的权值。因此对于每个前继点，使用$dfs$ 求出其到 $(i,j)$ 的所有线路中得到的最大权值和，然后再选出每个最大权值和的最大值，并赋值给$f[i][j]$即可。最后输出$f[n][m]$.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">102</span></span><br><span class="line">w=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  w[i][<span class="number">1</span>:]=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">1</span>][<span class="number">1</span>]=w[<span class="number">1</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">son = [(-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">1</span>), (-<span class="number">2</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">2</span>), (-<span class="number">2</span>, -<span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">2</span>), (-<span class="number">3</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">3</span>)]</span><br><span class="line">dic = [(<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>),(<span class="number">2</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">2</span>),(<span class="number">3</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">x,y,cnt</span>):</span><br><span class="line">  <span class="keyword">global</span> ans,index_x,index_y,res</span><br><span class="line">  <span class="keyword">if</span> cnt&lt;=<span class="number">3</span> <span class="keyword">and</span> x==end_x <span class="keyword">and</span> y==end_y:</span><br><span class="line">    <span class="keyword">if</span> ans+f[start_x][start_y]&gt;res:</span><br><span class="line">      res=ans+f[start_x][start_y]</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">if</span> cnt&gt;<span class="number">3</span>:</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> i,j <span class="keyword">in</span> dic:</span><br><span class="line">    nx,ny=x+i,y+j</span><br><span class="line">    <span class="keyword">if</span> <span class="number">1</span>&lt;=nx&lt;=n <span class="keyword">and</span> <span class="number">1</span>&lt;=ny&lt;=m:</span><br><span class="line">      ans=ans+w[nx][ny]</span><br><span class="line">      search(nx,ny,cnt+<span class="number">1</span>)</span><br><span class="line">      ans=ans-w[nx][ny]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,m+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">1</span> <span class="keyword">and</span> j==<span class="number">1</span>:</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">    res = -<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">    end_x,end_y=i,j</span><br><span class="line">    <span class="keyword">for</span> k, s <span class="keyword">in</span> son:</span><br><span class="line">      x,y=i+k,j+s</span><br><span class="line">      ans = <span class="number">0</span></span><br><span class="line">      <span class="keyword">if</span> <span class="number">1</span>&lt;=x&lt;n+<span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span>&lt;=y&lt;m+<span class="number">1</span>:</span><br><span class="line">        start_x, start_y = x, y</span><br><span class="line">        search(x,y,<span class="number">0</span>)</span><br><span class="line">    f[i][j]=res</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(f[n][m])</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>蓝桥杯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最长公共子序列</title>
+    <url>/2023/04/05/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个长度分别为 <em>N</em> 和 <em>M</em> 的字符串 <em>A</em> 和 <em>B</em>，求既是 <em>A</em> 的子序列又是 <em>B</em> 的子序列的字符串长度最长是多少。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j]$ 表示$A[:i]$ 和 $B[:i]$ 的公共子序列长度的最大值</p>
+<p>状态转移: </p>
+<ul>
+<li>$i,j$ 在公共子序列中，条件：$s[i]=s[j]$</li>
+<li>$i$ 在公共子序列中，但$j$ 不在</li>
+<li>$i$ 不在公共子序列中， 但$j$ 在</li>
+<li>$i,j$ 均不在公共子序列中</li>
+</ul>
+<p>跟最长回文子序列的分析一样，我们不好去表示第二种和第三种状态， 因而退而求此次用 $f[i][j-1], f[i-1][j]$ 来表示，因为结果是求最大值，因此没有影响.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">1010</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">a=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">b=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        <span class="keyword">if</span> a[i]==b[j]:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j-<span class="number">1</span>]+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j],f[i][j-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(f[n-<span class="number">1</span>][m-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>线性DP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>积木画</title>
+    <url>/2023/04/05/%E7%A7%AF%E6%9C%A8%E7%94%BB/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>小明最近迷上了积木画, 有这么两种类型的积木, 分别为 I 型（大小为 2 个单位面积) 和 L 型 (大小为 3 个单位面积):</p>
+<img src="/2023/04/05/%E7%A7%AF%E6%9C%A8%E7%94%BB/jumu.png" class="">
+<p>同时, 小明有一块面积大小为 2×N 的画布, 画布由 2×N 个 1×1 区域构 成。小明需要用以上两种积木将画布拼满, 他想知道总共有多少种不同的方式? 积木可以任意旋转, 且画布的方向固定。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入一个整数 NN，表示画布大小。</p>
+<span id="more"></span>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一个整数表示答案。由于答案可能很大，所以输出其对 1000000007 取模后的值。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>状态表示：$f[i][j]$ 表示填完了前$i-1$ 列，并且第$i$ 列的状态为 $j$ 的方案数</p>
+<p>其中，$j=0,1,2$, 分别表示该列的状态为：全部填满，第一个填满第二个空，第一个空第二个填满。</p>
+<p>我们依次去分析该列的状态可以由之前的哪些状态转移过来即可.</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line">f=[[<span class="number">0</span>]*<span class="number">3</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">2</span>)]</span><br><span class="line">f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">f[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">2</span></span><br><span class="line">f[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">1</span></span><br><span class="line">f[<span class="number">1</span>][<span class="number">2</span>]=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n):</span><br><span class="line">    f[i][<span class="number">0</span>]=(f[i-<span class="number">1</span>][<span class="number">0</span>]+f[i-<span class="number">2</span>][<span class="number">0</span>]+f[i-<span class="number">1</span>][<span class="number">1</span>]+f[i-<span class="number">1</span>][<span class="number">2</span>])%mod</span><br><span class="line">    f[i][<span class="number">1</span>]=(f[i-<span class="number">2</span>][<span class="number">0</span>]+f[i-<span class="number">1</span>][<span class="number">2</span>])%mod</span><br><span class="line">    f[i][<span class="number">2</span>]=(f[i-<span class="number">2</span>][<span class="number">0</span>]+f[i-<span class="number">1</span>][<span class="number">1</span>])%mod</span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(f[n-<span class="number">1</span>][<span class="number">0</span>]%mod)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>状态压缩DP</tag>
       </tags>
   </entry>
 </search>
