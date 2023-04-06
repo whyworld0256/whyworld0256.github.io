@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="算法,动态规划," />
+  <meta name="keywords" content="算法,差分," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="题目描述一个正整数 n 可以表示成若干个正整数之和，形如：$n&#x3D;n_1+n_2+\cdots +n_k$，其中 $n_1\ge n_2 \cdots \ge n_k$ , $k\ge 1$。我们将这样的一种表示称为正整数 n 的一种划分。现在给定一个正整数 n，请你求出 n 共有多少种不同的划分方法。">
+<meta name="description" content="题目描述给定一个长度为 n 的数列 $a_1, a_2,\cdots a_n$，每次可以选择一个区间 $[l,r]$，使下标在这个区间内的数都加一或者都减 一。求至少需要多少次操作才能使数列中的所有数都一样，并求出在保证最少次数的前提下，最终得到的数列可能 有多少种。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="整数划分">
-<meta property="og:url" content="http://example.com/2023/04/06/%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86/index.html">
+<meta property="og:title" content="增减序列">
+<meta property="og:url" content="http://example.com/2023/04/06/%E5%A2%9E%E5%87%8F%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="最伟大的博客">
-<meta property="og:description" content="题目描述一个正整数 n 可以表示成若干个正整数之和，形如：$n&#x3D;n_1+n_2+\cdots +n_k$，其中 $n_1\ge n_2 \cdots \ge n_k$ , $k\ge 1$。我们将这样的一种表示称为正整数 n 的一种划分。现在给定一个正整数 n，请你求出 n 共有多少种不同的划分方法。">
+<meta property="og:description" content="题目描述给定一个长度为 n 的数列 $a_1, a_2,\cdots a_n$，每次可以选择一个区间 $[l,r]$，使下标在这个区间内的数都加一或者都减 一。求至少需要多少次操作才能使数列中的所有数都一样，并求出在保证最少次数的前提下，最终得到的数列可能 有多少种。">
 <meta property="og:locale">
-<meta property="article:published_time" content="2023-04-06T08:12:03.000Z">
-<meta property="article:modified_time" content="2023-04-06T08:24:31.555Z">
+<meta property="article:published_time" content="2023-04-06T12:45:51.000Z">
+<meta property="article:modified_time" content="2023-04-06T16:17:52.023Z">
 <meta property="article:author" content="Haiyu Wang">
 <meta property="article:tag" content="算法">
-<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="差分">
 <meta name="twitter:card" content="summary">
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2023/04/06/整数划分/"/>
+  <link rel="canonical" href="http://example.com/2023/04/06/增减序列/"/>
 
 
 
 
 
-  <title>整数划分 | 最伟大的博客</title>
+  <title>增减序列 | 最伟大的博客</title>
   
 
 
@@ -288,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/06/%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/06/%E5%A2%9E%E5%87%8F%E5%BA%8F%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -305,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">整数划分</h1>
+          <h1 class="post-title" itemprop="name headline">增减序列</h1>
         
 
         <div class="post-meta">
@@ -317,7 +317,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-06T16:12:03+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-06T20:45:51+08:00">
                 2023-04-06
               </time>
             
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  246
+                  678
                 </span>
               
 
@@ -387,7 +387,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -408,15 +408,27 @@
       
 
       
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>一个正整数 <em>n</em> 可以表示成若干个正整数之和，形如：$n=n_1+n_2+\cdots +n_k$，其中 $n_1\ge n_2 \cdots \ge n_k$ , $k\ge 1$。我们将这样的一种表示称为正整数 n 的一种划分。现在给定一个正整数 n，请你求出 n 共有多少种不同的划分方法。</p>
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>n</em> 的数列 $a_1, a_2,\cdots a_n$，每次可以选择一个区间 $[l,r]$，使下标在这个区间内的数都加一或者都减</p>
+<p>一。求至少需要多少次操作才能使数列中的所有数都一样，并求出在保证最少次数的前提下，最终得到的数列可能</p>
+<p>有多少种。</p>
 <span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这是一个求方案数的完全背包问题</p>
-<p>状态表示：$f[i][j]$ 表示把 n 划分为1~i 这些数的和的方案数</p>
-<p>状态转移：</p>
-<p>$j&lt;i$ : $f[i][j]+=f[i-1][j]$</p>
-<p>$j\ge i$: $f[i][j]+= f[i-1][j]+f[i-1][j-i]+\cdots f[i-1][j-k*i]$</p>
-<p>上式等价于 $f[i][j]+=f[i-1][j]+f[i][j-i]$</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">dp=[[<span class="number">0</span>]*(n+<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> j-i&gt;=<span class="number">0</span>:</span><br><span class="line">            dp[i][j]=(dp[i][j-i]+dp[i-<span class="number">1</span>][j])%mod</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i][j]=dp[i-<span class="number">1</span>][j]%mod</span><br><span class="line">            </span><br><span class="line"><span class="built_in">print</span>(dp[-<span class="number">1</span>][-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>如果我们直接考虑对原数组做操作的话，我们发现这个过程及其复杂，而且很难分析。</p>
+<p>现在我们考虑差分数组$B$,其中，$B[1]=a_1, B[2]=a_2-a_1, \cdots B[n]=a_n-a_1$</p>
+<p>对区间 $[l,r]$ 中的数加上$1$ 等价于 $B[l]+=1, B[r+1]-=1$</p>
+<p>那么经过若干次操作后数组$a$ 中每个元素相同等价于 $B[1]=b,B[2]=B[3]=\cdots =B[n]=0$</p>
+<p>并且最终不同数列完全取决于$B[1]=b$ 的不同。</p>
+<p>我们将操作分成4种：</p>
+<ul>
+<li>$2\le l\le r\le n-1$: $B[2]\sim B[n]$ 中某个元素加1（减1），某个元素减1（减1）</li>
+<li>$l=1,r\le n-1$： $B[1]$加1(减1)， $B[2]\sim B[n]$ 中某个元素减1（加1）</li>
+<li>$2\le l ,r=n$： $B[2]\sim B[n]$ 中某个元素加1（减1），$B[n+1]$减1（加1）</li>
+<li>$l=1, r=n$ ： 这种操作没有意义,做它只是浪费步数</li>
+</ul>
+<p>第一种操作可以改变两个元素，为了让步数最小，我们优先做它。</p>
+<p>记$p$ 为$B[2:]$中所有正数之和，$q$ 为$B[2:]$ 中所有负数绝对值之和. 则最小操作数为: $\min (p ,q) +|p-q|=\max(p,q)$</p>
+<p>证明： 不妨假设$p\ge q$, 而不管哪种操作，每次操作最多让P减一，所以步数 $\ge p $, 而我们又恰好可以找到一个步数为$p$ 的方案，因此最小步数即为$p$ </p>
+<p>开始时我们先做第一种操作$\min(p,q)$ 次，做完后，$B$ 数组中只剩下负的或是正的，我们还剩$|p-q| $ 次操作的机会, 接下来考虑使用第二种操作和第三种操作. 我们发现第二种操作可以改变$B[1]$ 而第三种方式不可以。因此最终数列有多少种不同的结果取决于 $|p-q|$ 次操作中，第二种操作占的数量，它可以被操作$0,1,2,\cdots |p-q|$ 次，因此不同的数列共有$|p-q|+1$ 个。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">N=<span class="number">100001</span></span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">a=[<span class="number">0</span>]*N </span><br><span class="line">B=[<span class="number">0</span>]*N</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    a[i]=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    B[i]=a[i]-a[i-<span class="number">1</span>]</span><br><span class="line">p=<span class="number">0</span></span><br><span class="line">q=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> B[i]&gt;<span class="number">0</span>:</span><br><span class="line">        p+=B[i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        q-=B[i]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">max</span>(q,p))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">abs</span>(p-q)+<span class="number">1</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -436,7 +448,7 @@
           
             <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
           
-            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+            <a href="/tags/%E5%B7%AE%E5%88%86/" rel="tag"># 差分</a>
           
         </div>
       
@@ -464,8 +476,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2023/04/06/%E6%95%B0%E7%9A%84%E6%8B%86%E5%88%86/" rel="next" title="数的拆分">
-                <i class="fa fa-chevron-left"></i> 数的拆分
+              <a href="/2023/04/06/%E6%9D%8E%E7%99%BD%E6%89%93%E9%85%92%E5%8A%A0%E5%BC%BA%E7%89%88/" rel="next" title="李白打酒加强版">
+                <i class="fa fa-chevron-left"></i> 李白打酒加强版
               </a>
             
           </div>
@@ -473,10 +485,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2023/04/06/%E6%9D%8E%E7%99%BD%E6%89%93%E9%85%92%E5%8A%A0%E5%BC%BA%E7%89%88/" rel="prev" title="李白打酒加强版">
-                李白打酒加强版 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

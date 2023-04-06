@@ -78,39 +78,36 @@
       </tags>
   </entry>
   <entry>
-    <title>密码脱落</title>
-    <url>/2023/04/05/%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>X 星球的考古学家发现了一批古代留下来的密码。这些密码是由 A、B、C、D 四种植物的种子串成的序列。仔细分析发现，这些密码串当初应该是前后对称的（也就是我们说的镜像串）。由于年代久远，其中许多种子脱落了，因而可能会失去镜像的特征。你的任务是：给定一个现在看到的密码串，计算一下从当初的状态，它要至少脱落多少个种子，才可能会变成现在的样子。</p>
+    <title>增减序列</title>
+    <url>/2023/04/06/%E5%A2%9E%E5%87%8F%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>n</em> 的数列 $a_1, a_2,\cdots a_n$，每次可以选择一个区间 $[l,r]$，使下标在这个区间内的数都加一或者都减</p>
+<p>一。求至少需要多少次操作才能使数列中的所有数都一样，并求出在保证最少次数的前提下，最终得到的数列可能</p>
+<p>有多少种。</p>
 <span id="more"></span>
-<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h2><p>输入一行，表示现在看到的密码串（长度不大于 1000）。</p>
-<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h2><p>要求输出一个正整数，表示至少脱落了多少个种子</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>拿“ ABDCDCBABC “来分析，易知该序列由 “<font color="red">CB</font>ABDCDC<font color="red">D</font>BABC ” 删掉3个字母变成.原问题等价于给我们一个序列，求出至少增加几个字母使其成为一个回文序列. </p>
-<p> 当我们拿到一个序列，并且考虑增加其中若干字母使其称为一个回文序列，我们往往直觉上会去找那些在这个序列两端不同时出现的字母， 然后使其在两端同时出现即可，这表明对于这样的异常字母，我们可以选择增加它，也可以选择减去它。因此原问题又等价于： 给我们一个序列，求出至少减去几个字母使其成为一个回文子序列。</p>
-<p>所以我们要求出那些异常字母有几个，反之就是求该序列的最长回文子序列的长度即可.</p>
-<p>状态表示： $f[i][j]$ 表示从 第i个位置到第j个位置 中包含的最长回文子序列的长度。</p>
-<p>状态转移： 我们根据回文子序列的首尾元素来划分。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>如果我们直接考虑对原数组做操作的话，我们发现这个过程及其复杂，而且很难分析。</p>
+<p>现在我们考虑差分数组$B$,其中，$B[1]=a_1, B[2]=a_2-a_1, \cdots B[n]=a_n-a_1$</p>
+<p>对区间 $[l,r]$ 中的数加上$1$ 等价于 $B[l]+=1, B[r+1]-=1$</p>
+<p>那么经过若干次操作后数组$a$ 中每个元素相同等价于 $B[1]=b,B[2]=B[3]=\cdots =B[n]=0$</p>
+<p>并且最终不同数列完全取决于$B[1]=b$ 的不同。</p>
+<p>我们将操作分成4种：</p>
 <ul>
-<li>$i,j$ 均在回文序列中, 条件是$s[i]=s[j]$——$f[i+1][j-1]+2$</li>
-<li>$i$在回文序列中，但$j$ 不在回文序列中， 条件是存在某个$i&lt;k&lt;j$ 使得 $s[i]=s[k]$</li>
-<li>$i$ 不在回文序列中，但$j$ 在回文序列中， 条件是存在某个$i&lt;k&lt;j$ 使得 $s[k]=s[j]$</li>
-<li>$i,j$ 均不在回文序列中——$f[i+1][j-1]$</li>
+<li>$2\le l\le r\le n-1$: $B[2]\sim B[n]$ 中某个元素加1（减1），某个元素减1（减1）</li>
+<li>$l=1,r\le n-1$： $B[1]$加1(减1)， $B[2]\sim B[n]$ 中某个元素减1（加1）</li>
+<li>$2\le l ,r=n$： $B[2]\sim B[n]$ 中某个元素加1（减1），$B[n+1]$减1（加1）</li>
+<li>$l=1, r=n$ ： 这种操作没有意义,做它只是浪费步数</li>
 </ul>
-<p>对于从第i个位置到第j个位置中包含的所有回文子序列，可以被唯一的分到上面四种之一，那么$f[i][j]$ 便是上面四种中长度的最大值。</p>
-<p>现在问题是第二种和第三种状态很难去表示，对于这种情况有一个很好的办法。</p>
-<p>我们考虑 $f[i][j-1]$,它表示从$i$ 到 $j-1$ 中包含的所有回文子序列长度的最大值， 则第二种状态完全包含在其中，同理，第三种状态也完全包含在 $f[i+1][j]$ 中。然后，$f[i-1][j-1]$ 也包含在 $f[i][j-1],f[i+1][j] $ 的并之中。</p>
-<p>现在我们想用$max(f[i+1][j-1]+2,f[i][j-1],f[i+1][j])$ 来求得 $f[i][j]$ 。本来我们想把全体分为四个互不相交的部分，但现在却把它分为了三个可以相交的部分, 但犹豫我们想求的是最大值，因此结果不会有影响。</p>
-<p>当我们想求$f[i][j]$ 时，我们会需要 $f[i+1][j]$ 因此按照普通的遍历顺序肯定不行，因此我们先去枚举区间的长度，再去枚举左端点。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">s=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">n=<span class="built_in">len</span>(s)</span><br><span class="line">N=<span class="number">1010</span></span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> lenth <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n-lenth+<span class="number">1</span>):</span><br><span class="line">    r=l+lenth-<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> lenth==<span class="number">1</span>:</span><br><span class="line">      f[l][r]=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      f[l][r]=<span class="built_in">max</span>(f[l][r-<span class="number">1</span>],f[l+<span class="number">1</span>][r],f[l][r])</span><br><span class="line">      <span class="keyword">if</span> s[l]==s[r]:</span><br><span class="line">        f[l][r]=<span class="built_in">max</span>(f[l][r], f[l+<span class="number">1</span>][r-<span class="number">1</span>]+<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(n-f[<span class="number">0</span>][n-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<p>第一种操作可以改变两个元素，为了让步数最小，我们优先做它。</p>
+<p>记$p$ 为$B[2:]$中所有正数之和，$q$ 为$B[2:]$ 中所有负数绝对值之和. 则最小操作数为: $\min (p ,q) +|p-q|=\max(p,q)$</p>
+<p>证明： 不妨假设$p\ge q$, 而不管哪种操作，每次操作最多让P减一，所以步数 $\ge p $, 而我们又恰好可以找到一个步数为$p$ 的方案，因此最小步数即为$p$ </p>
+<p>开始时我们先做第一种操作$\min(p,q)$ 次，做完后，$B$ 数组中只剩下负的或是正的，我们还剩$|p-q| $ 次操作的机会, 接下来考虑使用第二种操作和第三种操作. 我们发现第二种操作可以改变$B[1]$ 而第三种方式不可以。因此最终数列有多少种不同的结果取决于 $|p-q|$ 次操作中，第二种操作占的数量，它可以被操作$0,1,2,\cdots |p-q|$ 次，因此不同的数列共有$|p-q|+1$ 个。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100001</span></span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">a=[<span class="number">0</span>]*N </span><br><span class="line">B=[<span class="number">0</span>]*N</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    a[i]=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    B[i]=a[i]-a[i-<span class="number">1</span>]</span><br><span class="line">p=<span class="number">0</span></span><br><span class="line">q=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> B[i]&gt;<span class="number">0</span>:</span><br><span class="line">        p+=B[i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        q-=B[i]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">max</span>(q,p))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">abs</span>(p-q)+<span class="number">1</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-        <tag>动态规划</tag>
-        <tag>最长回文子序列</tag>
-        <tag>区间DP</tag>
+        <tag>差分</tag>
       </tags>
   </entry>
   <entry>
@@ -146,6 +143,42 @@
         <tag>算法</tag>
         <tag>动态规划</tag>
         <tag>背包问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>密码脱落</title>
+    <url>/2023/04/05/%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>X 星球的考古学家发现了一批古代留下来的密码。这些密码是由 A、B、C、D 四种植物的种子串成的序列。仔细分析发现，这些密码串当初应该是前后对称的（也就是我们说的镜像串）。由于年代久远，其中许多种子脱落了，因而可能会失去镜像的特征。你的任务是：给定一个现在看到的密码串，计算一下从当初的状态，它要至少脱落多少个种子，才可能会变成现在的样子。</p>
+<span id="more"></span>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h2><p>输入一行，表示现在看到的密码串（长度不大于 1000）。</p>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h2><p>要求输出一个正整数，表示至少脱落了多少个种子</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>拿“ ABDCDCBABC “来分析，易知该序列由 “<font color="red">CB</font>ABDCDC<font color="red">D</font>BABC ” 删掉3个字母变成.原问题等价于给我们一个序列，求出至少增加几个字母使其成为一个回文序列. </p>
+<p> 当我们拿到一个序列，并且考虑增加其中若干字母使其称为一个回文序列，我们往往直觉上会去找那些在这个序列两端不同时出现的字母， 然后使其在两端同时出现即可，这表明对于这样的异常字母，我们可以选择增加它，也可以选择减去它。因此原问题又等价于： 给我们一个序列，求出至少减去几个字母使其成为一个回文子序列。</p>
+<p>所以我们要求出那些异常字母有几个，反之就是求该序列的最长回文子序列的长度即可.</p>
+<p>状态表示： $f[i][j]$ 表示从 第i个位置到第j个位置 中包含的最长回文子序列的长度。</p>
+<p>状态转移： 我们根据回文子序列的首尾元素来划分。</p>
+<ul>
+<li>$i,j$ 均在回文序列中, 条件是$s[i]=s[j]$——$f[i+1][j-1]+2$</li>
+<li>$i$在回文序列中，但$j$ 不在回文序列中， 条件是存在某个$i&lt;k&lt;j$ 使得 $s[i]=s[k]$</li>
+<li>$i$ 不在回文序列中，但$j$ 在回文序列中， 条件是存在某个$i&lt;k&lt;j$ 使得 $s[k]=s[j]$</li>
+<li>$i,j$ 均不在回文序列中——$f[i+1][j-1]$</li>
+</ul>
+<p>对于从第i个位置到第j个位置中包含的所有回文子序列，可以被唯一的分到上面四种之一，那么$f[i][j]$ 便是上面四种中长度的最大值。</p>
+<p>现在问题是第二种和第三种状态很难去表示，对于这种情况有一个很好的办法。</p>
+<p>我们考虑 $f[i][j-1]$,它表示从$i$ 到 $j-1$ 中包含的所有回文子序列长度的最大值， 则第二种状态完全包含在其中，同理，第三种状态也完全包含在 $f[i+1][j]$ 中。然后，$f[i-1][j-1]$ 也包含在 $f[i][j-1],f[i+1][j] $ 的并之中。</p>
+<p>现在我们想用$max(f[i+1][j-1]+2,f[i][j-1],f[i+1][j])$ 来求得 $f[i][j]$ 。本来我们想把全体分为四个互不相交的部分，但现在却把它分为了三个可以相交的部分, 但犹豫我们想求的是最大值，因此结果不会有影响。</p>
+<p>当我们想求$f[i][j]$ 时，我们会需要 $f[i+1][j]$ 因此按照普通的遍历顺序肯定不行，因此我们先去枚举区间的长度，再去枚举左端点。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">s=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">n=<span class="built_in">len</span>(s)</span><br><span class="line">N=<span class="number">1010</span></span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> lenth <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">  <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n-lenth+<span class="number">1</span>):</span><br><span class="line">    r=l+lenth-<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> lenth==<span class="number">1</span>:</span><br><span class="line">      f[l][r]=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      f[l][r]=<span class="built_in">max</span>(f[l][r-<span class="number">1</span>],f[l+<span class="number">1</span>][r],f[l][r])</span><br><span class="line">      <span class="keyword">if</span> s[l]==s[r]:</span><br><span class="line">        f[l][r]=<span class="built_in">max</span>(f[l][r], f[l+<span class="number">1</span>][r-<span class="number">1</span>]+<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(n-f[<span class="number">0</span>][n-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
+        <tag>动态规划</tag>
+        <tag>最长回文子序列</tag>
+        <tag>区间DP</tag>
       </tags>
   </entry>
   <entry>
@@ -188,55 +221,6 @@
       <tags>
         <tag>算法</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>李白打酒加强版</title>
-    <url>/2023/04/06/%E6%9D%8E%E7%99%BD%E6%89%93%E9%85%92%E5%8A%A0%E5%BC%BA%E7%89%88/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>话说大诗人李白，一生好饮。幸好他从不开车。一天，他提着酒壶，从家里出来，酒壶中有酒 2 斗。他边走边唱：</p>
-<p>无事街上走，提壶去打酒。逢店加一倍，遇花喝一斗。这一路上，他一共遇到店 N  次，遇到花 M 次。已知最后一</p>
-<p>次遇到的是花，他正好把酒喝光了。请你计算李白这一路遇到店和花的顺序，有多少种不同的可能？注意：壶里没</p>
-<p>酒 (0 斗) 时遇店是合法的，加倍后还是没酒；但是没酒时遇花是不合法的。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j][k]$ 表示李白经过了 $i$ 次店， $j$ 次花，手上还有k升酒的方案数。</p>
-<p>状态转移：考虑最后一步遇到的是什么，</p>
-<p>遇到的是店：$f[i][j][k]+=f[i-1][j][k//2]$ , 条件是 $i\ge 1 $, $k\%2==0$</p>
-<p>遇到的是花:   $f[i][j][k]+=f[i][j][k+1]$, 条件是 $j\ge 1$</p>
-<p>最后输出需要注意： 如果输出$f[n][m][0]$ 的话，我们输出的是李白经过$n$ 次店， $m$ 次花后，手上酒为0的方案数。但是这并不能保证最后一步李白遇到的是花，因此我们应该输出$f[n][m-1][1]$</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">105</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line">f=[[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">and</span> k%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i-<span class="number">1</span>][j][k//<span class="number">2</span>])%mod</span><br><span class="line">            <span class="keyword">if</span> j:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i][j-<span class="number">1</span>][k+<span class="number">1</span>])%mod</span><br><span class="line"><span class="built_in">print</span>(f[n][m-<span class="number">1</span>][<span class="number">1</span>]%mod)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>最长公共子序列</title>
-    <url>/2023/04/05/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个长度分别为 <em>N</em> 和 <em>M</em> 的字符串 <em>A</em> 和 <em>B</em>，求既是 <em>A</em> 的子序列又是 <em>B</em> 的子序列的字符串长度最长是多少。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j]$ 表示$A[:i]$ 和 $B[:i]$ 的公共子序列长度的最大值</p>
-<p>状态转移: </p>
-<ul>
-<li>$i,j$ 在公共子序列中，条件：$s[i]=s[j]$</li>
-<li>$i$ 在公共子序列中，但$j$ 不在</li>
-<li>$i$ 不在公共子序列中， 但$j$ 在</li>
-<li>$i,j$ 均不在公共子序列中</li>
-</ul>
-<p>跟最长回文子序列的分析一样，我们不好去表示第二种和第三种状态， 因而退而求此次用 $f[i][j-1], f[i-1][j]$ 来表示，因为结果是求最大值，因此没有影响.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">1010</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">a=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">b=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        <span class="keyword">if</span> a[i]==b[j]:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j-<span class="number">1</span>]+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j],f[i][j-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(f[n-<span class="number">1</span>][m-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
-        <tag>线性DP</tag>
       </tags>
   </entry>
   <entry>
@@ -343,22 +327,52 @@
       </tags>
   </entry>
   <entry>
-    <title>股票买卖</title>
-    <url>/2023/04/05/%E8%82%A1%E7%A5%A8%E4%B9%B0%E5%8D%96/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>N</em> 的数组，数组中的第 i 个数字表示一个给定股票在第 i 天的价格。</p>
-<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
-<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+    <title>最长公共子序列</title>
+    <url>/2023/04/05/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个长度分别为 <em>N</em> 和 <em>M</em> 的字符串 <em>A</em> 和 <em>B</em>，求既是 <em>A</em> 的子序列又是 <em>B</em> 的子序列的字符串长度最长是多少。</p>
 <span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心策略：</p>
-<p>只要第二天股票价格下降那么今天就卖掉，只要股票价格明天涨，那么保持仓位。这一定是最优策略.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">gupiao=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">    <span class="keyword">if</span> gupiao[i]&gt;gupiao[i-<span class="number">1</span>]:</span><br><span class="line">        ans+=(gupiao[i]-gupiao[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j]$ 表示$A[:i]$ 和 $B[:i]$ 的公共子序列长度的最大值</p>
+<p>状态转移: </p>
+<ul>
+<li>$i,j$ 在公共子序列中，条件：$s[i]=s[j]$</li>
+<li>$i$ 在公共子序列中，但$j$ 不在</li>
+<li>$i$ 不在公共子序列中， 但$j$ 在</li>
+<li>$i,j$ 均不在公共子序列中</li>
+</ul>
+<p>跟最长回文子序列的分析一样，我们不好去表示第二种和第三种状态， 因而退而求此次用 $f[i][j-1], f[i-1][j]$ 来表示，因为结果是求最大值，因此没有影响.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">1010</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">a=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">b=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        <span class="keyword">if</span> a[i]==b[j]:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j-<span class="number">1</span>]+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j],f[i][j-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(f[n-<span class="number">1</span>][m-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>贪心</tag>
+        <tag>动态规划</tag>
+        <tag>线性DP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>李白打酒加强版</title>
+    <url>/2023/04/06/%E6%9D%8E%E7%99%BD%E6%89%93%E9%85%92%E5%8A%A0%E5%BC%BA%E7%89%88/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>话说大诗人李白，一生好饮。幸好他从不开车。一天，他提着酒壶，从家里出来，酒壶中有酒 2 斗。他边走边唱：</p>
+<p>无事街上走，提壶去打酒。逢店加一倍，遇花喝一斗。这一路上，他一共遇到店 N  次，遇到花 M 次。已知最后一</p>
+<p>次遇到的是花，他正好把酒喝光了。请你计算李白这一路遇到店和花的顺序，有多少种不同的可能？注意：壶里没</p>
+<p>酒 (0 斗) 时遇店是合法的，加倍后还是没酒；但是没酒时遇花是不合法的。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j][k]$ 表示李白经过了 $i$ 次店， $j$ 次花，手上还有k升酒的方案数。</p>
+<p>状态转移：考虑最后一步遇到的是什么，</p>
+<p>遇到的是店：$f[i][j][k]+=f[i-1][j][k//2]$ , 条件是 $i\ge 1 $, $k\%2==0$</p>
+<p>遇到的是花:   $f[i][j][k]+=f[i][j][k+1]$, 条件是 $j\ge 1$</p>
+<p>最后输出需要注意： 如果输出$f[n][m][0]$ 的话，我们输出的是李白经过$n$ 次店， $m$ 次花后，手上酒为0的方案数。但是这并不能保证最后一步李白遇到的是花，因此我们应该输出$f[n][m-1][1]$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">105</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line">f=[[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">and</span> k%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i-<span class="number">1</span>][j][k//<span class="number">2</span>])%mod</span><br><span class="line">            <span class="keyword">if</span> j:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i][j-<span class="number">1</span>][k+<span class="number">1</span>])%mod</span><br><span class="line"><span class="built_in">print</span>(f[n][m-<span class="number">1</span>][<span class="number">1</span>]%mod)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -382,6 +396,47 @@
         <tag>算法</tag>
         <tag>动态规划</tag>
         <tag>状态压缩DP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>股票买卖</title>
+    <url>/2023/04/05/%E8%82%A1%E7%A5%A8%E4%B9%B0%E5%8D%96/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>N</em> 的数组，数组中的第 i 个数字表示一个给定股票在第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心策略：</p>
+<p>只要第二天股票价格下降那么今天就卖掉，只要股票价格明天涨，那么保持仓位。这一定是最优策略.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">gupiao=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">    <span class="keyword">if</span> gupiao[i]&gt;gupiao[i-<span class="number">1</span>]:</span><br><span class="line">        ans+=(gupiao[i]-gupiao[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>超级质数</title>
+    <url>/2023/04/05/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>如果一个质数 PP 的每位数字都是质数, 而且每两个相邻的数字组成的两位 数是质数, 而且每三位相邻的数字组成的三位数是质数, 依次类推, 如果每相 邻的 kk 位数字组成的 kk 位数都是质数, 则 PP 称为超级质数。</p>
+<p>如果把超级质数 PP 看成一个字符串, 则这个超级质数的每个子串都是质 数。</p>
+<p>例如, 53 是一个超级质数。</p>
+<p>请问, 最大的超级质数是多少?</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>根据位数去暴力枚举。一位的超级质数只有2，3，5，7。由于以2结尾的数一定不是质数，因此考虑3，5，7即可。</p>
+<p>随后枚举$l=[2,3,5,7]$来构成一个两位数，定义一个 isprime 函数和一个 judge函数，来判断生成的两位数是否合法。</p>
+<p>如果一个数，当遍历完了了$l$ 也找不出一个数与之可以生成一个超级质数，那就输出它，最终结果为373.</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line">l=[<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">isprime</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="built_in">int</span>(sqrt(x))+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> x%i==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">judge</span>(<span class="params">k,a</span>):</span><br><span class="line">    s=<span class="built_in">str</span>(k)+<span class="built_in">str</span>(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(<span class="built_in">str</span>(a))+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isprime(<span class="built_in">int</span>(s[:(i+<span class="number">1</span>)])):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">a</span>):</span><br><span class="line">    flag=<span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        <span class="keyword">if</span> judge(l[i],a):</span><br><span class="line">            flag=<span class="literal">True</span></span><br><span class="line">            dfs(<span class="built_in">int</span>(<span class="built_in">str</span>(l[i])+<span class="built_in">str</span>(a)))</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> flag:</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">dfs(<span class="number">3</span>)</span><br><span class="line">dfs(<span class="number">5</span>)</span><br><span class="line">dfs(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
+        <tag>dfs</tag>
       </tags>
   </entry>
   <entry>
@@ -445,28 +500,6 @@
       <tags>
         <tag>算法</tag>
         <tag>蓝桥杯</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>超级质数</title>
-    <url>/2023/04/05/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>如果一个质数 PP 的每位数字都是质数, 而且每两个相邻的数字组成的两位 数是质数, 而且每三位相邻的数字组成的三位数是质数, 依次类推, 如果每相 邻的 kk 位数字组成的 kk 位数都是质数, 则 PP 称为超级质数。</p>
-<p>如果把超级质数 PP 看成一个字符串, 则这个超级质数的每个子串都是质 数。</p>
-<p>例如, 53 是一个超级质数。</p>
-<p>请问, 最大的超级质数是多少?</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>根据位数去暴力枚举。一位的超级质数只有2，3，5，7。由于以2结尾的数一定不是质数，因此考虑3，5，7即可。</p>
-<p>随后枚举$l=[2,3,5,7]$来构成一个两位数，定义一个 isprime 函数和一个 judge函数，来判断生成的两位数是否合法。</p>
-<p>如果一个数，当遍历完了了$l$ 也找不出一个数与之可以生成一个超级质数，那就输出它，最终结果为373.</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line">l=[<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">isprime</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="built_in">int</span>(sqrt(x))+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> x%i==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">judge</span>(<span class="params">k,a</span>):</span><br><span class="line">    s=<span class="built_in">str</span>(k)+<span class="built_in">str</span>(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(<span class="built_in">str</span>(a))+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isprime(<span class="built_in">int</span>(s[:(i+<span class="number">1</span>)])):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">a</span>):</span><br><span class="line">    flag=<span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        <span class="keyword">if</span> judge(l[i],a):</span><br><span class="line">            flag=<span class="literal">True</span></span><br><span class="line">            dfs(<span class="built_in">int</span>(<span class="built_in">str</span>(l[i])+<span class="built_in">str</span>(a)))</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> flag:</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">dfs(<span class="number">3</span>)</span><br><span class="line">dfs(<span class="number">5</span>)</span><br><span class="line">dfs(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-        <tag>dfs</tag>
       </tags>
   </entry>
   <entry>
