@@ -127,6 +127,49 @@
       </tags>
   </entry>
   <entry>
+    <title>数的拆分</title>
+    <url>/2023/04/06/%E6%95%B0%E7%9A%84%E6%8B%86%E5%88%86/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>将 20192019 拆分为若干个两两不同的质数之和，一共有多少种不同的方法？</p>
+<p>注意交换顺序视为同一种方法，例如 2+2017=2019 与 2017+2=2019 视为同一种方法。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先找出2019以内的所有质数，然后就是一个求方案数的01背包问题了。</p>
+<p>状态表示：$f[i][j]$ 表示将 j拆分成 前i个质数相加的方案数</p>
+<p>状态转移：考虑第i个质数选不选</p>
+<p>$j&lt;prime[i]$：$f[i][j]=f[i-1][j]$</p>
+<p>$j\ge prime[i]$:  $f[i][j]=f[i-1][j]+f[i-1][j-prime[i]]$</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="number">2019</span></span><br><span class="line">st=[<span class="number">0</span>]*<span class="number">2019</span></span><br><span class="line">prime=[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> st[i]:</span><br><span class="line">        prime.append(i)</span><br><span class="line">        j=i</span><br><span class="line">        <span class="keyword">while</span> j&lt;n:</span><br><span class="line">            st[j]=<span class="number">1</span></span><br><span class="line">            j+=i</span><br><span class="line">N=<span class="built_in">len</span>(prime)</span><br><span class="line">f=[[<span class="number">0</span>]*<span class="number">2021</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2021</span>)]</span><br><span class="line">f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,N):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2020</span>):</span><br><span class="line">        f[i][j]+=f[i-<span class="number">1</span>][j]</span><br><span class="line">        <span class="keyword">if</span> j&gt;=prime[i]:</span><br><span class="line">            f[i][j]+=f[i-<span class="number">1</span>][j-prime[i]]</span><br><span class="line"><span class="built_in">print</span>(f[N-<span class="number">1</span>][<span class="number">2019</span>])</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>背包问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>整数划分</title>
+    <url>/2023/04/06/%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>一个正整数 <em>n</em> 可以表示成若干个正整数之和，形如：$n=n_1+n_2+\cdots +n_k$，其中 $n_1\ge n_2 \cdots \ge n_k$ , $k\ge 1$。我们将这样的一种表示称为正整数 n 的一种划分。现在给定一个正整数 n，请你求出 n 共有多少种不同的划分方法。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这是一个求方案数的完全背包问题</p>
+<p>状态表示：$f[i][j]$ 表示把 n 划分为1~i 这些数的和的方案数</p>
+<p>状态转移：</p>
+<p>$j&lt;i$ : $f[i][j]+=f[i-1][j]$</p>
+<p>$j\ge i$: $f[i][j]+= f[i-1][j]+f[i-1][j-i]+\cdots f[i-1][j-k*i]$</p>
+<p>上式等价于 $f[i][j]+=f[i-1][j]+f[i][j-i]$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">dp=[[<span class="number">0</span>]*(n+<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> j-i&gt;=<span class="number">0</span>:</span><br><span class="line">            dp[i][j]=(dp[i][j-i]+dp[i-<span class="number">1</span>][j])%mod</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i][j]=dp[i-<span class="number">1</span>][j]%mod</span><br><span class="line">            </span><br><span class="line"><span class="built_in">print</span>(dp[-<span class="number">1</span>][-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数论基础知识</title>
     <url>/2023/04/05/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<h1 id="1-分解质因数"><a href="#1-分解质因数" class="headerlink" title="1.分解质因数"></a>1.分解质因数</h1><p>给定 <em>n</em> 个正整数 $a_i$，将每个数分解质因数，并按照质因数从小到大的顺序输出每个质因数的底数和指数。</p>
@@ -299,25 +342,6 @@
       </tags>
   </entry>
   <entry>
-    <title>股票买卖</title>
-    <url>/2023/04/05/%E8%82%A1%E7%A5%A8%E4%B9%B0%E5%8D%96/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>N</em> 的数组，数组中的第 i 个数字表示一个给定股票在第 i 天的价格。</p>
-<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
-<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心策略：</p>
-<p>只要第二天股票价格下降那么今天就卖掉，只要股票价格明天涨，那么保持仓位。这一定是最优策略.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">gupiao=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">    <span class="keyword">if</span> gupiao[i]&gt;gupiao[i-<span class="number">1</span>]:</span><br><span class="line">        ans+=(gupiao[i]-gupiao[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>贪心</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>超级质数</title>
     <url>/2023/04/05/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>如果一个质数 PP 的每位数字都是质数, 而且每两个相邻的数字组成的两位 数是质数, 而且每三位相邻的数字组成的三位数是质数, 依次类推, 如果每相 邻的 kk 位数字组成的 kk 位数都是质数, 则 PP 称为超级质数。</p>
@@ -337,6 +361,52 @@
         <tag>算法</tag>
         <tag>蓝桥杯</tag>
         <tag>dfs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>股票买卖</title>
+    <url>/2023/04/05/%E8%82%A1%E7%A5%A8%E4%B9%B0%E5%8D%96/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>N</em> 的数组，数组中的第 i 个数字表示一个给定股票在第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心策略：</p>
+<p>只要第二天股票价格下降那么今天就卖掉，只要股票价格明天涨，那么保持仓位。这一定是最优策略.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">gupiao=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">    <span class="keyword">if</span> gupiao[i]&gt;gupiao[i-<span class="number">1</span>]:</span><br><span class="line">        ans+=(gupiao[i]-gupiao[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>选数异或</title>
+    <url>/2023/04/05/%E9%80%89%E6%95%B0%E5%BC%82%E6%88%96/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>n</em> 的数列 $A_1, A_2, \cdots A_n$ 和一个非负整数 x，给定 m次查询，每次询问能否从某个区间 $[l,r]$中选择两个下标不同的数使得他们的异或等于 x。</p>
+<span id="more"></span>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入的第一行包含三个整数 n,m,x。第二行包含 <em>n</em>个整数$A_1, A_2, \cdots A_n$ 。接下来 <em>m</em>行，每行包含两个整数$l_i,r_i$表示询问区间$[l_i,r_i]$.</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>异或：【如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。在python中用^表示】</p>
+<p>异或的运算性质：</p>
+<ul>
+<li>交换律：A ^ B = B ^ A;</li>
+<li>结合律：A ^ (B ^ C) = (A ^ B) ^ C;</li>
+<li>恒等律：X ^ 0 = X;</li>
+<li>归零律：X ^ X = 0;</li>
+<li>自反：A ^ B ^ B = A ^ 0 = A;</li>
+<li>对于任意的 X： X ^ (-1) = ~X；</li>
+<li>如果 A ^ B = C 成立，那么 A ^ B = C，B ^ C = A；</li>
+</ul>
+<p>暴力做法：直接枚举所有情况，如果找到符合条件的就break，超时。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
       </tags>
   </entry>
   <entry>
@@ -376,33 +446,6 @@
       </tags>
   </entry>
   <entry>
-    <title>选数异或</title>
-    <url>/2023/04/05/%E9%80%89%E6%95%B0%E5%BC%82%E6%88%96/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>n</em> 的数列 $A_1, A_2, \cdots A_n$ 和一个非负整数 x，给定 m次查询，每次询问能否从某个区间 $[l,r]$中选择两个下标不同的数使得他们的异或等于 x。</p>
-<span id="more"></span>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入的第一行包含三个整数 n,m,x。第二行包含 <em>n</em>个整数$A_1, A_2, \cdots A_n$ 。接下来 <em>m</em>行，每行包含两个整数$l_i,r_i$表示询问区间$[l_i,r_i]$.</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>异或：【如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。在python中用^表示】</p>
-<p>异或的运算性质：</p>
-<ul>
-<li>交换律：A ^ B = B ^ A;</li>
-<li>结合律：A ^ (B ^ C) = (A ^ B) ^ C;</li>
-<li>恒等律：X ^ 0 = X;</li>
-<li>归零律：X ^ X = 0;</li>
-<li>自反：A ^ B ^ B = A ^ 0 = A;</li>
-<li>对于任意的 X： X ^ (-1) = ~X；</li>
-<li>如果 A ^ B = C 成立，那么 A ^ B = C，B ^ C = A；</li>
-</ul>
-<p>暴力做法：直接枚举所有情况，如果找到符合条件的就break，超时。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>青蛙过河</title>
     <url>/2023/04/05/%E9%9D%92%E8%9B%99%E8%BF%87%E6%B2%B3/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>小青蛙住在一条河边，它想到河对岸的学校去学习。小青蛙打算经过河里的石头跳到对岸。河里的石头排成了一条直线，小青蛙每次跳跃必须落在一块石头或者岸上。不过，每块石头有一个高度，每次小青蛙从一块石头起跳，这块石头的高度就会下降 1，当石头的高度下降到 0 时小青蛙不能再跳到这块石头上（某次跳跃后使石头高度下降到 0是允许的）。小青蛙一共需要去学校上 x天课，所以它需要往返 2x次。当小青蛙具有一个跳跃能力 y时，它能跳不超过 <em>y</em>的距离， 请问小青蛙的跳跃能力至少是多少才能用这些石头上完 x 次课。</p>
@@ -429,48 +472,6 @@
         <tag>蓝桥杯</tag>
         <tag>二分</tag>
         <tag>贪心</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数的拆分</title>
-    <url>/2023/04/06/%E6%95%B0%E7%9A%84%E6%8B%86%E5%88%86/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>将 20192019 拆分为若干个两两不同的质数之和，一共有多少种不同的方法？</p>
-<p>注意交换顺序视为同一种方法，例如 2+2017=2019 与 2017+2=2019 视为同一种方法。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先找出2019以内的所有质数，然后就是一个求方案数的01背包问题了。</p>
-<p>状态表示：$f[i][j]$ 表示将 j拆分成 前i个质数相加的方案数</p>
-<p>状态转移：考虑第i个质数选不选</p>
-<p>$j&lt;prime[i]$：$f[i][j]=f[i-1][j]$</p>
-<p>$j\ge prime[i]$:  $f[i][j]=f[i-1][j]+f[i-1][j-prime[i]]$</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="number">2019</span></span><br><span class="line">st=[<span class="number">0</span>]*<span class="number">2019</span></span><br><span class="line">prime=[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> st[i]:</span><br><span class="line">        prime.append(i)</span><br><span class="line">        j=i</span><br><span class="line">        <span class="keyword">while</span> j&lt;n:</span><br><span class="line">            st[j]=<span class="number">1</span></span><br><span class="line">            j+=i</span><br><span class="line">N=<span class="built_in">len</span>(prime)</span><br><span class="line">f=[[<span class="number">0</span>]*<span class="number">2021</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2021</span>)]</span><br><span class="line">f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,N):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2020</span>):</span><br><span class="line">        f[i][j]+=f[i-<span class="number">1</span>][j]</span><br><span class="line">        <span class="keyword">if</span> j&gt;=prime[i]:</span><br><span class="line">            f[i][j]+=f[i-<span class="number">1</span>][j-prime[i]]</span><br><span class="line"><span class="built_in">print</span>(f[N-<span class="number">1</span>][<span class="number">2019</span>])</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
-        <tag>背包问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>整数划分</title>
-    <url>/2023/04/06/%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>一个正整数 <em>n</em> 可以表示成若干个正整数之和，形如：$n=n_1+n_2+\cdots +n_k$，其中 $n_1\ge n_2 \cdots \ge n_k$ , $k\ge 1$。我们将这样的一种表示称为正整数 n 的一种划分。现在给定一个正整数 n，请你求出 n 共有多少种不同的划分方法。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这是一个求方案数的完全背包问题</p>
-<p>状态表示：$f[i][j]$ 表示把 n 划分为1~i 这些数的和的方案数</p>
-<p>状态转移：</p>
-<p>$j&lt;i$ : $f[i][j]+=f[i-1][j]$</p>
-<p>$j\ge i$: $f[i][j]+= f[i-1][j]+f[i-1][j-i]+\cdots f[i-1][j-k*i]\rightarrow$</p>
-<p>上式等价于 $f[i][j]+=f[i-1][j]+f[i][j-i]$</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">dp=[[<span class="number">0</span>]*(n+<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> j-i&gt;=<span class="number">0</span>:</span><br><span class="line">            dp[i][j]=(dp[i][j-i]+dp[i-<span class="number">1</span>][j])%mod</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i][j]=dp[i-<span class="number">1</span>][j]%mod</span><br><span class="line">            </span><br><span class="line"><span class="built_in">print</span>(dp[-<span class="number">1</span>][-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
       </tags>
   </entry>
 </search>
