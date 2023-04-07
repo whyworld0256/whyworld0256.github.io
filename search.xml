@@ -21,27 +21,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Lebesgue可测集的若干等价刻画</title>
-    <url>/2023/04/03/Lebesgue%E5%8F%AF%E6%B5%8B%E9%9B%86%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%AD%89%E4%BB%B7%E5%88%BB%E7%94%BB/</url>
-    <content><![CDATA[<p>$E\subset R^n$, 下列等价：</p>
-<ol>
-<li>E为Lebesgue可测集</li>
-<li>对于任意的$\epsilon &gt; 0$, 存在开集 $O$, $E\subset O$, 使得$m^{*} (O\backslash E)&lt;\epsilon$</li>
-<li>对于任意的$\epsilon &gt; 0$, 存在闭集 $F$, $F\subset E$, 使得$m^{*} (E\backslash F)&lt;\epsilon$</li>
-<li>任意集合$T\subset R^n$, 成立 <script type="math/tex">m^{*}(T)=m^{*}(T \cap E)+m^{*}(T \cap E ^{c})</script></li>
-<li>存在 $G_{\delta}$ 集 $G$ , $E\subset G$, 使得$m^{*} (G\backslash E)=0$</li>
-<li>存在 $F_{\delta}$ 集 $F$ , $F\subset E$, 使得$m^{*} (E\backslash F)=0$</li>
-<li>存在 $G_{\delta}$ 集 $G$  与 $F_{\delta}$ 集 $F$ , $F\subset E\subset G$, 使得 $m^{*} (G\backslash F)=0$</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数学</category>
-      </categories>
-      <tags>
-        <tag>实变函数</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二分</title>
     <url>/2023/04/05/%E4%BA%8C%E5%88%86/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个按照升序排列的长度为 <em>n</em> 的整数数组，以及 <em>q</em>个查询。对于每个查询，返回一个元素 <em>k</em>的起始位置和终止位置（位置从 0开始计数）。如果数组中不存在该元素，则返回 <code>-1 -1</code>。</p>
@@ -60,21 +39,24 @@
       </tags>
   </entry>
   <entry>
-    <title>前缀和与差分</title>
-    <url>/2023/04/03/%E5%89%8D%E7%BC%80%E5%92%8C/</url>
-    <content><![CDATA[<h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>输入一个长度为 <em>n</em>的整数序列。接下来再输入 <em>m</em>个询问，每个询问输入一对 <em>l</em> , <em>r</em>。对于每个询问，输出原序列中从第 <em>l</em>个数到第 <em>r</em> 个数的和。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">sumlist=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(sumlist)):</span><br><span class="line">    sumlist[i]=sumlist[i-<span class="number">1</span>]+nums[i-<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="built_in">print</span>(sumlist[r]-sumlist[l-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h1><p>输入一个长度为 <em>n</em>的整数序列。接下来输入 <em>m</em>个操作，每个操作包含三个整数 <em>l</em>,<em>r</em>,<em>c</em>，表示将序列中 [<em>l</em>,<em>r</em>] 之间的每个数加上 <em>c</em>。请你输出进行完所有操作后的序列。</p>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">b=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    b[i]=nums[i]-nums[i-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r,c=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    b[l]+=c</span><br><span class="line">    b[r+<span class="number">1</span>]-=c</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    ans+=b[i]</span><br><span class="line">    <span class="built_in">print</span>(ans,end=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+    <title>Lebesgue可测集的若干等价刻画</title>
+    <url>/2023/04/03/Lebesgue%E5%8F%AF%E6%B5%8B%E9%9B%86%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%AD%89%E4%BB%B7%E5%88%BB%E7%94%BB/</url>
+    <content><![CDATA[<p>$E\subset R^n$, 下列等价：</p>
+<ol>
+<li>E为Lebesgue可测集</li>
+<li>对于任意的$\epsilon &gt; 0$, 存在开集 $O$, $E\subset O$, 使得$m^{*} (O\backslash E)&lt;\epsilon$</li>
+<li>对于任意的$\epsilon &gt; 0$, 存在闭集 $F$, $F\subset E$, 使得$m^{*} (E\backslash F)&lt;\epsilon$</li>
+<li>任意集合$T\subset R^n$, 成立 <script type="math/tex">m^{*}(T)=m^{*}(T \cap E)+m^{*}(T \cap E ^{c})</script></li>
+<li>存在 $G_{\delta}$ 集 $G$ , $E\subset G$, 使得$m^{*} (G\backslash E)=0$</li>
+<li>存在 $F_{\delta}$ 集 $F$ , $F\subset E$, 使得$m^{*} (E\backslash F)=0$</li>
+<li>存在 $G_{\delta}$ 集 $G$  与 $F_{\delta}$ 集 $F$ , $F\subset E\subset G$, 使得 $m^{*} (G\backslash F)=0$</li>
+</ol>
 ]]></content>
       <categories>
-        <category>算法</category>
+        <category>数学</category>
       </categories>
       <tags>
-        <tag>算法</tag>
-        <tag>前缀和</tag>
-        <tag>差分</tag>
+        <tag>实变函数</tag>
       </tags>
   </entry>
   <entry>
@@ -111,6 +93,37 @@
       </tags>
   </entry>
   <entry>
+    <title>前缀和与差分</title>
+    <url>/2023/04/03/%E5%89%8D%E7%BC%80%E5%92%8C/</url>
+    <content><![CDATA[<h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>输入一个长度为 <em>n</em>的整数序列。接下来再输入 <em>m</em>个询问，每个询问输入一对 <em>l</em> , <em>r</em>。对于每个询问，输出原序列中从第 <em>l</em>个数到第 <em>r</em> 个数的和。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">sumlist=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(sumlist)):</span><br><span class="line">    sumlist[i]=sumlist[i-<span class="number">1</span>]+nums[i-<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="built_in">print</span>(sumlist[r]-sumlist[l-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h1><p>输入一个长度为 <em>n</em>的整数序列。接下来输入 <em>m</em>个操作，每个操作包含三个整数 <em>l</em>,<em>r</em>,<em>c</em>，表示将序列中 [<em>l</em>,<em>r</em>] 之间的每个数加上 <em>c</em>。请你输出进行完所有操作后的序列。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">b=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    b[i]=nums[i]-nums[i-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r,c=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    b[l]+=c</span><br><span class="line">    b[r+<span class="number">1</span>]-=c</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    ans+=b[i]</span><br><span class="line">    <span class="built_in">print</span>(ans,end=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>前缀和</tag>
+        <tag>差分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据范围反推时间复杂度以及算法内容</title>
+    <url>/2023/04/03/%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4%E5%8F%8D%E6%8E%A8%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%AE%97%E6%B3%95%E5%86%85%E5%AE%B9/</url>
+    <content><![CDATA[<p><a href="https://www.acwing.com/blog/content/32/">转载</a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>时间复杂度</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>密码脱落</title>
     <url>/2023/04/05/%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>X 星球的考古学家发现了一批古代留下来的密码。这些密码是由 A、B、C、D 四种植物的种子串成的序列。仔细分析发现，这些密码串当初应该是前后对称的（也就是我们说的镜像串）。由于年代久远，其中许多种子脱落了，因而可能会失去镜像的特征。你的任务是：给定一个现在看到的密码串，计算一下从当初的状态，它要至少脱落多少个种子，才可能会变成现在的样子。</p>
@@ -144,19 +157,6 @@
         <tag>动态规划</tag>
         <tag>最长回文子序列</tag>
         <tag>区间DP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据范围反推时间复杂度以及算法内容</title>
-    <url>/2023/04/03/%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4%E5%8F%8D%E6%8E%A8%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%AE%97%E6%B3%95%E5%86%85%E5%AE%B9/</url>
-    <content><![CDATA[<p><a href="https://www.acwing.com/blog/content/32/">转载</a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>时间复杂度</tag>
       </tags>
   </entry>
   <entry>
@@ -220,6 +220,55 @@
       </categories>
       <tags>
         <tag>算法</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最长公共子序列</title>
+    <url>/2023/04/05/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个长度分别为 <em>N</em> 和 <em>M</em> 的字符串 <em>A</em> 和 <em>B</em>，求既是 <em>A</em> 的子序列又是 <em>B</em> 的子序列的字符串长度最长是多少。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j]$ 表示$A[:i]$ 和 $B[:i]$ 的公共子序列长度的最大值</p>
+<p>状态转移: </p>
+<ul>
+<li>$i,j$ 在公共子序列中，条件：$s[i]=s[j]$</li>
+<li>$i$ 在公共子序列中，但$j$ 不在</li>
+<li>$i$ 不在公共子序列中， 但$j$ 在</li>
+<li>$i,j$ 均不在公共子序列中</li>
+</ul>
+<p>跟最长回文子序列的分析一样，我们不好去表示第二种和第三种状态， 因而退而求此次用 $f[i][j-1], f[i-1][j]$ 来表示，因为结果是求最大值，因此没有影响.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">1010</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">a=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">b=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        <span class="keyword">if</span> a[i]==b[j]:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j-<span class="number">1</span>]+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j],f[i][j-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(f[n-<span class="number">1</span>][m-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>线性DP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>李白打酒加强版</title>
+    <url>/2023/04/06/%E6%9D%8E%E7%99%BD%E6%89%93%E9%85%92%E5%8A%A0%E5%BC%BA%E7%89%88/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>话说大诗人李白，一生好饮。幸好他从不开车。一天，他提着酒壶，从家里出来，酒壶中有酒 2 斗。他边走边唱：</p>
+<p>无事街上走，提壶去打酒。逢店加一倍，遇花喝一斗。这一路上，他一共遇到店 N  次，遇到花 M 次。已知最后一</p>
+<p>次遇到的是花，他正好把酒喝光了。请你计算李白这一路遇到店和花的顺序，有多少种不同的可能？注意：壶里没</p>
+<p>酒 (0 斗) 时遇店是合法的，加倍后还是没酒；但是没酒时遇花是不合法的。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j][k]$ 表示李白经过了 $i$ 次店， $j$ 次花，手上还有k升酒的方案数。</p>
+<p>状态转移：考虑最后一步遇到的是什么，</p>
+<p>遇到的是店：$f[i][j][k]+=f[i-1][j][k//2]$ , 条件是 $i\ge 1 $, $k\%2==0$</p>
+<p>遇到的是花:   $f[i][j][k]+=f[i][j][k+1]$, 条件是 $j\ge 1$</p>
+<p>最后输出需要注意： 如果输出$f[n][m][0]$ 的话，我们输出的是李白经过$n$ 次店， $m$ 次花后，手上酒为0的方案数。但是这并不能保证最后一步李白遇到的是花，因此我们应该输出$f[n][m-1][1]$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">105</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line">f=[[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">and</span> k%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i-<span class="number">1</span>][j][k//<span class="number">2</span>])%mod</span><br><span class="line">            <span class="keyword">if</span> j:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i][j-<span class="number">1</span>][k+<span class="number">1</span>])%mod</span><br><span class="line"><span class="built_in">print</span>(f[n][m-<span class="number">1</span>][<span class="number">1</span>]%mod)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
         <tag>动态规划</tag>
       </tags>
   </entry>
@@ -327,44 +376,37 @@
       </tags>
   </entry>
   <entry>
-    <title>最长公共子序列</title>
-    <url>/2023/04/05/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个长度分别为 <em>N</em> 和 <em>M</em> 的字符串 <em>A</em> 和 <em>B</em>，求既是 <em>A</em> 的子序列又是 <em>B</em> 的子序列的字符串长度最长是多少。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j]$ 表示$A[:i]$ 和 $B[:i]$ 的公共子序列长度的最大值</p>
-<p>状态转移: </p>
+    <title>移动字母</title>
+    <url>/2023/04/07/%E7%A7%BB%E5%8A%A8%E5%AD%97%E6%AF%8D/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>2x3=6 个方格中放入 ABCDE 五个字母，右下角的那个格空着。如下图所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D</td>
+<td>E</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>和空格子相邻的格子中的字母可以移动到空格中，比如，图中的 C 和 E 就可以移动.</p>
+<p>题目的要求是：请编写程序，由用户输入若干表示局面的串，程序通过计算，输出是否能通过对初始状态经过若干次移动到达该状态。可以实现输出 1,否则输出 0。初始状态为：ABCDE*。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>本题的难点在于：</p>
 <ul>
-<li>$i,j$ 在公共子序列中，条件：$s[i]=s[j]$</li>
-<li>$i$ 在公共子序列中，但$j$ 不在</li>
-<li>$i$ 不在公共子序列中， 但$j$ 在</li>
-<li>$i,j$ 均不在公共子序列中</li>
+<li>每种状态该怎样存储</li>
+<li>如何实现状态之间的转移</li>
 </ul>
-<p>跟最长回文子序列的分析一样，我们不好去表示第二种和第三种状态， 因而退而求此次用 $f[i][j-1], f[i-1][j]$ 来表示，因为结果是求最大值，因此没有影响.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">1010</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">a=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">b=<span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        <span class="keyword">if</span> a[i]==b[j]:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j-<span class="number">1</span>]+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            f[i][j]=<span class="built_in">max</span>(f[i][j],f[i-<span class="number">1</span>][j],f[i][j-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(f[n-<span class="number">1</span>][m-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
-        <tag>线性DP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>李白打酒加强版</title>
-    <url>/2023/04/06/%E6%9D%8E%E7%99%BD%E6%89%93%E9%85%92%E5%8A%A0%E5%BC%BA%E7%89%88/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>话说大诗人李白，一生好饮。幸好他从不开车。一天，他提着酒壶，从家里出来，酒壶中有酒 2 斗。他边走边唱：</p>
-<p>无事街上走，提壶去打酒。逢店加一倍，遇花喝一斗。这一路上，他一共遇到店 N  次，遇到花 M 次。已知最后一</p>
-<p>次遇到的是花，他正好把酒喝光了。请你计算李白这一路遇到店和花的顺序，有多少种不同的可能？注意：壶里没</p>
-<p>酒 (0 斗) 时遇店是合法的，加倍后还是没酒；但是没酒时遇花是不合法的。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j][k]$ 表示李白经过了 $i$ 次店， $j$ 次花，手上还有k升酒的方案数。</p>
-<p>状态转移：考虑最后一步遇到的是什么，</p>
-<p>遇到的是店：$f[i][j][k]+=f[i-1][j][k//2]$ , 条件是 $i\ge 1 $, $k\%2==0$</p>
-<p>遇到的是花:   $f[i][j][k]+=f[i][j][k+1]$, 条件是 $j\ge 1$</p>
-<p>最后输出需要注意： 如果输出$f[n][m][0]$ 的话，我们输出的是李白经过$n$ 次店， $m$ 次花后，手上酒为0的方案数。但是这并不能保证最后一步李白遇到的是花，因此我们应该输出$f[n][m-1][1]$</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">105</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line">f=[[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">and</span> k%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i-<span class="number">1</span>][j][k//<span class="number">2</span>])%mod</span><br><span class="line">            <span class="keyword">if</span> j:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i][j-<span class="number">1</span>][k+<span class="number">1</span>])%mod</span><br><span class="line"><span class="built_in">print</span>(f[n][m-<span class="number">1</span>][<span class="number">1</span>]%mod)</span><br></pre></td></tr></table></figure>
+<p>对于状态的存储就用字符串 $ABCDE*$ 来存储</p>
+<p>对于状态转移：我们先把字符串还原为矩阵，在字符串中找到$<em>$ 的下标为k, 则其在原矩阵中的下标为 $(k//3,k\%3)$, 并且，如果在原矩阵中的下标为$(x,y)$, 那么在字符串中的坐标为 $x</em>3+y$ , 例如在上面的例子中 ,$k=5$, 原坐标为 $(1,2)$.</p>
+<p>转移方向用$dic$ 来存储，我们每转移到一种状态，如果这个状态以前从未得到过，那么将其存入字典$vis$ 中,这表明我们可以从起始状态转移到当前状态，否则就不做操作。然后写一个常规的$BFS$ 即可. 在中判断输入的$end$ 是否在字典中即可。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">dic=[(<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>),(<span class="number">0</span>,-<span class="number">1</span>),(-<span class="number">1</span>,<span class="number">0</span>)]</span><br><span class="line">vis=&#123;&#125;</span><br><span class="line">start=<span class="string">&#x27;ABCDE*&#x27;</span></span><br><span class="line">vis[start]=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">start</span>):</span><br><span class="line">  <span class="keyword">global</span> vis</span><br><span class="line">  que=deque()</span><br><span class="line">  que.append(start)</span><br><span class="line">  <span class="keyword">while</span> que:</span><br><span class="line">    t=que.popleft()</span><br><span class="line">    tt=<span class="built_in">list</span>(t)</span><br><span class="line">    k=t.index(<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">    x,y=k//<span class="number">3</span>,k%<span class="number">3</span></span><br><span class="line">    <span class="keyword">for</span> i,j <span class="keyword">in</span> dic:</span><br><span class="line">      nx,ny=x+i,y+j</span><br><span class="line">      <span class="keyword">if</span> <span class="number">0</span>&lt;=nx&lt;<span class="number">2</span> <span class="keyword">and</span> <span class="number">0</span>&lt;=ny&lt;<span class="number">3</span>:</span><br><span class="line">        tt[k],tt[nx*<span class="number">3</span>+ny]=tt[nx*<span class="number">3</span>+ny],tt[k]</span><br><span class="line">        nextt=<span class="string">&#x27;&#x27;</span>.join(tt)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> vis.get(nextt):</span><br><span class="line">          vis[nextt]=<span class="number">1</span></span><br><span class="line">          que.append(nextt)</span><br><span class="line">      tt=<span class="built_in">list</span>(t)</span><br><span class="line">bfs(start)</span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">  end=<span class="built_in">input</span>()</span><br><span class="line">  <span class="keyword">if</span> vis.get(end):</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -372,26 +414,7 @@
       <tags>
         <tag>算法</tag>
         <tag>蓝桥杯</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>股票买卖</title>
-    <url>/2023/04/05/%E8%82%A1%E7%A5%A8%E4%B9%B0%E5%8D%96/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>N</em> 的数组，数组中的第 i 个数字表示一个给定股票在第 i 天的价格。</p>
-<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
-<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心策略：</p>
-<p>只要第二天股票价格下降那么今天就卖掉，只要股票价格明天涨，那么保持仓位。这一定是最优策略.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">gupiao=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">    <span class="keyword">if</span> gupiao[i]&gt;gupiao[i-<span class="number">1</span>]:</span><br><span class="line">        ans+=(gupiao[i]-gupiao[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>贪心</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -415,6 +438,47 @@
         <tag>算法</tag>
         <tag>动态规划</tag>
         <tag>状态压缩DP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>超级质数</title>
+    <url>/2023/04/05/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>如果一个质数 PP 的每位数字都是质数, 而且每两个相邻的数字组成的两位 数是质数, 而且每三位相邻的数字组成的三位数是质数, 依次类推, 如果每相 邻的 kk 位数字组成的 kk 位数都是质数, 则 PP 称为超级质数。</p>
+<p>如果把超级质数 PP 看成一个字符串, 则这个超级质数的每个子串都是质 数。</p>
+<p>例如, 53 是一个超级质数。</p>
+<p>请问, 最大的超级质数是多少?</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>根据位数去暴力枚举。一位的超级质数只有2，3，5，7。由于以2结尾的数一定不是质数，因此考虑3，5，7即可。</p>
+<p>随后枚举$l=[2,3,5,7]$来构成一个两位数，定义一个 isprime 函数和一个 judge函数，来判断生成的两位数是否合法。</p>
+<p>如果一个数，当遍历完了了$l$ 也找不出一个数与之可以生成一个超级质数，那就输出它，最终结果为373.</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line">l=[<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">isprime</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="built_in">int</span>(sqrt(x))+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> x%i==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">judge</span>(<span class="params">k,a</span>):</span><br><span class="line">    s=<span class="built_in">str</span>(k)+<span class="built_in">str</span>(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(<span class="built_in">str</span>(a))+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isprime(<span class="built_in">int</span>(s[:(i+<span class="number">1</span>)])):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">a</span>):</span><br><span class="line">    flag=<span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        <span class="keyword">if</span> judge(l[i],a):</span><br><span class="line">            flag=<span class="literal">True</span></span><br><span class="line">            dfs(<span class="built_in">int</span>(<span class="built_in">str</span>(l[i])+<span class="built_in">str</span>(a)))</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> flag:</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">dfs(<span class="number">3</span>)</span><br><span class="line">dfs(<span class="number">5</span>)</span><br><span class="line">dfs(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
+        <tag>dfs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>股票买卖</title>
+    <url>/2023/04/05/%E8%82%A1%E7%A5%A8%E4%B9%B0%E5%8D%96/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>N</em> 的数组，数组中的第 i 个数字表示一个给定股票在第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心策略：</p>
+<p>只要第二天股票价格下降那么今天就卖掉，只要股票价格明天涨，那么保持仓位。这一定是最优策略.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">gupiao=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">    <span class="keyword">if</span> gupiao[i]&gt;gupiao[i-<span class="number">1</span>]:</span><br><span class="line">        ans+=(gupiao[i]-gupiao[i-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -451,28 +515,6 @@
         <tag>算法</tag>
         <tag>蓝桥杯</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>超级质数</title>
-    <url>/2023/04/05/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>如果一个质数 PP 的每位数字都是质数, 而且每两个相邻的数字组成的两位 数是质数, 而且每三位相邻的数字组成的三位数是质数, 依次类推, 如果每相 邻的 kk 位数字组成的 kk 位数都是质数, 则 PP 称为超级质数。</p>
-<p>如果把超级质数 PP 看成一个字符串, 则这个超级质数的每个子串都是质 数。</p>
-<p>例如, 53 是一个超级质数。</p>
-<p>请问, 最大的超级质数是多少?</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>根据位数去暴力枚举。一位的超级质数只有2，3，5，7。由于以2结尾的数一定不是质数，因此考虑3，5，7即可。</p>
-<p>随后枚举$l=[2,3,5,7]$来构成一个两位数，定义一个 isprime 函数和一个 judge函数，来判断生成的两位数是否合法。</p>
-<p>如果一个数，当遍历完了了$l$ 也找不出一个数与之可以生成一个超级质数，那就输出它，最终结果为373.</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line">l=[<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">isprime</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="built_in">int</span>(sqrt(x))+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> x%i==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">judge</span>(<span class="params">k,a</span>):</span><br><span class="line">    s=<span class="built_in">str</span>(k)+<span class="built_in">str</span>(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(<span class="built_in">str</span>(a))+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isprime(<span class="built_in">int</span>(s[:(i+<span class="number">1</span>)])):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">a</span>):</span><br><span class="line">    flag=<span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        <span class="keyword">if</span> judge(l[i],a):</span><br><span class="line">            flag=<span class="literal">True</span></span><br><span class="line">            dfs(<span class="built_in">int</span>(<span class="built_in">str</span>(l[i])+<span class="built_in">str</span>(a)))</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> flag:</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">dfs(<span class="number">3</span>)</span><br><span class="line">dfs(<span class="number">5</span>)</span><br><span class="line">dfs(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-        <tag>dfs</tag>
       </tags>
   </entry>
   <entry>
