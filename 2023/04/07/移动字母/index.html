@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="题目描述2x3&#x3D;6 个方格中放入 ABCDE 五个字母，右下角的那个格空着。如下图所示。     A B C     D E     和空格子相邻的格子中的字母可以移动到空格中，比如，图中的 C 和 E 就可以移动. 题目的要求是：请编写程序，由用户输入若干表示局面的串，程序通过计算，输出是否能通过对初始状态经过若干次移动到达该状态。可以实现输出 1,否则输出 0。初始状态为：ABCDE*。 题解">
+<meta name="description" content="题目描述2x3&#x3D;6 个方格中放入 ABCDE 五个字母，右下角的那个格空着。如下图所示。     A B C     D E     和空格子相邻的格子中的字母可以移动到空格中，比如，图中的 C 和 E 就可以移动. 题目的要求是：请编写程序，由用户输入若干表示局面的串，程序通过计算，输出是否能通过对初始状态经过若干次移动到达该状态。可以实现输出 1,否则输出 0。初始状态为：ABCDE*。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动字母">
 <meta property="og:url" content="http://example.com/2023/04/07/%E7%A7%BB%E5%8A%A8%E5%AD%97%E6%AF%8D/index.html">
 <meta property="og:site_name" content="最伟大的博客">
-<meta property="og:description" content="题目描述2x3&#x3D;6 个方格中放入 ABCDE 五个字母，右下角的那个格空着。如下图所示。     A B C     D E     和空格子相邻的格子中的字母可以移动到空格中，比如，图中的 C 和 E 就可以移动. 题目的要求是：请编写程序，由用户输入若干表示局面的串，程序通过计算，输出是否能通过对初始状态经过若干次移动到达该状态。可以实现输出 1,否则输出 0。初始状态为：ABCDE*。 题解">
+<meta property="og:description" content="题目描述2x3&#x3D;6 个方格中放入 ABCDE 五个字母，右下角的那个格空着。如下图所示。     A B C     D E     和空格子相邻的格子中的字母可以移动到空格中，比如，图中的 C 和 E 就可以移动. 题目的要求是：请编写程序，由用户输入若干表示局面的串，程序通过计算，输出是否能通过对初始状态经过若干次移动到达该状态。可以实现输出 1,否则输出 0。初始状态为：ABCDE*。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-04-07T02:57:10.000Z">
-<meta property="article:modified_time" content="2023-04-07T03:20:23.993Z">
+<meta property="article:modified_time" content="2023-04-07T08:00:41.173Z">
 <meta property="article:author" content="Haiyu Wang">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="蓝桥杯">
@@ -429,13 +429,14 @@
 </div>
 <p>和空格子相邻的格子中的字母可以移动到空格中，比如，图中的 C 和 E 就可以移动.</p>
 <p>题目的要求是：请编写程序，由用户输入若干表示局面的串，程序通过计算，输出是否能通过对初始状态经过若干次移动到达该状态。可以实现输出 1,否则输出 0。初始状态为：ABCDE*。</p>
+<span id="more"></span>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>本题的难点在于：</p>
 <ul>
 <li>每种状态该怎样存储</li>
 <li>如何实现状态之间的转移</li>
 </ul>
 <p>对于状态的存储就用字符串 $ABCDE*$ 来存储</p>
-<p>对于状态转移：我们先把字符串还原为矩阵，在字符串中找到$<em>$ 的下标为k, 则其在原矩阵中的下标为 $(k//3,k\%3)$, 并且，如果在原矩阵中的下标为$(x,y)$, 那么在字符串中的坐标为 $x</em>3+y$ , 例如在上面的例子中 ,$k=5$, 原坐标为 $(1,2)$.</p>
+<p>对于状态转移：我们先把字符串还原为矩阵，在字符串中找到<em> 的下标为k, 则其在原矩阵中的下标为 $(k//3,k\%3)$, 并且，如果在原矩阵中的下标为$(x,y)$ , 那么在字符串中的坐标为 $x</em>3+y$ ,  例如在上面的例子中 , $k=5$, 原坐标为 $(1,2)$.</p>
 <p>转移方向用$dic$ 来存储，我们每转移到一种状态，如果这个状态以前从未得到过，那么将其存入字典$vis$ 中,这表明我们可以从起始状态转移到当前状态，否则就不做操作。然后写一个常规的$BFS$ 即可. 在中判断输入的$end$ 是否在字典中即可。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">dic=[(<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>),(<span class="number">0</span>,-<span class="number">1</span>),(-<span class="number">1</span>,<span class="number">0</span>)]</span><br><span class="line">vis=&#123;&#125;</span><br><span class="line">start=<span class="string">&#x27;ABCDE*&#x27;</span></span><br><span class="line">vis[start]=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">start</span>):</span><br><span class="line">  <span class="keyword">global</span> vis</span><br><span class="line">  que=deque()</span><br><span class="line">  que.append(start)</span><br><span class="line">  <span class="keyword">while</span> que:</span><br><span class="line">    t=que.popleft()</span><br><span class="line">    tt=<span class="built_in">list</span>(t)</span><br><span class="line">    k=t.index(<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">    x,y=k//<span class="number">3</span>,k%<span class="number">3</span></span><br><span class="line">    <span class="keyword">for</span> i,j <span class="keyword">in</span> dic:</span><br><span class="line">      nx,ny=x+i,y+j</span><br><span class="line">      <span class="keyword">if</span> <span class="number">0</span>&lt;=nx&lt;<span class="number">2</span> <span class="keyword">and</span> <span class="number">0</span>&lt;=ny&lt;<span class="number">3</span>:</span><br><span class="line">        tt[k],tt[nx*<span class="number">3</span>+ny]=tt[nx*<span class="number">3</span>+ny],tt[k]</span><br><span class="line">        nextt=<span class="string">&#x27;&#x27;</span>.join(tt)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> vis.get(nextt):</span><br><span class="line">          vis[nextt]=<span class="number">1</span></span><br><span class="line">          que.append(nextt)</span><br><span class="line">      tt=<span class="built_in">list</span>(t)</span><br><span class="line">bfs(start)</span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">  end=<span class="built_in">input</span>()</span><br><span class="line">  <span class="keyword">if</span> vis.get(end):</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -496,6 +497,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/04/07/%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/" rel="prev" title="石子合并">
+                石子合并 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -576,7 +581,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -688,7 +693,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.2k</span>
+    <span title="Site words total count">11.6k</span>
   
 </div>
 <!--
