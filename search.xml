@@ -1,24 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Lebesgue可测集的若干等价刻画</title>
-    <url>/2023/04/03/Lebesgue%E5%8F%AF%E6%B5%8B%E9%9B%86%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%AD%89%E4%BB%B7%E5%88%BB%E7%94%BB/</url>
-    <content><![CDATA[<p>$E\subset R^n$, 下列等价：</p>
-<ol>
-<li>E为Lebesgue可测集</li>
-<li>对于任意的$\epsilon &gt; 0$, 存在开集 $O$, $E\subset O$, 使得$m^{*} (O\backslash E)&lt;\epsilon$</li>
-<li>对于任意的$\epsilon &gt; 0$, 存在闭集 $F$, $F\subset E$, 使得$m^{*} (E\backslash F)&lt;\epsilon$</li>
-<li>任意集合$T\subset R^n$, 成立 <script type="math/tex">m^{*}(T)=m^{*}(T \cap E)+m^{*}(T \cap E ^{c})</script></li>
-<li>存在 $G_{\delta}$ 集 $G$ , $E\subset G$, 使得$m^{*} (G\backslash E)=0$</li>
-<li>存在 $F_{\delta}$ 集 $F$ , $F\subset E$, 使得$m^{*} (E\backslash F)=0$</li>
-<li>存在 $G_{\delta}$ 集 $G$  与 $F_{\delta}$ 集 $F$ , $F\subset E\subset G$, 使得 $m^{*} (G\backslash F)=0$</li>
-</ol>
+    <title>C++基础知识day1</title>
+    <url>/2023/04/08/C-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86day1/</url>
+    <content><![CDATA[<p>编程是一种控制计算机的方式，和我们平时双击打开文件、关机、重启没有任何区别。</p>
+<h1 id="第一个程序"><a href="#第一个程序" class="headerlink" title="第一个程序"></a>第一个程序</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello World&quot;</span> &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>头文件，用 # 引入， 类似于python中的库。不同的头文件中包含了不同的函数。</li>
+<li>using namespace std： 使用了std 这个命名空间。</li>
+<li>int main() : 可以理解为函数的入口，最后必须return 0.</li>
+</ul>
+<p>以上三点每个程序都必备。</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h3 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h3><ul>
+<li>bool ：布尔值，只有两种值，false/true   1Byte</li>
+<li>char ：字符串类型，用引号包起来             1Byte</li>
+<li>int ： 整数型，范围为$-2^{31}=$ 到 $2^{31}-1$   4Byte</li>
+<li>float: 单精度浮点数，1.23， 2.5，1.235e2， 位数为6 到 7为，精度较低 4Byte</li>
+<li>double：高精度浮点数， 位数为15 到16 位  8Byte</li>
+<li>long long ：更长的整数， 范围为$-2^{63}$ 到 $2^{63}-1$    8Byte</li>
+<li>long double: 更长的浮点， 18到19位</li>
+</ul>
+<p>字节Byte，比特bit， 1 Byte= 8 bit ， 8Mb=MB</p>
+<h3 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h3><p>整数型： 先申明变量，后面跟用逗号隔开的表达式</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a,b = <span class="number">2</span>, c = b;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> l=<span class="number">2131231123</span>;</span><br></pre></td></tr></table></figure>
+<p>浮点数:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> d=<span class="number">1.5</span>, f=<span class="number">1.235e2</span>:</span><br><span class="line"><span class="type">long</span> <span class="type">double</span> m=<span class="number">1.21313131</span>;</span><br></pre></td></tr></table></figure>
+<p>布尔型</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> g = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<p>字符型</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> j=<span class="string">&#x27;a&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    cin&gt;&gt;a &gt;&gt; b;</span><br><span class="line">    cout &lt;&lt; a+b&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt; a*b &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+<p>注意：每句话后面用；结尾。cin:&gt;&gt;, cout:&lt;&lt;</p>
+<p>printf 和 scanf 效率更高.</p>
+<p>cin 不会读入空格，scanf会.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span> <span class="comment">//包含了printf，scanf</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d&quot;</span>,a+b,a*b);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    int:%d</span></span><br><span class="line"><span class="comment">    float:%f</span></span><br><span class="line"><span class="comment">    double:%lf</span></span><br><span class="line"><span class="comment">    char %c</span></span><br><span class="line"><span class="comment">    long long %lld</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="算法题常见错误类型"><a href="#算法题常见错误类型" class="headerlink" title="算法题常见错误类型"></a>算法题常见错误类型</h3><ul>
+<li>wrong answer</li>
+<li>time limit error</li>
+<li>memory limit error</li>
+<li>segmentation fault  数组越界</li>
+<li>compile error 编译错误</li>
+</ul>
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> a = <span class="number">6</span> + <span class="number">3</span> * <span class="number">4</span> / <span class="number">2</span> - <span class="number">2</span>;</span><br><span class="line">	</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    a++;// 把a加1</span></span><br><span class="line"><span class="comment">    ++a;// 也是把a加1</span></span><br><span class="line"><span class="comment">    c=a++;//先把a赋值给c，在给a加1</span></span><br><span class="line"><span class="comment">    c=++a;// 先把a加1，再赋值给c</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> b = a * <span class="number">10</span> + <span class="number">5</span> / <span class="number">2</span>;</span><br><span class="line">	</span><br><span class="line">	cout &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	cout &lt;&lt; <span class="number">23</span> * <span class="number">56</span> - <span class="number">78</span> / <span class="number">3</span> &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>两个整数相除会默认是整除，两个浮点数相除才是常规除法。</p>
+<p>对于取模运算:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">5</span>%<span class="number">2</span>=<span class="number">1</span></span><br><span class="line"><span class="number">-5</span>%<span class="number">2</span>=<span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="变量类型的转换"><a href="#变量类型的转换" class="headerlink" title="变量类型的转换"></a>变量类型的转换</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> a = <span class="number">5</span>;</span><br><span class="line">	<span class="type">float</span> b = (<span class="type">float</span>) a;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%f&quot;</span>,b);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">float</span> c=<span class="number">5.1231</span>;</span><br><span class="line">	<span class="type">int</span> d=c;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,d);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> a=<span class="number">97</span>;</span><br><span class="line">	<span class="type">char</span> c=a;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,c);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> c=<span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">	cout&lt;&lt;(<span class="type">char</span>)(c+<span class="number">32</span>)&lt;&lt;endl;<span class="comment">//输出a,char 和 int 做运算结果为int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>数学</category>
+        <category>C++</category>
       </categories>
       <tags>
-        <tag>实变函数</tag>
+        <tag>C++基础知识</tag>
       </tags>
   </entry>
   <entry>
@@ -42,21 +78,24 @@
       </tags>
   </entry>
   <entry>
-    <title>前缀和与差分</title>
-    <url>/2023/04/03/%E5%89%8D%E7%BC%80%E5%92%8C/</url>
-    <content><![CDATA[<h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>输入一个长度为 <em>n</em>的整数序列。接下来再输入 <em>m</em>个询问，每个询问输入一对 <em>l</em> , <em>r</em>。对于每个询问，输出原序列中从第 <em>l</em>个数到第 <em>r</em> 个数的和。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">sumlist=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(sumlist)):</span><br><span class="line">    sumlist[i]=sumlist[i-<span class="number">1</span>]+nums[i-<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="built_in">print</span>(sumlist[r]-sumlist[l-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h1 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h1><p>输入一个长度为 <em>n</em>的整数序列。接下来输入 <em>m</em>个操作，每个操作包含三个整数 <em>l</em>,<em>r</em>,<em>c</em>，表示将序列中 [<em>l</em>,<em>r</em>] 之间的每个数加上 <em>c</em>。请你输出进行完所有操作后的序列。</p>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">b=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    b[i]=nums[i]-nums[i-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r,c=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    b[l]+=c</span><br><span class="line">    b[r+<span class="number">1</span>]-=c</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    ans+=b[i]</span><br><span class="line">    <span class="built_in">print</span>(ans,end=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+    <title>Lebesgue可测集的若干等价刻画</title>
+    <url>/2023/04/03/Lebesgue%E5%8F%AF%E6%B5%8B%E9%9B%86%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%AD%89%E4%BB%B7%E5%88%BB%E7%94%BB/</url>
+    <content><![CDATA[<p>$E\subset R^n$, 下列等价：</p>
+<ol>
+<li>E为Lebesgue可测集</li>
+<li>对于任意的$\epsilon &gt; 0$, 存在开集 $O$, $E\subset O$, 使得$m^{*} (O\backslash E)&lt;\epsilon$</li>
+<li>对于任意的$\epsilon &gt; 0$, 存在闭集 $F$, $F\subset E$, 使得$m^{*} (E\backslash F)&lt;\epsilon$</li>
+<li>任意集合$T\subset R^n$, 成立 <script type="math/tex">m^{*}(T)=m^{*}(T \cap E)+m^{*}(T \cap E ^{c})</script></li>
+<li>存在 $G_{\delta}$ 集 $G$ , $E\subset G$, 使得$m^{*} (G\backslash E)=0$</li>
+<li>存在 $F_{\delta}$ 集 $F$ , $F\subset E$, 使得$m^{*} (E\backslash F)=0$</li>
+<li>存在 $G_{\delta}$ 集 $G$  与 $F_{\delta}$ 集 $F$ , $F\subset E\subset G$, 使得 $m^{*} (G\backslash F)=0$</li>
+</ol>
 ]]></content>
       <categories>
-        <category>算法</category>
+        <category>数学</category>
       </categories>
       <tags>
-        <tag>算法</tag>
-        <tag>前缀和</tag>
-        <tag>差分</tag>
+        <tag>实变函数</tag>
       </tags>
   </entry>
   <entry>
@@ -75,6 +114,24 @@
       <tags>
         <tag>算法</tag>
         <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前缀和与差分</title>
+    <url>/2023/04/03/%E5%89%8D%E7%BC%80%E5%92%8C/</url>
+    <content><![CDATA[<h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>输入一个长度为 <em>n</em>的整数序列。接下来再输入 <em>m</em>个询问，每个询问输入一对 <em>l</em> , <em>r</em>。对于每个询问，输出原序列中从第 <em>l</em>个数到第 <em>r</em> 个数的和。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">sumlist=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(sumlist)):</span><br><span class="line">    sumlist[i]=sumlist[i-<span class="number">1</span>]+nums[i-<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="built_in">print</span>(sumlist[r]-sumlist[l-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h1><p>输入一个长度为 <em>n</em>的整数序列。接下来输入 <em>m</em>个操作，每个操作包含三个整数 <em>l</em>,<em>r</em>,<em>c</em>，表示将序列中 [<em>l</em>,<em>r</em>] 之间的每个数加上 <em>c</em>。请你输出进行完所有操作后的序列。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">b=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    b[i]=nums[i]-nums[i-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r,c=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    b[l]+=c</span><br><span class="line">    b[r+<span class="number">1</span>]-=c</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    ans+=b[i]</span><br><span class="line">    <span class="built_in">print</span>(ans,end=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>前缀和</tag>
+        <tag>差分</tag>
       </tags>
   </entry>
   <entry>
@@ -111,19 +168,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据范围反推时间复杂度以及算法内容</title>
-    <url>/2023/04/03/%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4%E5%8F%8D%E6%8E%A8%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%AE%97%E6%B3%95%E5%86%85%E5%AE%B9/</url>
-    <content><![CDATA[<p><a href="https://www.acwing.com/blog/content/32/">转载</a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>时间复杂度</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>密码脱落</title>
     <url>/2023/04/05/%E5%AF%86%E7%A0%81%E8%84%B1%E8%90%BD/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>X 星球的考古学家发现了一批古代留下来的密码。这些密码是由 A、B、C、D 四种植物的种子串成的序列。仔细分析发现，这些密码串当初应该是前后对称的（也就是我们说的镜像串）。由于年代久远，其中许多种子脱落了，因而可能会失去镜像的特征。你的任务是：给定一个现在看到的密码串，计算一下从当初的状态，它要至少脱落多少个种子，才可能会变成现在的样子。</p>
@@ -157,6 +201,19 @@
         <tag>动态规划</tag>
         <tag>最长回文子序列</tag>
         <tag>区间DP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据范围反推时间复杂度以及算法内容</title>
+    <url>/2023/04/03/%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4%E5%8F%8D%E6%8E%A8%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%AE%97%E6%B3%95%E5%86%85%E5%AE%B9/</url>
+    <content><![CDATA[<p><a href="https://www.acwing.com/blog/content/32/">转载</a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>时间复杂度</tag>
       </tags>
   </entry>
   <entry>
@@ -327,30 +384,6 @@
       </tags>
   </entry>
   <entry>
-    <title>李白打酒加强版</title>
-    <url>/2023/04/06/%E6%9D%8E%E7%99%BD%E6%89%93%E9%85%92%E5%8A%A0%E5%BC%BA%E7%89%88/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>话说大诗人李白，一生好饮。幸好他从不开车。一天，他提着酒壶，从家里出来，酒壶中有酒 2 斗。他边走边唱：</p>
-<p>无事街上走，提壶去打酒。逢店加一倍，遇花喝一斗。这一路上，他一共遇到店 N  次，遇到花 M 次。已知最后一</p>
-<p>次遇到的是花，他正好把酒喝光了。请你计算李白这一路遇到店和花的顺序，有多少种不同的可能？注意：壶里没</p>
-<p>酒 (0 斗) 时遇店是合法的，加倍后还是没酒；但是没酒时遇花是不合法的。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j][k]$ 表示李白经过了 $i$ 次店， $j$ 次花，手上还有k升酒的方案数。</p>
-<p>状态转移：考虑最后一步遇到的是什么，</p>
-<p>遇到的是店：$f[i][j][k]+=f[i-1][j][k//2]$ , 条件是 $i\ge 1 $, $k\%2==0$</p>
-<p>遇到的是花:   $f[i][j][k]+=f[i][j][k+1]$, 条件是 $j\ge 1$</p>
-<p>最后输出需要注意： 如果输出$f[n][m][0]$ 的话，我们输出的是李白经过$n$ 次店， $m$ 次花后，手上酒为0的方案数。但是这并不能保证最后一步李白遇到的是花，因此我们应该输出$f[n][m-1][1]$</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">105</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line">f=[[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">and</span> k%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i-<span class="number">1</span>][j][k//<span class="number">2</span>])%mod</span><br><span class="line">            <span class="keyword">if</span> j:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i][j-<span class="number">1</span>][k+<span class="number">1</span>])%mod</span><br><span class="line"><span class="built_in">print</span>(f[n][m-<span class="number">1</span>][<span class="number">1</span>]%mod)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>最长公共子序列</title>
     <url>/2023/04/05/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个长度分别为 <em>N</em> 和 <em>M</em> 的字符串 <em>A</em> 和 <em>B</em>，求既是 <em>A</em> 的子序列又是 <em>B</em> 的子序列的字符串长度最长是多少。</p>
@@ -376,28 +409,27 @@
       </tags>
   </entry>
   <entry>
-    <title>石子合并</title>
-    <url>/2023/04/07/%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>设有 <em>N</em> 堆石子排成一排，其编号为 $1,2,\cdots N$。</p>
-<p>每堆石子有一定的质量，可以用一个整数来描述，现在要将这 N堆石子合并成为一堆。</p>
-<p>每次只能合并相邻的两堆，合并的代价为这两堆石子的质量之和，合并后与这两堆石子相邻的石子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同。</p>
-<p>例如有 4堆石子分别为 <code>1,3,5,2</code>， 我们可以先合并 1、2 堆，代价为 4，得到 <code>4,5,2</code>， 又合并 1、2 堆，代价为 9，得到 <code>9 2</code> ，再合并得到 11，总代价为 4+9+11=24；如果第二步是先合并 2、3</p>
-<p> 堆，则代价为 7，得到 <code>4 7</code>，最后一次合并代价为 11，总代价为 4+7+11=22。</p>
-<p>问题是：找出一种合理的方法，使总的代价最小，输出最小代价。</p>
+    <title>李白打酒加强版</title>
+    <url>/2023/04/06/%E6%9D%8E%E7%99%BD%E6%89%93%E9%85%92%E5%8A%A0%E5%BC%BA%E7%89%88/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>话说大诗人李白，一生好饮。幸好他从不开车。一天，他提着酒壶，从家里出来，酒壶中有酒 2 斗。他边走边唱：</p>
+<p>无事街上走，提壶去打酒。逢店加一倍，遇花喝一斗。这一路上，他一共遇到店 N  次，遇到花 M 次。已知最后一</p>
+<p>次遇到的是花，他正好把酒喝光了。请你计算李白这一路遇到店和花的顺序，有多少种不同的可能？注意：壶里没</p>
+<p>酒 (0 斗) 时遇店是合法的，加倍后还是没酒；但是没酒时遇花是不合法的。</p>
 <span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示: $f[i][j]$ 表示将第 $i$ 堆石子到第 $j$ 堆石子合并成一堆所需要的最小代价.</p>
-<p>状态转移：依然是考虑最后一次合并的分界点。</p>
-<p>例如合并 $[l,r]$ ，最后一步我们可以合并 $(l,[l+1:r])$, $([l:l+1],[f+2:r]), \cdots ([l:r-1],r)$</p>
-<p>并且， 遍历K 从 $l$ 到 $r-1$，  $f[l][r]=min(f[l][k]+f[k+1][r]+s[r]-s[l-1],f[l][r])$ , 其中 $s[i]$ 为前缀和数组.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">N=<span class="number">305</span></span><br><span class="line">stone=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">s=[<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    s[i]=s[i-<span class="number">1</span>]+stone[i]</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> lenth <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n-lenth+<span class="number">2</span>):</span><br><span class="line">        r=l+lenth-<span class="number">1</span></span><br><span class="line">        f[l][r]=<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(l,r):</span><br><span class="line">            f[l][r]=<span class="built_in">min</span>(f[l][r],f[l][k]+f[k+<span class="number">1</span>][r]+s[r]-s[l-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(f[<span class="number">1</span>][n])</span><br></pre></td></tr></table></figure>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示：$f[i][j][k]$ 表示李白经过了 $i$ 次店， $j$ 次花，手上还有k升酒的方案数。</p>
+<p>状态转移：考虑最后一步遇到的是什么，</p>
+<p>遇到的是店：$f[i][j][k]+=f[i-1][j][k//2]$ , 条件是 $i\ge 1 $, $k\%2==0$</p>
+<p>遇到的是花:   $f[i][j][k]+=f[i][j][k+1]$, 条件是 $j\ge 1$</p>
+<p>最后输出需要注意： 如果输出$f[n][m][0]$ 的话，我们输出的是李白经过$n$ 次店， $m$ 次花后，手上酒为0的方案数。但是这并不能保证最后一步李白遇到的是花，因此我们应该输出$f[n][m-1][1]$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">N=<span class="number">105</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line">f=[[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>]=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">and</span> k%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i-<span class="number">1</span>][j][k//<span class="number">2</span>])%mod</span><br><span class="line">            <span class="keyword">if</span> j:</span><br><span class="line">                f[i][j][k]=(f[i][j][k]+ f[i][j-<span class="number">1</span>][k+<span class="number">1</span>])%mod</span><br><span class="line"><span class="built_in">print</span>(f[n][m-<span class="number">1</span>][<span class="number">1</span>]%mod)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
+        <tag>蓝桥杯</tag>
         <tag>动态规划</tag>
-        <tag>区间DP</tag>
       </tags>
   </entry>
   <entry>
@@ -421,6 +453,31 @@
         <tag>算法</tag>
         <tag>动态规划</tag>
         <tag>状态压缩DP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>石子合并</title>
+    <url>/2023/04/07/%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>设有 <em>N</em> 堆石子排成一排，其编号为 $1,2,\cdots N$。</p>
+<p>每堆石子有一定的质量，可以用一个整数来描述，现在要将这 N堆石子合并成为一堆。</p>
+<p>每次只能合并相邻的两堆，合并的代价为这两堆石子的质量之和，合并后与这两堆石子相邻的石子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同。</p>
+<p>例如有 4堆石子分别为 <code>1,3,5,2</code>， 我们可以先合并 1、2 堆，代价为 4，得到 <code>4,5,2</code>， 又合并 1、2 堆，代价为 9，得到 <code>9 2</code> ，再合并得到 11，总代价为 4+9+11=24；如果第二步是先合并 2、3</p>
+<p> 堆，则代价为 7，得到 <code>4 7</code>，最后一次合并代价为 11，总代价为 4+7+11=22。</p>
+<p>问题是：找出一种合理的方法，使总的代价最小，输出最小代价。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>状态表示: $f[i][j]$ 表示将第 $i$ 堆石子到第 $j$ 堆石子合并成一堆所需要的最小代价.</p>
+<p>状态转移：依然是考虑最后一次合并的分界点。</p>
+<p>例如合并 $[l,r]$ ，最后一步我们可以合并 $(l,[l+1:r])$, $([l:l+1],[f+2:r]), \cdots ([l:r-1],r)$</p>
+<p>并且， 遍历K 从 $l$ 到 $r-1$，  $f[l][r]=min(f[l][k]+f[k+1][r]+s[r]-s[l-1],f[l][r])$ , 其中 $s[i]$ 为前缀和数组.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">N=<span class="number">305</span></span><br><span class="line">stone=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">s=[<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    s[i]=s[i-<span class="number">1</span>]+stone[i]</span><br><span class="line">f=[[<span class="number">0</span>]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"><span class="keyword">for</span> lenth <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n-lenth+<span class="number">2</span>):</span><br><span class="line">        r=l+lenth-<span class="number">1</span></span><br><span class="line">        f[l][r]=<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(l,r):</span><br><span class="line">            f[l][r]=<span class="built_in">min</span>(f[l][r],f[l][k]+f[k+<span class="number">1</span>][r]+s[r]-s[l-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(f[<span class="number">1</span>][n])</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>区间DP</tag>
       </tags>
   </entry>
   <entry>
