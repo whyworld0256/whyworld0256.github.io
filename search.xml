@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>K倍区间</title>
-    <url>/2023/04/05/K%E5%80%8D%E5%8C%BA%E9%97%B4/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为  N 的数列，$A_1,A_2, \dots A_N$，如果其中一段连续的子序列 $A_i, A_{i+1}, \cdots A_j$ 之和是 K的倍数，我们就称这个区间 $[i,j]$是 K 倍区间。  你能求出数列中总共有多少个 K 倍区间吗？  </p>
-<span id="more"></span>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含两个整数 <em>N</em> 和 <em>K</em>。以下 N 行每行包含一个整数 $A_i$。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一个整数，代表 <em>K</em> 倍区间的数目。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先求一个区间里的数的和，我们马上想到了前缀和 $s[i]-s[j-1]$。但是如果我们去遍历所有区间的左右端点然后判断是否为K倍区间，这依然会超时.</p>
-<p>若 $K$ 整除$(s[i]-s[j-1])$ , 则有 $s[i]，s[j-1]$ 模K 同余  , 因此当我们固定$i$ 时，我们似乎只要知道在 $i$ 之前有多少 $s[j]$ 与$s[i]$ 除K的余数相同即可，当我们向前遍历的时候，只需存下每个 $s[j]\%K$  的个数即可.</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,k=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">s=[<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    x=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    s[i]=s[i-<span class="number">1</span>]+x</span><br><span class="line">st=[<span class="number">0</span>]*k</span><br><span class="line">st[<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">res=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    res+=st[s[i]%k]</span><br><span class="line">    st[s[i]%k]+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>前缀和</tag>
-        <tag>蓝桥杯</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++基础知识day1</title>
     <url>/2023/04/08/C-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86day1/</url>
     <content><![CDATA[<p>编程是一种控制计算机的方式，和我们平时双击打开文件、关机、重启没有任何区别。</p>
@@ -78,6 +58,26 @@
       </tags>
   </entry>
   <entry>
+    <title>K倍区间</title>
+    <url>/2023/04/05/K%E5%80%8D%E5%8C%BA%E9%97%B4/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为  N 的数列，$A_1,A_2, \dots A_N$，如果其中一段连续的子序列 $A_i, A_{i+1}, \cdots A_j$ 之和是 K的倍数，我们就称这个区间 $[i,j]$是 K 倍区间。  你能求出数列中总共有多少个 K 倍区间吗？  </p>
+<span id="more"></span>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含两个整数 <em>N</em> 和 <em>K</em>。以下 N 行每行包含一个整数 $A_i$。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一个整数，代表 <em>K</em> 倍区间的数目。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先求一个区间里的数的和，我们马上想到了前缀和 $s[i]-s[j-1]$。但是如果我们去遍历所有区间的左右端点然后判断是否为K倍区间，这依然会超时.</p>
+<p>若 $K$ 整除$(s[i]-s[j-1])$ , 则有 $s[i]，s[j-1]$ 模K 同余  , 因此当我们固定$i$ 时，我们似乎只要知道在 $i$ 之前有多少 $s[j]$ 与$s[i]$ 除K的余数相同即可，当我们向前遍历的时候，只需存下每个 $s[j]\%K$  的个数即可.</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,k=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">s=[<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    x=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    s[i]=s[i-<span class="number">1</span>]+x</span><br><span class="line">st=[<span class="number">0</span>]*k</span><br><span class="line">st[<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">res=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    res+=st[s[i]%k]</span><br><span class="line">    st[s[i]%k]+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>前缀和</tag>
+        <tag>蓝桥杯</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lebesgue可测集的若干等价刻画</title>
     <url>/2023/04/03/Lebesgue%E5%8F%AF%E6%B5%8B%E9%9B%86%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%AD%89%E4%BB%B7%E5%88%BB%E7%94%BB/</url>
     <content><![CDATA[<p>$E\subset R^n$, 下列等价：</p>
@@ -108,24 +108,6 @@
       </categories>
       <tags>
         <tag>c++基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二分</title>
-    <url>/2023/04/05/%E4%BA%8C%E5%88%86/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个按照升序排列的长度为 <em>n</em> 的整数数组，以及 <em>q</em>个查询。对于每个查询，返回一个元素 <em>k</em>的起始位置和终止位置（位置从 0开始计数）。如果数组中不存在该元素，则返回 <code>-1 -1</code>。</p>
-<span id="more"></span>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含整数 <em>n</em> 和 <em>q</em>，表示数组长度和询问个数。第二行包含 <em>n</em>个整数（均在 1∼10000范围内），表示完整数组。接下来 q 行，每行包含一个整数 k，表示一个询问元素。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>对于一个固定的K，找到K的起始位置相当于给定条件: 大于等于K， 则我们要去找满足条件的第一个数</p>
-<p>同理，找到K的终止位置相当于给定条件：小于等于K， 则我们要去找满足条件的最后那个数</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_first</span>(<span class="params">k</span>):</span><br><span class="line">    l=<span class="number">0</span></span><br><span class="line">    r=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        mid=(l+r)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid]&gt;=k:</span><br><span class="line">            r=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l=mid+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> nums[l]!=k:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search_second</span>(<span class="params">k</span>):</span><br><span class="line">    l=<span class="number">0</span></span><br><span class="line">    r=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        mid=(l+r+<span class="number">1</span>)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid]&lt;=k:</span><br><span class="line">            l=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r=mid-<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> nums[l]!=k:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">            </span><br><span class="line">n,q=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(q):</span><br><span class="line">    k=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    a=search_first(k)</span><br><span class="line">    b=search_second(k)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125; &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(a,b))</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -255,6 +237,23 @@
 <h4 id="输入样例：-6"><a href="#输入样例：-6" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hello</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
 <h4 id="输出样例：-7"><a href="#输出样例：-7" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string a,b;</span><br><span class="line">    <span class="built_in">getline</span>(cin,a);</span><br><span class="line">    <span class="built_in">getline</span>(cin,b);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; a.<span class="built_in">size</span>(); i ++ )</span><br><span class="line">        <span class="keyword">if</span> (a[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; a[i]&lt;=<span class="string">&#x27;Z&#x27;</span>) a[i]+=<span class="number">32</span>; </span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; b.<span class="built_in">size</span>(); i ++ )</span><br><span class="line">        <span class="keyword">if</span> (b[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; b[i]&lt;=<span class="string">&#x27;Z&#x27;</span>) b[i]+=<span class="number">32</span>; </span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span> (a&lt;b) cout&lt;&lt;<span class="string">&quot;&lt;&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (a&gt;b) cout&lt;&lt;<span class="string">&quot;&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> cout&lt;&lt;<span class="string">&quot;=&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="去掉多余的空格"><a href="#去掉多余的空格" class="headerlink" title="去掉多余的空格"></a>去掉多余的空格</h1><p>输入一个字符串，字符串中可能包含多个连续的空格，请将多余的空格去掉，只留下一个空格。</p>
+<h4 id="输入格式-11"><a href="#输入格式-11" class="headerlink" title="输入格式"></a>输入格式</h4><p>共一行，包含一个字符串。</p>
+<h4 id="输出格式-11"><a href="#输出格式-11" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出去掉多余空格后的字符串，占一行。</p>
+<h4 id="数据范围-7"><a href="#数据范围-7" class="headerlink" title="数据范围"></a>数据范围</h4><p>输入字符串的长度不超过 200</p>
+<p>。<br> 保证输入字符串的开头和结尾没有空格。</p>
+<h4 id="输入样例：-7"><a href="#输入样例：-7" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hello      world.This is    c language.</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例：-8"><a href="#输出样例：-8" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hello world.This is c language.</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="keyword">while</span> (cin&gt;&gt;s)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;s&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法二；</span></span><br><span class="line"><span class="comment">/*#include &lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include &lt;cstring&gt;</span></span><br><span class="line"><span class="comment">#include &lt;algorithm&gt;</span></span><br><span class="line"><span class="comment">using namespace std;</span></span><br><span class="line"><span class="comment">int main()</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    string s,ans;</span></span><br><span class="line"><span class="comment">    getline(cin,s);</span></span><br><span class="line"><span class="comment">    for (int i = 0; i &lt; s.size(); i ++ )</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        if (s[i]!=&#x27; &#x27;) ans=ans+s[i];</span></span><br><span class="line"><span class="comment">        else</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">            ans=ans+&#x27; &#x27;;</span></span><br><span class="line"><span class="comment">            int j=i;</span></span><br><span class="line"><span class="comment">            while (j&lt;s.size() &amp;&amp; s[j]==&#x27; &#x27;)</span></span><br><span class="line"><span class="comment">            &#123;</span></span><br><span class="line"><span class="comment">                j++;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">            i=j-1;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    cout&lt;&lt;ans;</span></span><br><span class="line"><span class="comment">    return 0;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="输出字符串"><a href="#输出字符串" class="headerlink" title="输出字符串"></a>输出字符串</h1><p>给定一个字符串 <em>a</em>，请你按照下面的要求输出字符串 <em>b</em>。给定字符串 <em>a</em> 的第一个字符的 ASCII 值加第二个字符的 ASCII 值，得到 <em>b</em> 的第一个字符；给定字符串 <em>a</em> 的第二个字符的 ASCII 值加第三个字符的 ASCII 值，得到 <em>b</em> 的第二个字符；…</p>
+<p>给定字符串 <em>a</em> 的倒数第二个字符的 ASCII 值加最后一个字符的 ASCII 值，得到 <em>b</em></p>
+<p>的倒数第二个字符；给定字符串 <em>a</em> 的最后一个字符的 ASCII 值加第一个字符的 ASCII 值，得到 <em>b</em> 的最后一个字符。</p>
+<h4 id="输入格式-12"><a href="#输入格式-12" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入共一行，包含字符串 <em>a</em>。注意字符串中可能包含空格。数据保证字符串内的字符的 ASCII 值均不超过 63。</p>
+<h4 id="输出格式-12"><a href="#输出格式-12" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出共一行，包含字符串 <em>b</em>。</p>
+<h4 id="数据范围-8"><a href="#数据范围-8" class="headerlink" title="数据范围"></a>数据范围</h4><p>2≤<em>a</em>的长度≤100</p>
+<h4 id="输入样例：-8"><a href="#输入样例：-8" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2 3</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例：-9"><a href="#输出样例：-9" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">QRRSd</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string a,b;</span><br><span class="line">    <span class="built_in">getline</span>(cin,a);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; a.<span class="built_in">size</span>(); i ++ ) </span><br><span class="line">    &#123;</span><br><span class="line">        b=b+(<span class="type">char</span>)(a[i]+a[i<span class="number">-1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    b=b+(<span class="type">char</span>)(a[a.<span class="built_in">size</span>()<span class="number">-1</span>]+a[<span class="number">0</span>]);</span><br><span class="line">    cout&lt;&lt; b;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>c++</category>
@@ -282,16 +281,21 @@
       </tags>
   </entry>
   <entry>
-    <title>数据范围反推时间复杂度以及算法内容</title>
-    <url>/2023/04/03/%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4%E5%8F%8D%E6%8E%A8%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%AE%97%E6%B3%95%E5%86%85%E5%AE%B9/</url>
-    <content><![CDATA[<p><a href="https://www.acwing.com/blog/content/32/">转载</a></p>
+    <title>二分</title>
+    <url>/2023/04/05/%E4%BA%8C%E5%88%86/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个按照升序排列的长度为 <em>n</em> 的整数数组，以及 <em>q</em>个查询。对于每个查询，返回一个元素 <em>k</em>的起始位置和终止位置（位置从 0开始计数）。如果数组中不存在该元素，则返回 <code>-1 -1</code>。</p>
+<span id="more"></span>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含整数 <em>n</em> 和 <em>q</em>，表示数组长度和询问个数。第二行包含 <em>n</em>个整数（均在 1∼10000范围内），表示完整数组。接下来 q 行，每行包含一个整数 k，表示一个询问元素。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>对于一个固定的K，找到K的起始位置相当于给定条件: 大于等于K， 则我们要去找满足条件的第一个数</p>
+<p>同理，找到K的终止位置相当于给定条件：小于等于K， 则我们要去找满足条件的最后那个数</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_first</span>(<span class="params">k</span>):</span><br><span class="line">    l=<span class="number">0</span></span><br><span class="line">    r=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        mid=(l+r)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid]&gt;=k:</span><br><span class="line">            r=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l=mid+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> nums[l]!=k:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search_second</span>(<span class="params">k</span>):</span><br><span class="line">    l=<span class="number">0</span></span><br><span class="line">    r=n-<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        mid=(l+r+<span class="number">1</span>)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid]&lt;=k:</span><br><span class="line">            l=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r=mid-<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> nums[l]!=k:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">            </span><br><span class="line">n,q=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(q):</span><br><span class="line">    k=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    a=search_first(k)</span><br><span class="line">    b=search_second(k)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125; &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(a,b))</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>时间复杂度</tag>
+        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -325,6 +329,19 @@
       <tags>
         <tag>算法</tag>
         <tag>差分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据范围反推时间复杂度以及算法内容</title>
+    <url>/2023/04/03/%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4%E5%8F%8D%E6%8E%A8%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%BB%A5%E5%8F%8A%E7%AE%97%E6%B3%95%E5%86%85%E5%AE%B9/</url>
+    <content><![CDATA[<p><a href="https://www.acwing.com/blog/content/32/">转载</a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>时间复杂度</tag>
       </tags>
   </entry>
   <entry>
@@ -386,27 +403,6 @@
       </tags>
   </entry>
   <entry>
-    <title>整数划分</title>
-    <url>/2023/04/06/%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>一个正整数 <em>n</em> 可以表示成若干个正整数之和，形如：$n=n_1+n_2+\cdots +n_k$，其中 $n_1\ge n_2 \cdots \ge n_k$ , $k\ge 1$。我们将这样的一种表示称为正整数 n 的一种划分。现在给定一个正整数 n，请你求出 n 共有多少种不同的划分方法。</p>
-<span id="more"></span>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这是一个求方案数的完全背包问题</p>
-<p>状态表示：$f[i][j]$ 表示把 n 划分为1~i 这些数的和的方案数</p>
-<p>状态转移：</p>
-<p>$j&lt;i$ : $f[i][j]+=f[i-1][j]$</p>
-<p>$j\ge i$: $f[i][j]+= f[i-1][j]+f[i-1][j-i]+\cdots f[i-1][j-k*i]$</p>
-<p>上式等价于 $f[i][j]+=f[i-1][j]+f[i][j-i]$</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">dp=[[<span class="number">0</span>]*(n+<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> j-i&gt;=<span class="number">0</span>:</span><br><span class="line">            dp[i][j]=(dp[i][j-i]+dp[i-<span class="number">1</span>][j])%mod</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i][j]=dp[i-<span class="number">1</span>][j]%mod</span><br><span class="line">            </span><br><span class="line"><span class="built_in">print</span>(dp[-<span class="number">1</span>][-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数论基础知识</title>
     <url>/2023/04/05/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<h1 id="1-分解质因数"><a href="#1-分解质因数" class="headerlink" title="1.分解质因数"></a>1.分解质因数</h1><p>给定 <em>n</em> 个正整数 $a_i$，将每个数分解质因数，并按照质因数从小到大的顺序输出每个质因数的底数和指数。</p>
@@ -425,6 +421,27 @@
       <tags>
         <tag>算法</tag>
         <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>整数划分</title>
+    <url>/2023/04/06/%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>一个正整数 <em>n</em> 可以表示成若干个正整数之和，形如：$n=n_1+n_2+\cdots +n_k$，其中 $n_1\ge n_2 \cdots \ge n_k$ , $k\ge 1$。我们将这样的一种表示称为正整数 n 的一种划分。现在给定一个正整数 n，请你求出 n 共有多少种不同的划分方法。</p>
+<span id="more"></span>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这是一个求方案数的完全背包问题</p>
+<p>状态表示：$f[i][j]$ 表示把 n 划分为1~i 这些数的和的方案数</p>
+<p>状态转移：</p>
+<p>$j&lt;i$ : $f[i][j]+=f[i-1][j]$</p>
+<p>$j\ge i$: $f[i][j]+= f[i-1][j]+f[i-1][j-i]+\cdots f[i-1][j-k*i]$</p>
+<p>上式等价于 $f[i][j]+=f[i-1][j]+f[i][j-i]$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">dp=[[<span class="number">0</span>]*(n+<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)]</span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">mod=<span class="number">1000000007</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> j-i&gt;=<span class="number">0</span>:</span><br><span class="line">            dp[i][j]=(dp[i][j-i]+dp[i-<span class="number">1</span>][j])%mod</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i][j]=dp[i-<span class="number">1</span>][j]%mod</span><br><span class="line">            </span><br><span class="line"><span class="built_in">print</span>(dp[-<span class="number">1</span>][-<span class="number">1</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -730,33 +747,6 @@
       </tags>
   </entry>
   <entry>
-    <title>选数异或</title>
-    <url>/2023/04/05/%E9%80%89%E6%95%B0%E5%BC%82%E6%88%96/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>n</em> 的数列 $A_1, A_2, \cdots A_n$ 和一个非负整数 x，给定 m次查询，每次询问能否从某个区间 $[l,r]$中选择两个下标不同的数使得他们的异或等于 x。</p>
-<span id="more"></span>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入的第一行包含三个整数 n,m,x。第二行包含 <em>n</em>个整数$A_1, A_2, \cdots A_n$ 。接下来 <em>m</em>行，每行包含两个整数$l_i,r_i$表示询问区间$[l_i,r_i]$.</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>异或：【如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。在python中用^表示】</p>
-<p>异或的运算性质：</p>
-<ul>
-<li>交换律：A ^ B = B ^ A;</li>
-<li>结合律：A ^ (B ^ C) = (A ^ B) ^ C;</li>
-<li>恒等律：X ^ 0 = X;</li>
-<li>归零律：X ^ X = 0;</li>
-<li>自反：A ^ B ^ B = A ^ 0 = A;</li>
-<li>对于任意的 X： X ^ (-1) = ~X；</li>
-<li>如果 A ^ B = C 成立，那么 A ^ B = C，B ^ C = A；</li>
-</ul>
-<p>暴力做法：直接枚举所有情况，如果找到符合条件的就break，超时。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>跳跃</title>
     <url>/2023/04/02/%E8%B7%B3%E8%B7%83/</url>
     <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小蓝在一个 n 行 m 列的方格图中玩一个游戏。</p>
@@ -790,6 +780,33 @@
         <tag>算法</tag>
         <tag>蓝桥杯</tag>
         <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>选数异或</title>
+    <url>/2023/04/05/%E9%80%89%E6%95%B0%E5%BC%82%E6%88%96/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个长度为 <em>n</em> 的数列 $A_1, A_2, \cdots A_n$ 和一个非负整数 x，给定 m次查询，每次询问能否从某个区间 $[l,r]$中选择两个下标不同的数使得他们的异或等于 x。</p>
+<span id="more"></span>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入的第一行包含三个整数 n,m,x。第二行包含 <em>n</em>个整数$A_1, A_2, \cdots A_n$ 。接下来 <em>m</em>行，每行包含两个整数$l_i,r_i$表示询问区间$[l_i,r_i]$.</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>异或：【如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。在python中用^表示】</p>
+<p>异或的运算性质：</p>
+<ul>
+<li>交换律：A ^ B = B ^ A;</li>
+<li>结合律：A ^ (B ^ C) = (A ^ B) ^ C;</li>
+<li>恒等律：X ^ 0 = X;</li>
+<li>归零律：X ^ X = 0;</li>
+<li>自反：A ^ B ^ B = A ^ 0 = A;</li>
+<li>对于任意的 X： X ^ (-1) = ~X；</li>
+<li>如果 A ^ B = C 成立，那么 A ^ B = C，B ^ C = A；</li>
+</ul>
+<p>暴力做法：直接枚举所有情况，如果找到符合条件的就break，超时。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
       </tags>
   </entry>
   <entry>
