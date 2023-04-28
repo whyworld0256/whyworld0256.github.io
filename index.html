@@ -327,6 +327,413 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/28/%E4%BD%BF%E6%95%B0%E7%BB%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%8F%98%E6%88%901%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="最伟大的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/04/28/%E4%BD%BF%E6%95%B0%E7%BB%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%8F%98%E6%88%901%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/" itemprop="url">使数组所有元素变成1的最少操作次数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-28T10:21:06+08:00">
+                2023-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="使数组所有元素变成-1-的最少操作次数"><a href="#使数组所有元素变成-1-的最少操作次数" class="headerlink" title="使数组所有元素变成 1 的最少操作次数"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-operations-to-make-all-array-elements-equal-to-1/">使数组所有元素变成 1 的最少操作次数</a></h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给你一个下标从 <strong>0</strong> 开始的 <strong>正</strong> 整数数组 <code>nums</code> 。你可以对数组执行以下操作 <strong>任意</strong> 次：</p>
+<ul>
+<li>选择一个满足 <code>0 &lt;= i &lt; n - 1</code> 的下标 <code>i</code> ，将 <code>nums[i]</code> 或者 <code>nums[i+1]</code> 两者之一替换成它们的最大公约数。</li>
+</ul>
+<p>请你返回使数组 <code>nums</code> 中所有元素都等于 <code>1</code> 的 <strong>最少</strong> 操作次数。如果无法让数组全部变成 <code>1</code> ，请你返回 <code>-1</code> 。</p>
+<p>两个正整数的最大公约数指的是能整除这两个数的最大正整数。</p>
+<!--mode-->
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先，如果整个数组的最大公约数大于1，那么我们无法让数组全部变为1。</p>
+<p>如果一开始数组中有一个1，那么我们可以从这个1出发，逐步将整个数组变为1.</p>
+<p>记数组中1的个数为$cnt1$ 那么此时最小的操作次数为$n-cnt1$</p>
+<p>如果此时数组中没有1呢？我们需要用最少的操作使造出一个1来。</p>
+<p>此时我们去寻找数组中最短了子数组，其最大公约数为1，记这个数组的长度为$minsize$ ，那么我们只需对这个子数组操作 $minsize-1$ 次即可得到一个1，随后再操作$n-1$ 次即可，因此总共最少需要操作$minsize+n-2$ 次：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minOperations</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> gcd(*nums)&gt;<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        n=<span class="built_in">len</span>(nums)</span><br><span class="line">        cnt1=<span class="built_in">sum</span>(x==<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> nums)</span><br><span class="line">        <span class="keyword">if</span> cnt1:</span><br><span class="line">            <span class="keyword">return</span> n-cnt1</span><br><span class="line">        min_size=n</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n): <span class="comment">#求最短子数组的长度</span></span><br><span class="line">            g=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i,n):</span><br><span class="line">                g=gcd(g,nums[j])</span><br><span class="line">                <span class="keyword">if</span> g==<span class="number">1</span>:</span><br><span class="line">                    min_size=<span class="built_in">min</span>(min_size,j-i+<span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> min_size+n-<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h3 id="一个更快的做法"><a href="#一个更快的做法" class="headerlink" title="一个更快的做法"></a>一个更快的做法</h3><p>我们优化的关键在于如何把$minsize$ 快速地求出来。</p>
+<p>我们定义一个$g$ 数组，随着我们的$i$ 遍历整理数组$nums$ ，$g$ 中维护以$nums[i]$ 结束的所有子数组的$gcd$ 有哪些值。</p>
+<p>举个例子: $nums=[2,6,3,4]$ </p>
+<ul>
+<li>$i=0$ , $g=[2]$</li>
+<li>$i=1$, $g=[2,6]$</li>
+<li>$i=2$, $g=[1,3,3]$</li>
+<li>$i=3$, $g=[1,1,1,4]$</li>
+</ul>
+<p>利用$gcd$ 的运算性质，当$i=3$ 时，我们只需先将4 添加到$g$ 中，然后分别去求4 和前面三个数的$gcd$ ，然后将它们修改即可。</p>
+<p>如果我们每次把$g$ 去重，依然可以得到相同的结果。</p>
+<ul>
+<li>$i=0$ , $g=[2]$</li>
+<li>$i=1$, $g=[2,6]$</li>
+<li>$i=2$, $g=[1,3]$</li>
+<li>$i=3$, $g=[1，4]$</li>
+</ul>
+<p>但是在去重后，我们损失的下标的信息，也就是说如果$g$ 中出现了1 ，但是我们现在找不到它的位置了，也就求不出$minsize$ 了。</p>
+<p>因此这迫使我们去存下下标。</p>
+<p>并且我们在存下标时应该去存下标最大的那个，例如：</p>
+<p>$i=3$, $g=[1,1,1,4]$ 变为$i=3$, $g=[1，4]$ 时，</p>
+<p>我们需要存下第三个1 的下标。</p>
+<p>现在的难点就是如何实现对$g$ 的去重，例如：</p>
+<p>$g=[1,1,3,3]$ </p>
+<p>我们用一个双指针，$j$ 指针初始指向零，$i$ 指针遍历整个$g$ ，如果$g[i]==g[j]$ ，那么把$g[i]$ 对应的坐标赋值给$g[j]$ </p>
+<p>如果$g[i]!=g[j]$ 那么就把$j$ 移动到$i$ 的位置。</p>
+<p>不难知道一个简单事实，$g$ 数组从右往左是单调递减的。因此如果有1出现，那么它一定出现在$g$ 的对头，那么我们每次检查一下对头是不是1，如果是那就更新一下$minsize$ 即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minOperations</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> gcd(*nums)&gt;<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        cnt1=<span class="built_in">sum</span>(x==<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> nums)</span><br><span class="line">        <span class="keyword">if</span> cnt1:</span><br><span class="line">            <span class="keyword">return</span> n-cnt1</span><br><span class="line">        n=<span class="built_in">len</span>(nums)</span><br><span class="line">        min_size=n</span><br><span class="line">        g=[]</span><br><span class="line">        <span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            <span class="comment"># for j in range(len(g)):</span></span><br><span class="line">            <span class="comment">#     g[j][0]=gcd(x,g[j][0])</span></span><br><span class="line">            g.append([x,i])</span><br><span class="line">            j=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(g)):</span><br><span class="line">                g[i][<span class="number">0</span>]=gcd(x,g[i][<span class="number">0</span>])</span><br><span class="line">                <span class="keyword">if</span> g[j][<span class="number">0</span>]!=g[i][<span class="number">0</span>]:</span><br><span class="line">                    j=i</span><br><span class="line">                    <span class="comment"># g[j]=p</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    g[j][<span class="number">1</span>]=g[i][<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">if</span> g[<span class="number">0</span>][<span class="number">0</span>]==<span class="number">1</span>:</span><br><span class="line">                min_size=<span class="built_in">min</span>(min_size,i-g[<span class="number">0</span>][<span class="number">1</span>]+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> min_size+n-<span class="number">2</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/27/%E6%BB%91%E5%8A%A8%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E7%BE%8E%E4%B8%BD%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="最伟大的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/04/27/%E6%BB%91%E5%8A%A8%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E7%BE%8E%E4%B8%BD%E5%80%BC/" itemprop="url">滑动子数组的美丽值</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-27T00:02:25+08:00">
+                2023-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  494
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="滑动子数组的美丽值"><a href="#滑动子数组的美丽值" class="headerlink" title="滑动子数组的美丽值"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-subarray-beauty/description/">滑动子数组的美丽值</a></h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给你一个长度为 <code>n</code> 的整数数组 <code>nums</code> ，请你求出每个长度为 <code>k</code> 的子数组的 <strong>美丽值</strong> 。</p>
+<p>一个子数组的 <strong>美丽值</strong> 定义为：如果子数组中第 <code>x</code> <strong>小整数</strong> 是 <strong>负数</strong> ，那么美丽值为第 <code>x</code> 小的数，否则美丽值为 <code>0</code> 。</p>
+<p>请你返回一个包含 <code>n - k + 1</code> 个整数的数组，<strong>依次</strong> 表示数组中从第一个下标开始，每个长度为 <code>k</code> 的子数组的 <strong>美丽值</strong> 。</p>
+<ul>
+<li>子数组指的是数组中一段连续 <strong>非空</strong> 的元素序列。</li>
+</ul>
+<!--mode-->
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>n == nums.length</code></li>
+<li><code>1 &lt;= n &lt;= 105</code></li>
+<li><code>1 &lt;= k &lt;= n</code></li>
+<li><code>1 &lt;= x &lt;= k</code></li>
+<li><code>-50 &lt;= nums[i] &lt;= 50</code></li>
+</ul>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>问题的关键在于如何快速地求出每个滑动窗口中地第x小的数。</p>
+<p>如果你知道桶排序的话，可以产生以下思路。</p>
+<p>我们维护一个$cnt$ 数组，其长度为$101$ 正好使$nums[i]$ 的范围，$cnt[i]$ 表示在当前这个滑动窗口中，$i$ 出现的次数。</p>
+<p>若$s$ 是第$x$小的数，表明比它小的数的个数$&lt;x$ ， 大于等于它的数的个数$\ge x$ ，因此在当前这个滑动窗口下，我们从$-50$ 遍历到$0$ </p>
+<p>不断累加$cnt[i]$, 如果此时累加值刚好大于等于$x$ 那么表明小于等于$i$ 的数的个数刚好大于等于$x$ 那么$i$ 便是答案。如果加到$cnt[0]$ 后还没有超过$x$ 那么表明第$x$小的数一定大于0，因此$ans[i]=0$ 。</p>
+<p>时间复杂度: $O(50n)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getSubarrayBeauty</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span>, x: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        cnt=[<span class="number">0</span>]*<span class="number">101</span></span><br><span class="line">        ans=[<span class="number">0</span>]*(<span class="built_in">len</span>(nums)-k+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums[:k-<span class="number">1</span>]:</span><br><span class="line">            cnt[num]+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i, (in_,out) <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">zip</span>(nums[k-<span class="number">1</span>:],nums)): <span class="comment"># in_ 是当前入队的， out 是将要出队的。</span></span><br><span class="line">            cnt[in_]+=<span class="number">1</span></span><br><span class="line">            left=x</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(-<span class="number">50</span>,<span class="number">0</span>):</span><br><span class="line">                left-=cnt[j]</span><br><span class="line">                <span class="keyword">if</span> left&lt;=<span class="number">0</span>:</span><br><span class="line">                    ans[i]=j</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            cnt[out]-=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/23/%E5%AD%90%E7%9F%A9%E9%98%B5%E5%85%83%E7%B4%A0%E5%8A%A01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -602,7 +1009,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  2k
                 </span>
               
 
@@ -618,7 +1025,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  8
                 </span>
               
             </div>
@@ -1806,361 +2213,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/16/Leetcode%E7%AC%AC341%E5%9C%BA%E5%91%A8%E8%B5%9B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="最伟大的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/04/16/Leetcode%E7%AC%AC341%E5%9C%BA%E5%91%A8%E8%B5%9B/" itemprop="url">Leetcode第341场周赛</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-16T15:05:21+08:00">
-                2023-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          leetcode第341场周赛
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2023/04/16/Leetcode%E7%AC%AC341%E5%9C%BA%E5%91%A8%E8%B5%9B/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/15/leetcode-1023-%E9%A9%BC%E5%B3%B0%E5%BC%8F%E5%8C%B9%E9%85%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="最伟大的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/04/15/leetcode-1023-%E9%A9%BC%E5%B3%B0%E5%BC%8F%E5%8C%B9%E9%85%8D/" itemprop="url">leetcode 1023.驼峰式匹配</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-15T13:46:58+08:00">
-                2023-04-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  499
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>如果我们可以将<strong>小写字母</strong>插入模式串 <code>pattern</code> 得到待查询项 <code>query</code>，那么待查询项与给定模式串匹配。（我们可以在任何位置插入每个字符，也可以插入 0 个字符。）</p>
-<p>给定待查询列表 <code>queries</code>，和模式串 <code>pattern</code>，返回由布尔值组成的答案列表 <code>answer</code>。只有在待查项 <code>queries[i]</code> 与模式串 <code>pattern</code> 匹配时， <code>answer[i]</code> 才为 <code>true</code>，否则为 <code>false</code>。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2023/04/15/leetcode-1023-%E9%A9%BC%E5%B3%B0%E5%BC%8F%E5%8C%B9%E9%85%8D/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
 
@@ -2216,7 +2268,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2312,7 +2364,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">39.7k</span>
+    <span title="Site words total count">42k</span>
   
 </div>
 <!--
