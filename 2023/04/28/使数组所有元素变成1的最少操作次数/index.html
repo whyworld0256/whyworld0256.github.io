@@ -87,7 +87,7 @@
 <meta property="og:description" content="使数组所有元素变成 1 的最少操作次数题目描述给你一个下标从 0 开始的 正 整数数组 nums 。你可以对数组执行以下操作 任意 次：  选择一个满足 0 &lt;&#x3D; i &lt; n - 1 的下标 i ，将 nums[i] 或者 nums[i+1] 两者之一替换成它们的最大公约数。  请你返回使数组 nums 中所有元素都等于 1 的 最少 操作次数。如果无法让数组全部变成 1 ，请你返回">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-04-28T02:21:06.000Z">
-<meta property="article:modified_time" content="2023-04-28T06:26:43.386Z">
+<meta property="article:modified_time" content="2023-04-28T06:30:43.395Z">
 <meta property="article:author" content="王海宇">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="leetcode">
@@ -414,12 +414,12 @@
 </ul>
 <p>请你返回使数组 <code>nums</code> 中所有元素都等于 <code>1</code> 的 <strong>最少</strong> 操作次数。如果无法让数组全部变成 <code>1</code> ，请你返回 <code>-1</code> 。</p>
 <p>两个正整数的最大公约数指的是能整除这两个数的最大正整数。</p>
-<!--mode-->
+<span id="more"></span>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先，如果整个数组的最大公约数大于1，那么我们无法让数组全部变为1。</p>
 <p>如果一开始数组中有一个1，那么我们可以从这个1出发，逐步将整个数组变为1.</p>
 <p>记数组中1的个数为$cnt1$ 那么此时最小的操作次数为$n-cnt1$</p>
 <p>如果此时数组中没有1呢？我们需要用最少的操作使造出一个1来。</p>
-<p>此时我们去寻找数组中最短了子数组，其最大公约数为1，记这个数组的长度为$minsize$ ，那么我们只需对这个子数组操作 $minsize-1$ 次即可得到一个1，随后再操作$n-1$ 次即可，因此总共最少需要操作$minsize+n-2$ 次：</p>
+<p>此时我们去寻找数组中最短的子数组，其最大公约数为1，记这个数组的长度为$minsize$ ，那么我们只需对这个子数组操作 $minsize-1$ 次即可得到一个1，随后再操作$n-1$ 次即可，因此总共最少需要操作$minsize+n-2$ 次：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minOperations</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> gcd(*nums)&gt;<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        n=<span class="built_in">len</span>(nums)</span><br><span class="line">        cnt1=<span class="built_in">sum</span>(x==<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> nums)</span><br><span class="line">        <span class="keyword">if</span> cnt1:</span><br><span class="line">            <span class="keyword">return</span> n-cnt1</span><br><span class="line">        min_size=n</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n): <span class="comment">#求最短子数组的长度</span></span><br><span class="line">            g=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i,n):</span><br><span class="line">                g=gcd(g,nums[j])</span><br><span class="line">                <span class="keyword">if</span> g==<span class="number">1</span>:</span><br><span class="line">                    min_size=<span class="built_in">min</span>(min_size,j-i+<span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> min_size+n-<span class="number">2</span></span><br></pre></td></tr></table></figure>
 <h3 id="一个更快的做法"><a href="#一个更快的做法" class="headerlink" title="一个更快的做法"></a>一个更快的做法</h3><p>我们优化的关键在于如何把$minsize$ 快速地求出来。</p>
 <p>我们定义一个$g$ 数组，随着我们的$i$ 遍历整理数组$nums$ ，$g$ 中维护以$nums[i]$ 结束的所有子数组的$gcd$ 有哪些值。</p>
@@ -506,6 +506,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2023/04/28/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%A0%82%E5%85%84%E5%BC%9F%E7%9A%84%E8%8A%82%E7%82%B9/" rel="prev" title="二叉树堂兄弟的节点">
+                二叉树堂兄弟的节点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -585,7 +589,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -596,7 +600,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -607,7 +611,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -697,7 +701,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">42k</span>
+    <span title="Site words total count">47.8k</span>
   
 </div>
 <!--

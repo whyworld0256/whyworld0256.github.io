@@ -1728,6 +1728,7 @@
 <li>找出 <strong>左上角</strong> 为 <code>(row1i, col1i)</code> 且 <strong>右下角</strong> 为 <code>(row2i, col2i)</code> 的子矩阵，将子矩阵中的 <strong>每个元素</strong> 加 <code>1</code> 。也就是给所有满足 <code>row1i &lt;= x &lt;= row2i</code> 和 <code>col1i &lt;= y &lt;= col2i</code> 的 <code>mat[x][y]</code> 加 <code>1</code> 。</li>
 </ul>
 <p>返回执行完所有操作后得到的矩阵 <code>mat</code> 。</p>
+<span id="more"></span>
 <h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p><strong>差分</strong></p>
 <p>我们先详细讲解一下差分。</p>
 <p>考虑一个数组$a[n+1], a[0]=0$ ，现在我们的问题是：对数组进行若干次操作，每个操作包含三个整数 $l,r,c$，表示将序列中 $[l,c]$之间的每个数加上 $c$ ,请你输出进行完所有操作后的序列。</p>
@@ -1759,7 +1760,7 @@
 <ul>
 <li>子数组指的是数组中一段连续 <strong>非空</strong> 的元素序列。</li>
 </ul>
-<!--mode-->
+<span id="more"></span>
 <p><strong>提示：</strong></p>
 <ul>
 <li><code>n == nums.length</code></li>
@@ -1793,12 +1794,12 @@
 </ul>
 <p>请你返回使数组 <code>nums</code> 中所有元素都等于 <code>1</code> 的 <strong>最少</strong> 操作次数。如果无法让数组全部变成 <code>1</code> ，请你返回 <code>-1</code> 。</p>
 <p>两个正整数的最大公约数指的是能整除这两个数的最大正整数。</p>
-<!--mode-->
+<span id="more"></span>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先，如果整个数组的最大公约数大于1，那么我们无法让数组全部变为1。</p>
 <p>如果一开始数组中有一个1，那么我们可以从这个1出发，逐步将整个数组变为1.</p>
 <p>记数组中1的个数为$cnt1$ 那么此时最小的操作次数为$n-cnt1$</p>
 <p>如果此时数组中没有1呢？我们需要用最少的操作使造出一个1来。</p>
-<p>此时我们去寻找数组中最短了子数组，其最大公约数为1，记这个数组的长度为$minsize$ ，那么我们只需对这个子数组操作 $minsize-1$ 次即可得到一个1，随后再操作$n-1$ 次即可，因此总共最少需要操作$minsize+n-2$ 次：</p>
+<p>此时我们去寻找数组中最短的子数组，其最大公约数为1，记这个数组的长度为$minsize$ ，那么我们只需对这个子数组操作 $minsize-1$ 次即可得到一个1，随后再操作$n-1$ 次即可，因此总共最少需要操作$minsize+n-2$ 次：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minOperations</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> gcd(*nums)&gt;<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        n=<span class="built_in">len</span>(nums)</span><br><span class="line">        cnt1=<span class="built_in">sum</span>(x==<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> nums)</span><br><span class="line">        <span class="keyword">if</span> cnt1:</span><br><span class="line">            <span class="keyword">return</span> n-cnt1</span><br><span class="line">        min_size=n</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n): <span class="comment">#求最短子数组的长度</span></span><br><span class="line">            g=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i,n):</span><br><span class="line">                g=gcd(g,nums[j])</span><br><span class="line">                <span class="keyword">if</span> g==<span class="number">1</span>:</span><br><span class="line">                    min_size=<span class="built_in">min</span>(min_size,j-i+<span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> min_size+n-<span class="number">2</span></span><br></pre></td></tr></table></figure>
 <h3 id="一个更快的做法"><a href="#一个更快的做法" class="headerlink" title="一个更快的做法"></a>一个更快的做法</h3><p>我们优化的关键在于如何把$minsize$ 快速地求出来。</p>
 <p>我们定义一个$g$ 数组，随着我们的$i$ 遍历整理数组$nums$ ，$g$ 中维护以$nums[i]$ 结束的所有子数组的$gcd$ 有哪些值。</p>
@@ -1836,5 +1837,302 @@
         <tag>算法</tag>
         <tag>leetcode</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Trie树</title>
+    <url>/2023/04/29/Trie%E6%A0%91/</url>
+    <content><![CDATA[<h1 id="Trie-树"><a href="#Trie-树" class="headerlink" title="Trie 树"></a>Trie 树</h1><p><code>Trie树是一种高效地存储和查找字符串集合的数据结构</code></p>
+<p>也称为字典树。</p>
+<span id="more"></span>
+<h3 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h3><p>如果我们想要存储这样几个字符串：</p>
+<p>abcdef</p>
+<p>abdef</p>
+<p>aced</p>
+<p>bcdf</p>
+<p>那么其对应的Trie树长下面这个样子：</p>
+<img src="/2023/04/29/Trie%E6%A0%91/a.png" class="">
+<p>除此之外，我们还要在每个字符串结尾的那个字母那里打上一个标记，表示存在一个单词以这个字母为结尾。</p>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>查找的思想很简单，顺着节点去找，最后看结尾单词那里有没有标记即可。</p>
+<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>维护一个字符串集合，支持两种操作：</p>
+<ol>
+<li><p><code>I x</code> 向集合中插入一个字符串 <em>x</em></p>
+</li>
+<li><p><code>Q x</code> 询问一个字符串在集合中出现了多少次。</p>
+</li>
+</ol>
+<p>共有 <em>N</em>个操作，所有输入的字符串总长度不超过 10^5^，字符串仅包含小写英文字母。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100010</span> <span class="comment">#节点个数</span></span><br><span class="line">son=[[<span class="number">0</span>]*<span class="number">26</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N)] <span class="comment"># 存节点，每个点最多有26个节点，因为字符串仅含有小写字母</span></span><br><span class="line">cnt=[<span class="number">0</span>]*N <span class="comment"># 存以当前这个点结尾的单词有多少个</span></span><br><span class="line">idx=<span class="number">0</span> <span class="comment"># 当前用到哪个下标了，可以理解为是节点的身份证，idx=0 的点既是根节点也是空节点。</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">string</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    p=<span class="number">0</span> <span class="comment"># 从根节点开始往下走</span></span><br><span class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> string:</span><br><span class="line">        u=<span class="built_in">ord</span>(char)-<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> son[p][u]: <span class="comment">#如果根节点并没有u这个子节点</span></span><br><span class="line">            idx+=<span class="number">1</span> <span class="comment"># u的身份证</span></span><br><span class="line">            son[p][u]=idx </span><br><span class="line">        p=son[p][u] <span class="comment">#从根节点走到u这个节点，继续后面的操作</span></span><br><span class="line">    cnt[p]+=<span class="number">1</span> <span class="comment"># 最终走完后，以p这个节点为结尾的数量加1</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">query</span>(<span class="params">string</span>):</span><br><span class="line">    p=<span class="number">0</span> <span class="comment">#从根节点开始</span></span><br><span class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> string:</span><br><span class="line">        u=<span class="built_in">ord</span>(char)-<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> son[p][u]: <span class="comment">#如果每找到，直接返回0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        p=son[p][u] <span class="comment"># 找到了，往下面走</span></span><br><span class="line">    <span class="keyword">return</span> cnt[p] <span class="comment"># 走到最后并检查这里是否有标记，否则cnt[p]=0</span></span><br></pre></td></tr></table></figure>
+<h1 id="练习：-最大异或对"><a href="#练习：-最大异或对" class="headerlink" title="练习： 最大异或对"></a>练习： 最大异或对</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>在给定的 $N$个整数$A_1 \cdots A_n$ 中选出两个进行 异或运算，得到的结果最大是多少？</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le N \le 10^5$,<br>$0\le A_i &lt;2^{31}$</p>
+<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><p>我们给定 $A_i$ ，现在去寻找$A_1 \dots A_i-1$ 中与 $A_i$ 异或最大的数。</p>
+<p>把$A_i$ 转化为二进制，从高位向低位去对比，每次都尽量去找某些数，使得二者对应的那位数是不同的。如果没有，那就只能要相同的。</p>
+<p>每个点的子节点对多只有两个，因此我们从根节点开始，每次都去走与$A_i$ 不同的那个分支，如果只有一种选择，那就直接走。最后走到终点。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100010</span></span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">a=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">son=[[<span class="number">0</span>]*<span class="number">2</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">31</span>*N)]</span><br><span class="line">idx=<span class="number">0</span></span><br><span class="line">res=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    p=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">30</span>,-<span class="number">1</span>,-<span class="number">1</span>):</span><br><span class="line">        u=x&gt;&gt;i &amp; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> son[p][u]:</span><br><span class="line">            idx+=<span class="number">1</span></span><br><span class="line">            son[p][u]=idx</span><br><span class="line">        p=son[p][u]</span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">query</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    p=<span class="number">0</span></span><br><span class="line">    res=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">30</span>,-<span class="number">1</span>,-<span class="number">1</span>):</span><br><span class="line">        u=x&gt;&gt;i &amp; <span class="number">1</span></span><br><span class="line">        w=u^<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> son[p][w]:</span><br><span class="line">            p=son[p][w]</span><br><span class="line">            res=res*<span class="number">2</span>+w</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            p=son[p][u]</span><br><span class="line">            res=res*<span class="number">2</span>+u</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    insert(a[i])</span><br><span class="line">    t=query(a[i])</span><br><span class="line">    res=<span class="built_in">max</span>(res,a[i]^t)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二叉树堂兄弟的节点</title>
+    <url>/2023/04/28/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%A0%82%E5%85%84%E5%BC%9F%E7%9A%84%E8%8A%82%E7%82%B9/</url>
+    <content><![CDATA[<h1 id="二叉树的堂兄弟节点"><a href="#二叉树的堂兄弟节点" class="headerlink" title="二叉树的堂兄弟节点"></a><a href="https://leetcode.cn/problems/cousins-in-binary-tree/description/">二叉树的堂兄弟节点</a></h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isCousins</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode], x: <span class="built_in">int</span>, y: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        cnt_x=-<span class="number">1</span></span><br><span class="line">        cnt_y=-<span class="number">2</span></span><br><span class="line">        fa_x=-<span class="number">1</span></span><br><span class="line">        fa_y=-<span class="number">2</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">node,cnt,fa</span>):</span><br><span class="line">            <span class="keyword">nonlocal</span> cnt_x,cnt_y,fa_x,fa_y</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">if</span> node.val ==x:</span><br><span class="line">                cnt_x=cnt</span><br><span class="line">                fa_x=fa.val</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">if</span> node.val==y:</span><br><span class="line">                cnt_y=cnt</span><br><span class="line">                fa_y=fa.val</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            dfs(node.left,cnt+<span class="number">1</span>,node)</span><br><span class="line">            dfs(node.right,cnt+<span class="number">1</span>,node)</span><br><span class="line">        dfs(root,<span class="number">0</span>,root)</span><br><span class="line">        <span class="keyword">return</span> (cnt_x==cnt_y <span class="keyword">and</span>  fa_x!= fa_y)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="二叉树的堂兄弟节点-II"><a href="#二叉树的堂兄弟节点-II" class="headerlink" title="二叉树的堂兄弟节点 II"></a><a href="https://leetcode.cn/problems/cousins-in-binary-tree-ii/description/">二叉树的堂兄弟节点 II</a></h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给你一棵二叉树的根 <code>root</code> ，请你将每个节点的值替换成该节点的所有 <strong>堂兄弟节点值的和</strong> 。</p>
+<p>如果两个节点在树中有相同的深度且它们的父节点不同，那么它们互为 <strong>堂兄弟</strong> 。</p>
+<p>请你返回修改值之后，树的根 <code>root</code> 。</p>
+<p><strong>注意</strong>，一个节点的深度指的是从树根节点到这个节点经过的边数。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">replaceValueInTree</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="type">Optional</span>[TreeNode]:</span><br><span class="line">        ans=[<span class="number">0</span>]*<span class="number">100000</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">node,cnt</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            ans[cnt]+=node.val</span><br><span class="line">            dfs(node.left,cnt+<span class="number">1</span>)</span><br><span class="line">            dfs(node.right,cnt+<span class="number">1</span>)</span><br><span class="line">        dfs(root,<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        q=deque()</span><br><span class="line">        q.append((root,<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            node,cnt=q.popleft()</span><br><span class="line">            d=<span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> node==root:</span><br><span class="line">                node.val=<span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                d+=node.left.val</span><br><span class="line">                q.append((node.left,cnt+<span class="number">1</span>))</span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                d+=node.right.val</span><br><span class="line">                q.append((node.right,cnt+<span class="number">1</span>))</span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                node.left.val=ans[cnt+<span class="number">1</span>]-d</span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                node.right.val=ans[cnt+<span class="number">1</span>]-d</span><br><span class="line">        <span class="keyword">return</span> root</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetcode</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>并查集</title>
+    <url>/2023/04/29/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><p>并查集的两个基本操作：</p>
+<ul>
+<li>将两个集合合并</li>
+<li>询问两个元素是否在同一个集合当中</li>
+</ul>
+<p>并查集可以在近乎$O(1)$ 的时间内完成这两个操作。</p>
+<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>用树的形式来维护每个集合。</p>
+<p>每个集合的根节点的元素为这个元素的代表元素，根节点的编号是此集合的编号。</p>
+<p>对于每个点，我们存下它的父节点是谁，$p[x]$ 存 $x$ 的父节点。因此要去判断某个元素属于哪个集合，我们就不断向上寻找它的父节点，直到根节点。</p>
+<ul>
+<li><p>如何知道某个点是根节点 :$p[x]==x$ </p>
+</li>
+<li><p>向上寻找父节点直到根节点： $while(p[x]!=x) x=p[x]$</p>
+</li>
+<li><p>如何合并两个集合： 把一个集合的根节点作为另一个集合的根节点的子节点，先找到根节点$x $, $p[x]=y$</p>
+</li>
+</ul>
+<h3 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h3><p>我们之前是让每个点都指向其直接父节点，我们为什么不让集合中的所有点都指向根节点呢？这样便可以免去寻找父节点这一步。</p>
+<h1 id="模板题"><a href="#模板题" class="headerlink" title="模板题"></a>模板题</h1><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>一共有 <em>n</em> 个数，编号是 1∼<em>n</em>，最开始每个数各自在一个集合中。现在要进行 <em>m</em> 个操作，操作共有两种：</p>
+<ol>
+<li><p><code>M a b</code>，将编号为 <em>a</em> 和 <em>b</em> 的两个数所在的集合合并，如果两个数已经在同一个集合中，则忽略这个操作；</p>
+</li>
+<li><p><code>Q a b</code>，询问编号为 <em>a</em> 和 <em>b</em> 的两个数是否在同一个集合中；</p>
+</li>
+</ol>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入整数 <em>n</em> 和 <em>m</em>。接下来 <em>m</em> 行，每行包含一个操作指令，指令为 <code>M a b</code> 或 <code>Q a b</code> 中的一种。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问指令 <code>Q a b</code>，都要输出一个结果，如果 <em>a</em> 和 <em>b</em> 在同一集合内，则输出 <code>Yes</code>，否则输出 <code>No</code>。每个结果占一行。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100010</span></span><br><span class="line">p=[<span class="number">0</span>]*N <span class="comment">#p[x]为x的夫节点</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>): <span class="comment">#返回x所在集合的根节点</span></span><br><span class="line">    <span class="keyword">if</span> p[x]!=x:</span><br><span class="line">        p[x]=find(p[x]) <span class="comment"># 路径压缩</span></span><br><span class="line">    <span class="keyword">return</span> p[x]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">x,y</span>):</span><br><span class="line">    x=find(x) <span class="comment">#x的根节点</span></span><br><span class="line">    y=find(y) <span class="comment">#y的根节点</span></span><br><span class="line">    <span class="keyword">if</span> x!=y:</span><br><span class="line">        p[x]=y </span><br><span class="line"></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">    p[i]=i <span class="comment">#初始化，相当于每个点都是一个集合</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    s,a,b=<span class="built_in">input</span>().split()</span><br><span class="line">    a,b=<span class="built_in">int</span>(a),<span class="built_in">int</span>(b)</span><br><span class="line">    <span class="keyword">if</span> s==<span class="string">&#x27;M&#x27;</span>:</span><br><span class="line">        merge(a,b)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> find(a)==find(b):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Yes&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;No&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h1><h2 id="1-连通块中点的数量"><a href="#1-连通块中点的数量" class="headerlink" title="1.连通块中点的数量"></a>1.连通块中点的数量</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个包含 <em>n</em> 个点（编号为 1∼<em>n</em>）的无向图，初始时图中没有边。现在要进行 <em>m</em> 个操作，操作共有三种：</p>
+<ol>
+<li><p><code>C a b</code>，在点 <em>a</em> 和点 <em>b</em> 之间连一条边，<em>a</em> 和 <em>b</em> 可能相等；</p>
+</li>
+<li><p><code>Q1 a b</code>，询问点 <em>a</em>和点 <em>b</em> 是否在同一个连通块中，<em>a</em> 和 <em>b</em> 可能相等；</p>
+</li>
+<li><p><code>Q2 a</code>，询问点 <em>a</em>所在连通块中点的数量；</p>
+</li>
+</ol>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入整数 <em>n</em></p>
+<p> 和 <em>m</em>。接下来 <em>m</em> 行，每行包含一个操作指令，指令为 <code>C a b</code>，<code>Q1 a b</code> 或 <code>Q2 a</code> 中的一种。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问指令 <code>Q1 a b</code>，如果 <em>a</em> 和 <em>b</em> 在同一个连通块中，则输出 <code>Yes</code>，否则输出 <code>No</code>。对于每个询问指令 <code>Q2 a</code>，输出一个整数表示点 <em>a</em> 所在连通块中点的数量每个结果占一行。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>本题与模板题的唯一区别就是我们需要去记录每个集合中点的数量。</p>
+<p>为此我们定义一个$size$ 数组，并且$size$ 每个集合的根节点 处的取值为该集合的点的数量。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100010</span></span><br><span class="line">p=[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">size=[<span class="number">1</span>]*N</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">if</span> p[x]!=x:</span><br><span class="line">        p[x]=find(p[x])</span><br><span class="line">    <span class="keyword">return</span> p[x]</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">x,y</span>):</span><br><span class="line">    x=find(x)</span><br><span class="line">    y=find(y)</span><br><span class="line">    <span class="keyword">if</span> x!=y:</span><br><span class="line">        p[x]=y</span><br><span class="line">        size[y]+=size[x]</span><br><span class="line"></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    s,*array=<span class="built_in">input</span>().split()</span><br><span class="line">    <span class="keyword">if</span> s==<span class="string">&#x27;C&#x27;</span>:</span><br><span class="line">        a,b=<span class="built_in">map</span>(<span class="built_in">int</span>,array)</span><br><span class="line">        merge(a,b)</span><br><span class="line">    <span class="keyword">elif</span> s==<span class="string">&#x27;Q1&#x27;</span>:</span><br><span class="line">        a,b=<span class="built_in">map</span>(<span class="built_in">int</span>,array)</span><br><span class="line">        <span class="keyword">if</span> find(a)==find(b):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Yes&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;No&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        a=<span class="built_in">int</span>(array[<span class="number">0</span>])</span><br><span class="line">        <span class="built_in">print</span>(size[find(a)])</span><br></pre></td></tr></table></figure>
+<h2 id="2-食物链"><a href="#2-食物链" class="headerlink" title="2. 食物链"></a>2. 食物链</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>动物王国中有三类动物 <em>A</em>,<em>B</em>,<em>C</em>，这三类动物的食物链构成了有趣的环形。<em>A</em> 吃 <em>B</em>，<em>B</em> 吃 <em>C</em>，<em>C</em> 吃 <em>A</em>。</p>
+<p>现有 <em>N</em> 个动物，以 1∼<em>N</em> 编号。</p>
+<p>每个动物都是 <em>A</em>,<em>B</em>,<em>C</em>中的一种，但是我们并不知道它到底是哪一种。</p>
+<p>有人用两种说法对这 <em>N</em>个动物所构成的食物链关系进行描述：</p>
+<p>第一种说法是 <code>1 X Y</code>，表示 <em>X</em>和 <em>Y</em>是同类。第二种说法是 <code>2 X Y</code>，表示 <em>X</em> 吃 <em>Y</em>。</p>
+<p>此人对 <em>N</em>个动物，用上述两种说法，一句接一句地说出 <em>K</em> 句话，这 <em>K</em>句话有的是真的，有的是假的。</p>
+<p>当一句话满足下列三条之一时，这句话就是假话，否则就是真话。</p>
+<ol>
+<li>当前的话与前面的某些真的话冲突，就是假话；</li>
+<li><p>当前的话中 <em>X</em> 或 <em>Y</em> 比 <em>N</em> 大，就是假话；</p>
+</li>
+<li><p>当前的话表示 <em>X</em> 吃 <em>X</em>，就是假话。</p>
+</li>
+</ol>
+<p>你的任务是根据给定的 <em>N</em> 和 <em>K</em> 句话，输出假话的总数。</p>
+<h4 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行是两个整数 <em>N</em> 和 <em>K</em>，以一个空格分隔。以下 <em>K</em> 行每行是三个正整数 <em>D</em>，<em>X</em>，<em>Y</em>，两数之间用一个空格隔开，其中 <em>D</em> 表示说法的种类。</p>
+<p>若 <em>D</em>=1，则表示 <em>X</em> 和 <em>Y</em> 是同类。</p>
+<p>若 <em>D</em>=2，则表示 <em>X</em> 吃 <em>Y</em>。</p>
+<h4 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h4><p>只有一个整数，表示假话的数目。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>如果$x,y$ 作为了上面两种说法中的对象，那么我们称$x,y$ 之间存在关系。</p>
+<p>首先有一个事实：如果我们如果我们知道了$x,y$ ， $y,z$ 之间有关系，那么我们一定知道$x,z$ 之间有关系。</p>
+<p>例如：</p>
+<p>$x$ 可以吃$y$, $y$ 可以吃$z$, 那么$z$ 可以吃$x$</p>
+<p>如果$x$ 可以吃$y$ , $y$ 与$z$ 同类，那么$x$ 可以吃 $z$ </p>
+<p>对此，我们可以定义$x$ 和 $y$ 之间的距离$d$</p>
+<ul>
+<li>$d\%3==1$ ：$x$ 可以吃 $y$</li>
+<li>$d\%3==2$ ：$y$ 可以吃 $x$ </li>
+<li><p>$d\%3==0$ ：$x$ 与 $y$ 同类</p>
+<p>注意，上述$x$ 和 $y$ 不可以交换位置。</p>
+</li>
+</ul>
+<p>对于每个点，我们用$d$ 数组存下它到根节点的距离，这样任意给我两个点，我都可以算出这两个点之间的距离。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">N=50010</span><br><span class="line">d=[0]*N</span><br><span class="line">p=[i for i in range(N)]</span><br><span class="line"></span><br><span class="line">def find(x):  # 找到根节点，并且将d[x] 更新为x到根节点的距离</span><br><span class="line">    if p[x]!=x:</span><br><span class="line">        q=find(p[x])  </span><br><span class="line">        d[x]+=d[p[x]]</span><br><span class="line">        p[x]=q</span><br><span class="line">    return p[x]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n,k=map(int,input().split())</span><br><span class="line"></span><br><span class="line">res=0</span><br><span class="line">for i in range(k):</span><br><span class="line">    t,x,y=map(int,input().split())</span><br><span class="line">    if x&gt;n or y&gt;n:</span><br><span class="line">        res+=1</span><br><span class="line">    else:</span><br><span class="line">        px,py=find(x),find(y)</span><br><span class="line">        if t==1:</span><br><span class="line">            if px==py and (d[x]-d[y])%3!=0: px==py表示x和y的关系已经明确了，但是不合法</span><br><span class="line">                res+=1</span><br><span class="line">            if px!=py: # 此时x和y之间还没有关系，即合法</span><br><span class="line">                p[px]=py</span><br><span class="line">                d[px]=d[y]-d[x]</span><br><span class="line">        else:</span><br><span class="line">            if px==py and (d[x]-d[y]-1)%3!=0:</span><br><span class="line">                res+=1</span><br><span class="line">            if px!=py:</span><br><span class="line">                p[px]=py</span><br><span class="line">                d[px]=d[y]+1-d[x]</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dijkstra</title>
+    <url>/2023/04/30/Dijkstra/</url>
+    <content><![CDATA[<h1 id="朴素版Dijkstra"><a href="#朴素版Dijkstra" class="headerlink" title="朴素版Dijkstra"></a>朴素版Dijkstra</h1><p>$Dijkstra$ 算法能解决的问题： 单源最短路，边的权值为正数。</p>
+<p>该算法的本质是贪心。</p>
+<p>$dis[i]$ 记录所有点到起点的最短路的长度，$dis[start]=0$</p>
+<p>现在我们把点分为已标号点，和未标号点两个部分，已标号点是那些已经确定了从起点到它的最短路的那些点。</p>
+<p>我们每次都从未标号点出发，而且从到起点最近的那个点出发，走向它下一步的最短路。是不是很像贪心。</p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个 <em>n</em> 个点 <em>m</em> 条边的有向图，图中可能存在重边和自环，所有边权均为正值。请你求出 1</p>
+<p> 号点到 <em>n</em> 号点的最短距离，如果无法从 1 号点走到 <em>n</em> 号点，则输出 −1。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>n</em> 和 <em>m</em>。</p>
+<p>接下来 <em>m</em> 行每行包含三个整数 <em>x</em>,<em>y</em>,<em>z</em>，表示存在一条从点 <em>x</em> 到点 <em>y</em> 的有向边，边长为 <em>z</em>。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示 1 号点到 <em>n</em> 号点的最短距离。如果路径不存在，则输出 −1。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">g=[[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*n <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    x,y,z=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    g[x-<span class="number">1</span>][y-<span class="number">1</span>]=<span class="built_in">min</span>(g[x-<span class="number">1</span>][y-<span class="number">1</span>],z)</span><br><span class="line">vis=[<span class="literal">False</span>]*n</span><br><span class="line">dis=[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*n</span><br><span class="line">dis[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># 找到未标号点集中距离起点最近的点</span></span><br><span class="line">        x=-<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> vis[i] <span class="keyword">and</span> (x&lt;<span class="number">0</span> <span class="keyword">or</span> dis[i]&lt;dis[x]):</span><br><span class="line">                x=i  </span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> x&lt;<span class="number">0</span> <span class="keyword">or</span> dis[x]==<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>):</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> x==n-<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> dis[x]</span><br><span class="line">        vis[x]=<span class="literal">True</span> <span class="comment">#将这个点变为已标记的点。</span></span><br><span class="line">        <span class="comment"># 用这个新的确定了最短路的点去更新它可以走到的点。</span></span><br><span class="line">        <span class="keyword">for</span> y,w <span class="keyword">in</span> <span class="built_in">enumerate</span>(g[x]):</span><br><span class="line">            <span class="keyword">if</span> y!=x <span class="keyword">and</span> dis[x]+w&lt;dis[y]:</span><br><span class="line">                dis[y]=dis[x]+w</span><br><span class="line"><span class="built_in">print</span>(solve())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="堆优化版的Dijkstra"><a href="#堆优化版的Dijkstra" class="headerlink" title="堆优化版的Dijkstra"></a>堆优化版的Dijkstra</h1>]]></content>
+      <categories>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+        <tag>Dijkstra</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈希表</title>
+    <url>/2023/04/30/%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
+    <content><![CDATA[<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><h3 id="模拟散列表"><a href="#模拟散列表" class="headerlink" title="模拟散列表"></a>模拟散列表</h3><p>维护一个集合，支持如下几种操作：</p>
+<ol>
+<li><p><code>I x</code>，插入一个数 <em>x</em>；</p>
+</li>
+<li><p><code>Q x</code>，询问数 <em>x</em> 是否在集合中出现过；</p>
+</li>
+</ol>
+<p>现在要进行 <em>N</em>次操作，对于每个询问操作输出对应的结果。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>N</em>，表示操作数量。接下来 <em>N</em> 行，每行包含一个操作指令，操作指令为 <code>I x</code>，<code>Q x</code> 中的一种。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问指令 <code>Q x</code>，输出一个询问结果，如果 <em>x</em> 在集合中出现过，则输出 <code>Yes</code>，否则输出 <code>No</code>。每个结果占一行。</p>
+<h3 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h3><p>数组加链表（数组实现）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100003</span></span><br><span class="line">h=[-<span class="number">1</span>]*N</span><br><span class="line">e=[<span class="number">0</span>]*N</span><br><span class="line">ne=[<span class="number">0</span>]*N</span><br><span class="line">idx=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    k=x%N</span><br><span class="line">    e[idx]=x</span><br><span class="line">    ne[idx]=h[k] <span class="comment"># h[k] 是头节点</span></span><br><span class="line">    h[k]=idx</span><br><span class="line">    idx+=<span class="number">1</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    k=x%N</span><br><span class="line">    i=h[k]</span><br><span class="line">    <span class="keyword">while</span> i!=-<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> e[i]==x:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        i=ne[i]</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    op,a=<span class="built_in">input</span>().split()</span><br><span class="line">    <span class="keyword">if</span> op==<span class="string">&#x27;I&#x27;</span>:</span><br><span class="line">        insert(<span class="built_in">int</span>(a))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> find(<span class="built_in">int</span>(a)):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Yes&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;No&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">        </span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+<h2 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h2>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>哈希表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图的存储和遍历</title>
+    <url>/2023/05/01/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8/</url>
+    <content><![CDATA[<h1 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h1><h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><p>$g[a][b]$ 存储从 $a$ 到 $b$ 这条路径的信息。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N = <span class="number">100010</span></span><br><span class="line">graph = [<span class="number">0</span>] * N <span class="comment"># 每个位置对应着点的编号，存储着i个点的邻接点</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a,b</span>):</span><br><span class="line">    <span class="comment"># 无向边</span></span><br><span class="line">    <span class="keyword">if</span> graph[a] == <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 创建一个列表，存储链接节点</span></span><br><span class="line">        graph[a] = [b]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        graph[a].append(b)</span><br><span class="line">    <span class="keyword">if</span> graph[b] == <span class="number">0</span>:</span><br><span class="line">        graph[b] = [a]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        graph[b].append(a)</span><br></pre></td></tr></table></figure>
+<h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><p>如果有 $n$ 个点，那么开$n$ 个单链表。单链表存该点可以走到哪些点。</p>
+<p>插入点的方式是插到头节点的位置。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100010</span></span><br><span class="line">M=N*<span class="number">2</span></span><br><span class="line">h=[-<span class="number">1</span>]*N</span><br><span class="line">e=[<span class="number">0</span>]*M</span><br><span class="line">ne=[<span class="number">0</span>]*M</span><br><span class="line">idx=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a,b</span>): <span class="comment">#从a指向b的一条边</span></span><br><span class="line">    e[idx]=b</span><br><span class="line">    ne[idx]=h[a]</span><br><span class="line">    h[a]=idx</span><br><span class="line">    idx+=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h1 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h1><h2 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h2><h3 id="邻接表-1"><a href="#邻接表-1" class="headerlink" title="邻接表"></a>邻接表</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">u</span>):</span><br><span class="line">    <span class="built_in">print</span>(u)</span><br><span class="line">    state[u] = <span class="literal">True</span>  <span class="comment"># 标记一下，已经展开过了</span></span><br><span class="line">    cur = graph[u]  <span class="comment"># cur是指针</span></span><br><span class="line">    <span class="keyword">while</span> cur != -<span class="number">1</span>:</span><br><span class="line">        j = e[cur] <span class="comment"># j是节点编号</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> state[j]:</span><br><span class="line">            <span class="comment"># 没有搜索过，就一路走到黑</span></span><br><span class="line">            dfs(j)</span><br><span class="line">        cur = ne[cur]</span><br></pre></td></tr></table></figure>
+<h3 id="邻接矩阵-1"><a href="#邻接矩阵-1" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">u</span>):</span><br><span class="line">    state[u] = <span class="literal">True</span>  <span class="comment"># 标记一下，已经展开过了</span></span><br><span class="line">    <span class="built_in">print</span>(u)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> graph[u]:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> state[i]:</span><br><span class="line">            dfs(i)</span><br></pre></td></tr></table></figure>
+<h2 id="宽度优先遍历"><a href="#宽度优先遍历" class="headerlink" title="宽度优先遍历"></a>宽度优先遍历</h2><h3 id="邻接表-2"><a href="#邻接表-2" class="headerlink" title="邻接表"></a>邻接表</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">u</span>):</span><br><span class="line">    queue = deque()  <span class="comment"># 存储着idx，可以通过e[idx]找到节点编号</span></span><br><span class="line">    state[e[u]] = <span class="literal">True</span></span><br><span class="line">    queue.append(u)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        cur = queue.popleft()</span><br><span class="line">        node = e[cur]</span><br><span class="line">        <span class="built_in">print</span>(node)</span><br><span class="line">        i = graph[node]  <span class="comment"># 探索node节点的所有邻接点</span></span><br><span class="line">        <span class="keyword">while</span> i != -<span class="number">1</span>:</span><br><span class="line">            j = e[i]</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> state[j]:</span><br><span class="line">                state[j] = <span class="literal">True</span></span><br><span class="line">                queue.append(i)</span><br><span class="line">            i = ne[i]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="邻接矩阵-2"><a href="#邻接矩阵-2" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">u</span>):</span><br><span class="line">    queue = deque()</span><br><span class="line">    queue.append(u)</span><br><span class="line">    state[u] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        <span class="built_in">print</span>(node)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> graph[node]:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> state[i]:</span><br><span class="line">                state[i] = <span class="literal">True</span></span><br><span class="line">                queue.append(i)</span><br></pre></td></tr></table></figure>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h3 id="1-树的重心"><a href="#1-树的重心" class="headerlink" title="1.树的重心"></a>1.树的重心</h3><p>给定一颗树，树中包含 <em>n</em> 个结点（编号 1∼<em>n</em>）和 <em>n</em>−1 条无向边。</p>
+<p>请你找到树的重心，并输出将重心删除后，剩余各个连通块中点数的最大值。</p>
+<p>重心定义：重心是指树中的一个结点，如果将这个点删除后，剩余各个连通块中点数的最大值最小，那么这个节点被称为树的重心。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>n</em>，表示树的结点数。接下来 <em>n</em>−1 行，每行包含两个整数 <em>a</em> 和 <em>b</em>，表示点 <em>a</em> 和点 <em>b</em> 之间存在一条边。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数 <em>m</em>，表示将重心删除后，剩余各个连通块中点数的最大值。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>把树中任意一个点删除后，它的所有子树是独自的一个连通块，然后除了他自己和它的子树们，其余的全在同一个连通块中。</p>
+<p>因此我们计算删除任意一个点后，每一个连通块的点的数量即可。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100010</span></span><br><span class="line">M=N*<span class="number">2</span></span><br><span class="line">h=[-<span class="number">1</span>]*N</span><br><span class="line">e=[<span class="number">0</span>]*M</span><br><span class="line">ne=[<span class="number">0</span>]*M</span><br><span class="line">idx=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a,b</span>): <span class="comment">#从a指向b的一条边</span></span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    e[idx]=b</span><br><span class="line">    ne[idx]=h[a]</span><br><span class="line">    h[a]=idx</span><br><span class="line">    idx+=<span class="number">1</span></span><br><span class="line">    </span><br><span class="line">st=[<span class="literal">False</span>]*N</span><br><span class="line">ans=<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>) <span class="comment">#最终结果</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">u</span>):</span><br><span class="line">    <span class="keyword">global</span> ans</span><br><span class="line">    cnt=<span class="number">1</span> <span class="comment">#该节点自身以及其所有子树的节点数和</span></span><br><span class="line">    res=<span class="number">0</span> <span class="comment">#删除该店后所有连通块节点数量的最大值</span></span><br><span class="line">    st[u]=<span class="literal">True</span></span><br><span class="line">    i=h[u] <span class="comment">#i是指针</span></span><br><span class="line">    <span class="keyword">while</span> i!=-<span class="number">1</span>:</span><br><span class="line">        j=e[i] <span class="comment">#可以走向的点</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> st[j]:</span><br><span class="line">            s=dfs(j)</span><br><span class="line">            res=<span class="built_in">max</span>(res,s)</span><br><span class="line">            cnt+=s</span><br><span class="line">        i=ne[i]</span><br><span class="line">    res=<span class="built_in">max</span>(res,n-cnt)</span><br><span class="line">    ans=<span class="built_in">min</span>(ans,res)</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line"></span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>):</span><br><span class="line">    a,b=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    add(a,b)</span><br><span class="line">    add(b,a)</span><br><span class="line">dfs(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="图中点的层次"><a href="#图中点的层次" class="headerlink" title="图中点的层次"></a>图中点的层次</h2><p>给定一个 <em>n</em> 个点 <em>m</em> 条边的有向图，图中可能存在重边和自环。所有边的长度都是 1，点的编号为 1∼<em>n</em></p>
+<p>。请你求出 1 号点到 <em>n</em> 号点的最短距离，如果从 1 号点无法走到 <em>n</em> 号点，输出 −1。</p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含两个整数 <em>n</em> 和 <em>m</em>。接下来 <em>m</em> 行，每行包含两个整数 <em>a</em> 和 <em>b</em>，表示存在一条从 <em>a</em> 走到 <em>b</em> 的长度为 1 的边。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示 1 号点到 <em>n</em> 号点的最短距离。</p>
+<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><p>直接bfs即可了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">N = <span class="number">100010</span></span><br><span class="line">M = <span class="number">2</span> * N</span><br><span class="line">graph = [-<span class="number">1</span>] * N  <span class="comment"># 每个位置的序号对应点的编号，以单链表的形式存储着节点的邻接点</span></span><br><span class="line">e = [<span class="number">0</span>] * M  <span class="comment"># 给定指针，返回编号值</span></span><br><span class="line">ne = [<span class="number">0</span>] * M <span class="comment"># 给定指针，返回当前节点的下一个邻接点</span></span><br><span class="line">idx = <span class="number">0</span> <span class="comment"># 指针</span></span><br><span class="line">state = [<span class="number">0</span>] * N <span class="comment"># bool数组，记录哪些节点探索过，哪些没有探索过</span></span><br><span class="line">distance = [-<span class="number">1</span>] * N</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a,b</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    idx += <span class="number">1</span></span><br><span class="line">    e[idx] = b</span><br><span class="line">    ne[idx] = graph[a]</span><br><span class="line">    graph[a] = idx</span><br><span class="line">state=[<span class="number">0</span>]*N</span><br><span class="line">que=deque()</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>():</span><br><span class="line">    que.append((<span class="number">1</span>,<span class="number">0</span>))</span><br><span class="line">    state[<span class="number">1</span>]=<span class="number">1</span></span><br><span class="line">    <span class="comment"># distance[1]=0</span></span><br><span class="line">    <span class="keyword">while</span> que:</span><br><span class="line">        node,d=que.popleft()</span><br><span class="line">        <span class="comment"># d=distance[node]</span></span><br><span class="line">        <span class="keyword">if</span> node==n:</span><br><span class="line">            <span class="keyword">return</span> d</span><br><span class="line">        cur=graph[node] <span class="comment">#指针</span></span><br><span class="line">        <span class="keyword">while</span> cur!=-<span class="number">1</span>:</span><br><span class="line">            j=e[cur]</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> state[j]: <span class="comment">#没有走到这里</span></span><br><span class="line">                que.append((j,d+<span class="number">1</span>))</span><br><span class="line">                state[j]=<span class="number">1</span></span><br><span class="line">                <span class="comment"># distance[j]=d+1</span></span><br><span class="line">            cur=ne[cur]</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    a,b=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    add(a,b)</span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(bfs())</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>堆</title>
+    <url>/2023/04/29/%E5%A0%86/</url>
+    <content><![CDATA[<h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
+<li>插入一个数</li>
+<li>求集合中的最小值</li>
+<li><p>删除最小值</p>
+</li>
+<li><p>删除任意一个元素</p>
+</li>
+<li>修改任意一个元素</li>
+</ul>
+<h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p>堆是一棵完全二叉树，即除了最后一层，都是满的，并且最后一层从左往右排列。</p>
+<p>小根堆：</p>
+<p>递归定义：根节点的值小于等于左右子节点的值。</p>
+<p>因此根节点是所有数据的最小值。</p>
+<h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>一维数组去存，数组下标从1开始，$x$ 的左儿子是 $2x$, 右儿子是$2x+1$</p>
+<h2 id="两个基本操作"><a href="#两个基本操作" class="headerlink" title="两个基本操作"></a>两个基本操作</h2><p>首先，这两个操作都是在改变了某个元素的值后，我们应该怎么去调整这棵树使其成为一个新的小根堆。</p>
+<ul>
+<li>down: 把某个数调小，它有可能就要往下去寻找属于它的新的位置</li>
+<li>up: 把某个数调大，它就往上浮。</li>
+</ul>
+<p>此时，我们可以由这两个基本操作得到所有的基本操作。</p>
+<h2 id="基本操作的实现"><a href="#基本操作的实现" class="headerlink" title="基本操作的实现"></a>基本操作的实现</h2><ul>
+<li>插入一个数：在数组最后加入这个数，然后up</li>
+<li>求集合中的最小值: 访问堆定元素即可</li>
+<li>删除最小值：将堆顶元素赋值为数组末尾元素，删除数组末尾元素，然后down</li>
+<li>删除任意一个元素：将那个元素赋值为数组末尾元素，此时这个数有可能往上走，也有可能往下走，但二者只能选其1。</li>
+<li>修改任意一个元素： 先赋值，然后和上面情况相同。</li>
+</ul>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="1-堆排序"><a href="#1-堆排序" class="headerlink" title="1.堆排序"></a>1.堆排序</h2><p>输入一个长度为 <em>n</em> 的整数数列，从小到大输出前 <em>m</em>小的数。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>n</em>和 <em>m</em>。</p>
+<p>第二行包含 <em>n</em> 个整数，表示整数数列。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>共一行，包含 <em>m</em> 个整数，表示整数数列中前 <em>m</em> 小的数。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100010</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">size=n</span><br><span class="line">h=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">down</span>(<span class="params">u</span>):</span><br><span class="line">    t=u</span><br><span class="line">    <span class="keyword">if</span> u*<span class="number">2</span>&lt;=size <span class="keyword">and</span> h[u*<span class="number">2</span>]&lt;h[t]:</span><br><span class="line">        t=u*<span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> u*<span class="number">2</span>+<span class="number">1</span>&lt;=size <span class="keyword">and</span> h[u*<span class="number">2</span>+<span class="number">1</span>]&lt;h[t]:</span><br><span class="line">        t=u*<span class="number">2</span>+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> u!=t:</span><br><span class="line">        h[u],h[t]=h[t],h[u]</span><br><span class="line">        down(t)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27; def up(u):</span></span><br><span class="line"><span class="string">    while (u//2 and h[u//2]&gt;h[i]):</span></span><br><span class="line"><span class="string">        h[u],h[u//2]=h[u//2],h[u]</span></span><br><span class="line"><span class="string">        u=u//2</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span>        </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n//<span class="number">2</span>,<span class="number">0</span>,-<span class="number">1</span>): <span class="comment">#初始化，从下往上，保证每个子树都已经是堆了。</span></span><br><span class="line">    down(i)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    <span class="built_in">print</span>(h[<span class="number">1</span>],end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    h[<span class="number">1</span>]=h[size]</span><br><span class="line">    size-=<span class="number">1</span></span><br><span class="line">    down(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="2-模拟堆"><a href="#2-模拟堆" class="headerlink" title="2. 模拟堆"></a>2. 模拟堆</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>维护一个集合，初始时集合为空，支持如下几种操作：</p>
+<ol>
+<li><p><code>I x</code>，插入一个数 <em>x</em>；</p>
+</li>
+<li><p><code>PM</code>，输出当前集合中的最小值；</p>
+</li>
+<li><p><code>DM</code>，删除当前集合中的最小值（数据保证此时的最小值唯一）；</p>
+</li>
+<li><p><code>D k</code>，删除第 <em>k</em>个插入的数；</p>
+</li>
+<li><p><code>C k x</code>，修改第 <em>k</em>个插入的数，将其变为 <em>x</em>；</p>
+</li>
+</ol>
+<p>现在要进行 <em>N</em>次操作，对于所有第 2 个操作，输出当前集合的最小值。</p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>N</em>。</p>
+<p>接下来 <em>N</em> 行，每行包含一个操作指令，操作指令为 <code>I x</code>，<code>PM</code>，<code>DM</code>，<code>D k</code> 或 <code>C k x</code> 中的一种。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个输出指令 <code>PM</code>，输出一个结果，表示当前集合中的最小值。每个结果占一行。</p>
+<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3>]]></content>
+      <categories>
+        <category>true</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>堆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>拓扑排序</title>
+    <url>/2023/05/01/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
