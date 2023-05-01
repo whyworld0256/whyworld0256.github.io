@@ -79,20 +79,22 @@
 
 
 
-<meta name="description" content="朴素版Dijkstra$Dijkstra$ 算法能解决的问题： 单源最短路，边的权值为正数。 该算法的本质是贪心。 $dis[i]$ 记录所有点到起点的最短路的长度，$dis[start]&#x3D;0$ 现在我们把点分为已标号点，和未标号点两个部分，已标号点是那些已经确定了从起点到它的最短路的那些点。 我们每次都从未标号点出发，而且从到起点最近的那个点出发，走向它下一步的最短路。是不是很像贪心。 题目描述">
+<meta name="description" content="最短路问题的核心在于如何建图，即如何定义点和边。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dijkstra">
 <meta property="og:url" content="http://example.com/2023/04/30/Dijkstra/index.html">
 <meta property="og:site_name" content="最伟大的博客">
-<meta property="og:description" content="朴素版Dijkstra$Dijkstra$ 算法能解决的问题： 单源最短路，边的权值为正数。 该算法的本质是贪心。 $dis[i]$ 记录所有点到起点的最短路的长度，$dis[start]&#x3D;0$ 现在我们把点分为已标号点，和未标号点两个部分，已标号点是那些已经确定了从起点到它的最短路的那些点。 我们每次都从未标号点出发，而且从到起点最近的那个点出发，走向它下一步的最短路。是不是很像贪心。 题目描述">
+<meta property="og:description" content="最短路问题的核心在于如何建图，即如何定义点和边。">
 <meta property="og:locale">
+<meta property="og:image" content="http://example.com/2023/04/30/Dijkstra/a.png">
 <meta property="article:published_time" content="2023-04-30T13:14:00.000Z">
-<meta property="article:modified_time" content="2023-04-30T16:07:54.477Z">
+<meta property="article:modified_time" content="2023-05-01T14:29:39.466Z">
 <meta property="article:author" content="王海宇">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="图论">
 <meta property="article:tag" content="Dijkstra">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/04/30/Dijkstra/a.png">
 
 
 
@@ -372,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  479
+                  753
                 </span>
               
 
@@ -388,7 +390,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -409,7 +411,10 @@
       
 
       
-        <h1 id="朴素版Dijkstra"><a href="#朴素版Dijkstra" class="headerlink" title="朴素版Dijkstra"></a>朴素版Dijkstra</h1><p>$Dijkstra$ 算法能解决的问题： 单源最短路，边的权值为正数。</p>
+        <img src="/2023/04/30/Dijkstra/a.png" class="">
+<p>最短路问题的核心在于如何建图，即如何定义点和边。</p>
+<span id="more"></span>
+<h1 id="朴素版Dijkstra"><a href="#朴素版Dijkstra" class="headerlink" title="朴素版Dijkstra"></a>朴素版Dijkstra</h1><p>$Dijkstra$ 算法能解决的问题： 单源最短路，边的权值为正数。</p>
 <p>该算法的本质是贪心。</p>
 <p>$dis[i]$ 记录所有点到起点的最短路的长度，$dis[start]=0$</p>
 <p>现在我们把点分为已标号点，和未标号点两个部分，已标号点是那些已经确定了从起点到它的最短路的那些点。</p>
@@ -419,8 +424,16 @@
 <h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>n</em> 和 <em>m</em>。</p>
 <p>接下来 <em>m</em> 行每行包含三个整数 <em>x</em>,<em>y</em>,<em>z</em>，表示存在一条从点 <em>x</em> 到点 <em>y</em> 的有向边，边长为 <em>z</em>。</p>
 <h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示 1 号点到 <em>n</em> 号点的最短距离。如果路径不存在，则输出 −1。</p>
-<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">g=[[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*n <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    x,y,z=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    g[x-<span class="number">1</span>][y-<span class="number">1</span>]=<span class="built_in">min</span>(g[x-<span class="number">1</span>][y-<span class="number">1</span>],z)</span><br><span class="line">vis=[<span class="literal">False</span>]*n</span><br><span class="line">dis=[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*n</span><br><span class="line">dis[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># 找到未标号点集中距离起点最近的点</span></span><br><span class="line">        x=-<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> vis[i] <span class="keyword">and</span> (x&lt;<span class="number">0</span> <span class="keyword">or</span> dis[i]&lt;dis[x]):</span><br><span class="line">                x=i  </span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> x&lt;<span class="number">0</span> <span class="keyword">or</span> dis[x]==<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>):</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> x==n-<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> dis[x]</span><br><span class="line">        vis[x]=<span class="literal">True</span> <span class="comment">#将这个点变为已标记的点。</span></span><br><span class="line">        <span class="comment"># 用这个新的确定了最短路的点去更新它可以走到的点。</span></span><br><span class="line">        <span class="keyword">for</span> y,w <span class="keyword">in</span> <span class="built_in">enumerate</span>(g[x]):</span><br><span class="line">            <span class="keyword">if</span> y!=x <span class="keyword">and</span> dis[x]+w&lt;dis[y]:</span><br><span class="line">                dis[y]=dis[x]+w</span><br><span class="line"><span class="built_in">print</span>(solve())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="堆优化版的Dijkstra"><a href="#堆优化版的Dijkstra" class="headerlink" title="堆优化版的Dijkstra"></a>堆优化版的Dijkstra</h1>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">g=[[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*n <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    x,y,z=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    g[x-<span class="number">1</span>][y-<span class="number">1</span>]=<span class="built_in">min</span>(g[x-<span class="number">1</span>][y-<span class="number">1</span>],z)</span><br><span class="line">vis=[<span class="literal">False</span>]*n</span><br><span class="line">dis=[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*n <span class="comment">#初始化</span></span><br><span class="line">dis[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># 找到未标号点集中距离起点最近的点</span></span><br><span class="line">        x=-<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> vis[i] <span class="keyword">and</span> (x&lt;<span class="number">0</span> <span class="keyword">or</span> dis[i]&lt;dis[x]):</span><br><span class="line">                x=i  </span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> x&lt;<span class="number">0</span> <span class="keyword">or</span> dis[x]==<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>):</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> x==n-<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> dis[x]</span><br><span class="line">        vis[x]=<span class="literal">True</span> <span class="comment">#将这个点变为已标记的点。</span></span><br><span class="line">        <span class="comment"># 用这个新的确定了最短路的点去更新它可以走到的点。</span></span><br><span class="line">        <span class="keyword">for</span> y,w <span class="keyword">in</span> <span class="built_in">enumerate</span>(g[x]):</span><br><span class="line">            <span class="keyword">if</span> y!=x <span class="keyword">and</span> dis[x]+w&lt;dis[y]:</span><br><span class="line">                dis[y]=dis[x]+w</span><br><span class="line"><span class="built_in">print</span>(solve())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="堆优化版的Dijkstra"><a href="#堆优化版的Dijkstra" class="headerlink" title="堆优化版的Dijkstra"></a>堆优化版的Dijkstra</h1><p>朴素版中有个步骤是寻找未标号点集中到起点最短的那个点，这一步可以用堆来优化。</p>
+<p>但是在找到最小值后，我们需要去修改它的邻接点的距离，我们并不去修改堆中的元素，而是选择将新的距离加入进去。并不影响结果。</p>
+<h3 id="Python中的优先队列—heapq模块"><a href="#Python中的优先队列—heapq模块" class="headerlink" title="Python中的优先队列—heapq模块"></a>Python中的优先队列—heapq模块</h3><ol>
+<li>heapq.heappush(heap,items)</li>
+<li>heapq.heappop(heap)</li>
+<li>heap[0]查看队头元素</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> heapq <span class="keyword">import</span> *</span><br><span class="line">N=<span class="number">1000010</span></span><br><span class="line">inf = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">graph=[-<span class="number">1</span>]*N</span><br><span class="line">dis=[inf]*N</span><br><span class="line">e = [<span class="number">0</span>] * N </span><br><span class="line">ne = [<span class="number">0</span>] * N</span><br><span class="line">state = [<span class="number">0</span>] * N</span><br><span class="line">weight = [<span class="number">0</span>] * N </span><br><span class="line">idx = <span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a,b,c</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    idx+=<span class="number">1</span></span><br><span class="line">    e[idx]=b</span><br><span class="line">    ne[idx]=graph[a]</span><br><span class="line">    weight[idx]=c</span><br><span class="line">    graph[a]=idx</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dijkstra</span>():</span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span></span><br><span class="line">    heap=[]</span><br><span class="line">    heappush(heap,(<span class="number">0</span>,<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">while</span> heap:</span><br><span class="line">        distance,node=heappop(heap)</span><br><span class="line">        <span class="keyword">if</span> state[node]:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            state[node]=<span class="literal">True</span></span><br><span class="line">        cur=graph[node]</span><br><span class="line">        <span class="keyword">while</span> cur!=-<span class="number">1</span>:</span><br><span class="line">            j=e[cur]</span><br><span class="line">            <span class="keyword">if</span> dis[j]&gt;distance + weight[cur]:</span><br><span class="line">                dis[j]=distance+weight[cur]</span><br><span class="line">                heappush(heap,(dis[j],j))</span><br><span class="line">            cur=ne[cur]</span><br><span class="line">    <span class="keyword">if</span> dis[n] == inf:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> dis[n]</span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    x,y,z=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    add(x,y,z)</span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(dijkstra())</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -562,7 +575,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,7 +597,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -639,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E7%89%88Dijkstra"><span class="nav-number">1.</span> <span class="nav-text">朴素版Dijkstra</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">输出格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">1.0.2.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A0%86%E4%BC%98%E5%8C%96%E7%89%88%E7%9A%84Dijkstra"><span class="nav-number">2.</span> <span class="nav-text">堆优化版的Dijkstra</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E7%89%88Dijkstra"><span class="nav-number">1.</span> <span class="nav-text">朴素版Dijkstra</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">输出格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">1.0.2.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A0%86%E4%BC%98%E5%8C%96%E7%89%88%E7%9A%84Dijkstra"><span class="nav-number">2.</span> <span class="nav-text">堆优化版的Dijkstra</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E4%B8%AD%E7%9A%84%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E2%80%94heapq%E6%A8%A1%E5%9D%97"><span class="nav-number">2.0.1.</span> <span class="nav-text">Python中的优先队列—heapq模块</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -674,7 +687,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.8k</span>
+    <span title="Site words total count">49.4k</span>
   
 </div>
 <!--
