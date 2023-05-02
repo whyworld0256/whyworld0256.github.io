@@ -87,7 +87,7 @@
 <meta property="og:description" content="基本思路首先n次迭代，每一次循环所有边。我们这里用$a,b,w$表示存在一条从a走到b的边，权重是w。这里存边方式有很多种，可以用邻接表，结构体等。遍历所有边的时候更新一下其他点的距离，和Dijkstra算法类似，用当前这个点更新和它相连的点距离起点的距离。我们这里用$dist$数组表示每个点到起点的距离，那么更新操作就是$dist[b]&#x3D;min(dist[b],dist[a]+w)$，这样就可以">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-05-01T14:30:02.000Z">
-<meta property="article:modified_time" content="2023-05-01T15:52:38.909Z">
+<meta property="article:modified_time" content="2023-05-02T02:42:11.234Z">
 <meta property="article:author" content="王海宇">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="Bellman-Ford">
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  812
+                  977
                 </span>
               
 
@@ -409,12 +409,23 @@
 
       
         <h1 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h1><p>首先n次迭代，每一次循环所有边。我们这里用$a,b,w$表示存在一条从a走到b的边，权重是w。这里存边方式有很多种，可以用邻接表，结构体等。遍历所有边的时候更新一下其他点的距离，和Dijkstra算法类似，用当前这个点更新和它相连的点距离起点的距离。我们这里用$dist$数组表示每个点到起点的距离，那么更新操作就是$dist[b]=min(dist[b],dist[a]+w)$，这样就可以更新和a相连的b点距离起点的距离，这个更新的过程就是”松弛操作”。忘了说的一点就是在循环所有边的时候，每一次循环要先把$dist$数组备份一下，防止串联，这个后面会说。循环n次之后对所有的边一定满足$dist[b]\le dist[a]+w$，这个叫”三角不等式”。</p>
+<span id="more"></span>
 <p>这个就是Bellman-ford算法的基本思路。</p>
 <p>但是注意如果图中有负权回路的话，最短路就不一定存在了:</p>
 <p><strong>上面的迭代次数是有实际意义的，比如我们迭代了k次，那么我们求的最短距离就是从1号点经过不超过k条边走到n号点的最短距离</strong></p>
 <p>所以在第n次迭代的时候又更新了某些边的话，就说明路径中一定存在环，并且是负权回路。因为第n次迭代在不存在负权回路的情况下是遍历到第n号点了，后面是没有点了，如果还能更新，说明路径中存在回路，而且是负权回路。</p>
 <p><strong>Bellman-ford的具体操作很简单，直接就是两层循环，内层循环所有边，外层循环就是循环所有边的次数，这个外层循环次数一般是题目控制的。时间复杂度是O(n*m)</strong></p>
 <p><strong>！！注：Bellman-Ford之所以有用，是因为它可以求限制最短路（条件最短路问题）</strong></p>
+<h1 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h1><ol>
+<li><p>初始化源点$s$到各个点$v$的路径$dis[v] = \infty ，dis[s] = 0。$</p>
+</li>
+<li><p>进行n - 1次遍历，每次遍历对所有边进行松弛操作，满足则将权值更新。<br>松弛操作：以a为起点，b为终点，ab边长度为w为例。$dis[a]$代表源点s到a点的路径长度，$dis[b]$代表源点s到b点的路径长度。如果满足下面的式子则将$dis[b]$更新为$dis[a] + w$。</p>
+</li>
+</ol>
+<p>​      $dis[b] &gt; dis[a] + w$</p>
+<ol>
+<li>遍历都结束后，若再进行一次遍历，还能得到s到某些节点更短的路径的话，则说明存在负环路。</li>
+</ol>
 <h1 id="有边数限制的最短路"><a href="#有边数限制的最短路" class="headerlink" title="有边数限制的最短路"></a>有边数限制的最短路</h1><p>给定一个 <em>n</em> 个点 <em>m</em> 条边的有向图，图中可能存在重边和自环， <strong>边权可能为负数</strong>。</p>
 <p>请你求出从 1 号点到 <em>n</em> 号点的最多经过 <em>k</em> 条边的最短距离，如果无法从 1 号点走到 <em>n</em> 号点，输出 <code>impossible</code>。注意：图中可能 <strong>存在负权回路</strong> 。</p>
 <h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含三个整数 <em>n</em>,<em>m</em>,<em>k</em>。接下来 <em>m</em> 行，每行包含三个整数 <em>x</em>,<em>y</em>,<em>z</em>，表示存在一条从点 <em>x</em> 到点 <em>y</em> 的有向边，边长为 <em>z</em>。点的编号为 1∼<em>n</em>。</p>
@@ -476,6 +487,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/05/02/SPFA/" rel="prev" title="SPFA">
+                SPFA <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -556,7 +571,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -578,7 +593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -633,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E8%BE%B9%E6%95%B0%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">有边数限制的最短路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">输出格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">2.0.1.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">具体操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E8%BE%B9%E6%95%B0%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text">有边数限制的最短路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">输出格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">3.0.1.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -668,7 +683,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">49.4k</span>
+    <span title="Site words total count">51.2k</span>
   
 </div>
 <!--
