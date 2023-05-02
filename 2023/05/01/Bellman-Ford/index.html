@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="算法,Bellman-Ford," />
+  <meta name="keywords" content="算法,Bellman-Ford,最短路," />
 
 
 
@@ -87,10 +87,11 @@
 <meta property="og:description" content="基本思路首先n次迭代，每一次循环所有边。我们这里用$a,b,w$表示存在一条从a走到b的边，权重是w。这里存边方式有很多种，可以用邻接表，结构体等。遍历所有边的时候更新一下其他点的距离，和Dijkstra算法类似，用当前这个点更新和它相连的点距离起点的距离。我们这里用$dist$数组表示每个点到起点的距离，那么更新操作就是$dist[b]&#x3D;min(dist[b],dist[a]+w)$，这样就可以">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-05-01T14:30:02.000Z">
-<meta property="article:modified_time" content="2023-05-02T02:42:11.234Z">
+<meta property="article:modified_time" content="2023-05-02T10:35:15.425Z">
 <meta property="article:author" content="王海宇">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="Bellman-Ford">
+<meta property="article:tag" content="最短路">
 <meta name="twitter:card" content="summary">
 
 
@@ -452,6 +453,8 @@
           
             <a href="/tags/Bellman-Ford/" rel="tag"># Bellman-Ford</a>
           
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="tag"># 最短路</a>
+          
         </div>
       
 
@@ -571,7 +574,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -582,7 +585,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -593,7 +596,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -683,7 +686,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">51.2k</span>
+    <span title="Site words total count">52.8k</span>
   
 </div>
 <!--
