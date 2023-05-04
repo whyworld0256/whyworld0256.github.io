@@ -2330,4 +2330,70 @@
         <tag>匈牙利算法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>前往目标的最小代价</title>
+    <url>/2023/05/04/%E5%89%8D%E5%BE%80%E7%9B%AE%E6%A0%87%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7/</url>
+    <content><![CDATA[<h1 id="前往目标的最小代价"><a href="#前往目标的最小代价" class="headerlink" title="前往目标的最小代价"></a><a href="https://leetcode.cn/problems/minimum-cost-of-a-path-with-special-roads/description/">前往目标的最小代价</a></h1><p>还没有想明白，以后再来看看。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minimumCost</span>(<span class="params">self, start: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="type">List</span>[<span class="built_in">int</span>], specialRoads: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        t=<span class="built_in">tuple</span>(target)</span><br><span class="line">        dis=defaultdict(<span class="keyword">lambda</span>:inf)</span><br><span class="line">        dis[<span class="built_in">tuple</span>(start)]=<span class="number">0</span></span><br><span class="line">        vis=<span class="built_in">set</span>()</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            v=<span class="literal">None</span></span><br><span class="line">            <span class="keyword">for</span> p,d <span class="keyword">in</span> dis.items():</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> p <span class="keyword">in</span> vis <span class="keyword">and</span> (v <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> d&lt;dis[v]):</span><br><span class="line">                    v=p</span><br><span class="line">            <span class="keyword">if</span> v==t:</span><br><span class="line">                <span class="keyword">return</span> dis[t]</span><br><span class="line">            vis.add(v)</span><br><span class="line">            vx,vy=v</span><br><span class="line">            dis[t]=<span class="built_in">min</span>(dis[t],dis[v]+<span class="built_in">abs</span>(t[<span class="number">0</span>]-vx)+<span class="built_in">abs</span>(t[<span class="number">1</span>]-vy))</span><br><span class="line">            <span class="keyword">for</span> x1,y1,x2,y2,cost <span class="keyword">in</span> specialRoads:</span><br><span class="line">                w=(x2,y2)</span><br><span class="line">                d=dis[v]+<span class="built_in">min</span>(<span class="built_in">abs</span>(x2-vx)+<span class="built_in">abs</span>(y2-vy), <span class="built_in">abs</span>(x1-vx)+<span class="built_in">abs</span>(y1-vy)+cost)</span><br><span class="line">                dis[w]=<span class="built_in">min</span>(dis[w],d)</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+        <tag>Dijkstra</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最优乘车</title>
+    <url>/2023/05/04/%E6%9C%80%E4%BC%98%E4%B9%98%E8%BD%A6/</url>
+    <content><![CDATA[<h1 id="最优乘车"><a href="#最优乘车" class="headerlink" title="最优乘车"></a>最优乘车</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p><em>H</em> 城是一个旅游胜地，每年都有成千上万的人前来观光。</p>
+<p>为方便游客，巴士公司在各个旅游景点及宾馆，饭店等地都设置了巴士站并开通了一些单程巴士线路。</p>
+<p>每条单程巴士线路从某个巴士站出发，依次途经若干个巴士站，最终到达终点巴士站。</p>
+<p>一名旅客最近到 <em>H</em> 城旅游，他很想去 <em>S</em> 公园游玩，但如果从他所在的饭店没有一路巴士可以直接到达 <em>S</em> 公园，则他可能要先乘某一路巴士坐几站，再下来换乘同一站台的另一路巴士，这样换乘几次后到达 <em>S</em>公园。</p>
+<p>现在用整数 1,2,…<em>N</em></p>
+<p> 给 <em>H</em> 城的所有的巴士站编号，约定这名旅客所在饭店的巴士站编号为 1，<em>S</em> 公园巴士站的编号为 <em>N</em>。</p>
+<p>写一个程序，帮助这名旅客寻找一个最优乘车方案，使他在从饭店乘车到 <em>S</em> 公园的过程中换乘的次数最少。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行有两个数字 <em>M</em> 和 <em>N</em>，表示开通了 <em>M</em> 条单程巴士线路，总共有 <em>N</em> 个车站。</p>
+<p>从第二行到第 <em>M</em>+1 行依次给出了第 1 条到第 <em>M</em> 条巴士线路的信息，其中第 <em>i</em>+1 行给出的是第 <em>i</em></p>
+<p> 条巴士线路的信息，从左至右按运行顺序依次给出了该线路上的所有站号，相邻两个站号之间用一个空格隔开。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>共一行，如果无法乘巴士从饭店到达 <em>S</em> 公园，则输出 <code>NO</code>，否则输出最少换乘次数，换乘次数为 0 表示不需换车即可到达。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>M</em>≤100,<br>2≤<em>N</em>≤500</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>本题的难点在于如何建图。</p>
+<p>对于每条线路，我们在每个点与它后面的点连上一条有向边。</p>
+<p>举个例子，如果线路数据为：</p>
+<p><strong>6——7</strong></p>
+<p><strong>4——7——3——6</strong></p>
+<p><strong>2——1——3——5</strong></p>
+<p>那么所建的图如下：</p>
+<img src="/2023/05/04/%E6%9C%80%E4%BC%98%E4%B9%98%E8%BD%A6/a.png" class="">
+<p>此时我们在这个图上跑最短路，得到的结果是最少需要的乘车次数，那么减1就是结果。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> *</span><br><span class="line">N=<span class="number">505</span></span><br><span class="line">g=defaultdict(<span class="built_in">list</span>)</span><br><span class="line">m,n=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    route=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(route)-<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>,<span class="built_in">len</span>(route)):</span><br><span class="line">            g[route[i]].append(route[j])</span><br><span class="line">            </span><br><span class="line">dis=[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*N</span><br><span class="line">st=[<span class="number">0</span>]*N</span><br><span class="line">dis[<span class="number">1</span>]=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dijkstra</span>():</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        x=-<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> st[i] <span class="keyword">and</span> (x==-<span class="number">1</span> <span class="keyword">or</span> dis[i]&lt;dis[x]):</span><br><span class="line">                x=i</span><br><span class="line">        st[x]=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> g[x]:</span><br><span class="line">            <span class="keyword">if</span> dis[j]&gt;dis[x]+<span class="number">1</span>:</span><br><span class="line">                dis[j]=dis[x]+<span class="number">1</span></span><br><span class="line">        </span><br><span class="line">dijkstra()</span><br><span class="line"><span class="keyword">if</span> dis[n]==<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;NO&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(dis[n]-<span class="number">1</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>BFS</tag>
+        <tag>图论</tag>
+        <tag>Dijkstra</tag>
+        <tag>最短路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络延迟时间</title>
+    <url>/2023/05/03/%E7%BD%91%E7%BB%9C%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<h1 id="网络延迟时间"><a href="#网络延迟时间" class="headerlink" title="网络延迟时间"></a><a href="https://leetcode.cn/problems/network-delay-time/description/?languageTags=python3">网络延迟时间</a></h1><p>本题就是Dijkstra 的直接应用，但是要熟悉leetcode中存图的方式。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">networkDelayTime</span>(<span class="params">self, times: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], n: <span class="built_in">int</span>, k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        g=defaultdict(<span class="built_in">dict</span>)</span><br><span class="line">        <span class="keyword">for</span> a,b,c <span class="keyword">in</span> times:</span><br><span class="line">            g[a][b]=c</span><br><span class="line">        N=<span class="number">105</span></span><br><span class="line">        state=[<span class="number">0</span>]*N</span><br><span class="line">        dis=[inf]*N</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">dijkstra</span>():</span><br><span class="line">            <span class="keyword">nonlocal</span> dis,state</span><br><span class="line">            heap=[]</span><br><span class="line">            heappush(heap,(<span class="number">0</span>,k))</span><br><span class="line">            dis[k]=<span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> heap:</span><br><span class="line">                distance,node=heappop(heap)</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> state[node]:</span><br><span class="line">                    state[node]=<span class="number">1</span></span><br><span class="line">                    <span class="keyword">for</span> b <span class="keyword">in</span> g[node]:</span><br><span class="line">                        <span class="keyword">if</span> dis[b]&gt;distance+g[node][b]:</span><br><span class="line">                            dis[b]=distance+g[node][b]</span><br><span class="line">                            heappush(heap,(dis[b],b))</span><br><span class="line">            ans=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">                ans=<span class="built_in">max</span>(ans,dis[i])</span><br><span class="line">            <span class="keyword">if</span> ans==inf:</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> ans</span><br><span class="line">        <span class="keyword">return</span> dijkstra()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+        <tag>最短路</tag>
+      </tags>
+  </entry>
 </search>
