@@ -2250,6 +2250,7 @@
       <tags>
         <tag>图论</tag>
         <tag>最短路</tag>
+        <tag>Floyd</tag>
       </tags>
   </entry>
   <entry>
@@ -2394,6 +2395,66 @@
       <tags>
         <tag>算法</tag>
         <tag>图论</tag>
+        <tag>最短路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>格子游戏</title>
+    <url>/2023/05/05/%E6%A0%BC%E5%AD%90%E6%B8%B8%E6%88%8F/</url>
+    <content><![CDATA[<h1 id="格子游戏"><a href="#格子游戏" class="headerlink" title="格子游戏"></a>格子游戏</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p><a href="https://www.acwing.com/problem/content/1252/">https://www.acwing.com/problem/content/1252/</a></p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>把那些有边相连的点搞成一个连通块就行。</p>
+<p>如果对于新画的一条边，它的两个端点已经在同一个集合中了，就说明游戏结束。</p>
+<p>如何把一个二维坐标映射成一个一维坐标：$(x,y)\rightarrow x*n+y$</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">p=[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n*n+<span class="number">5</span>)]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">if</span> p[x]!=x:</span><br><span class="line">        p[x]=find(p[x])</span><br><span class="line">    <span class="keyword">return</span> p[x]</span><br><span class="line">res=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    x,y,s=<span class="built_in">input</span>().split()</span><br><span class="line">    x=<span class="built_in">int</span>(x)-<span class="number">1</span></span><br><span class="line">    y=<span class="built_in">int</span>(y)-<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> s==<span class="string">&#x27;D&#x27;</span>:</span><br><span class="line">        fa1=find(x*n+y)</span><br><span class="line">        fa2=find((x+<span class="number">1</span>)*n+y)</span><br><span class="line">        <span class="keyword">if</span> fa1==fa2:</span><br><span class="line">            res=i+<span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            p[fa1]=fa2</span><br><span class="line">    <span class="keyword">elif</span> s==<span class="string">&#x27;R&#x27;</span>:</span><br><span class="line">        fa1=find(x*n+y)</span><br><span class="line">        fa2=find(x*n+y+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> fa1==fa2:</span><br><span class="line">            res=i+<span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            p[fa1]=fa2</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> res:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;draw&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>昂贵的聘礼</title>
+    <url>/2023/05/05/%E6%98%82%E8%B4%B5%E7%9A%84%E8%81%98%E7%A4%BC/</url>
+    <content><![CDATA[<h1 id="昂贵的聘礼"><a href="#昂贵的聘礼" class="headerlink" title="昂贵的聘礼"></a>昂贵的聘礼</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>年轻的探险家来到了一个印第安部落里。</p>
+<p>在那里他和酋长的女儿相爱了，于是便向酋长去求亲。</p>
+<p>酋长要他用 10000 个金币作为聘礼才答应把女儿嫁给他。</p>
+<p>探险家拿不出这么多金币，便请求酋长降低要求。</p>
+<p>酋长说：”嗯，如果你能够替我弄到大祭司的皮袄，我可以只要 8000</p>
+<p> 金币。如果你能够弄来他的水晶球，那么只要 5000 金币就行了。”</p>
+<p>探险家就跑到大祭司那里，向他要求皮袄或水晶球，大祭司要他用金币来换，或者替他弄来其他的东西，他可以降低价格。</p>
+<p>探险家于是又跑到其他地方，其他人也提出了类似的要求，或者直接用金币换，或者找到其他东西就可以降低价格。</p>
+<p>不过探险家没必要用多样东西去换一样东西，因为不会得到更低的价格。</p>
+<p>探险家现在很需要你的帮忙，让他用最少的金币娶到自己的心上人。</p>
+<p>另外他要告诉你的是，在这个部落里，等级观念十分森严。</p>
+<p>地位差距超过一定限制的两个人之间不会进行任何形式的直接接触，包括交易。</p>
+<p>他是一个外来人，所以可以不受这些限制。</p>
+<p>但是如果他和某个地位较低的人进行了交易，地位较高的的人不会再和他交易，他们认为这样等于是间接接触，反过来也一样。</p>
+<p>因此你需要在考虑所有的情况以后给他提供一个最好的方案。 </p>
+<p>为了方便起见，我们把所有的物品从 1</p>
+<p> 开始进行编号，酋长的允诺也看作一个物品，并且编号总是 1。</p>
+<p>每个物品都有对应的价格 <em>P</em>，主人的地位等级 <em>L</em>，以及一系列的替代品 $T_i$ 和该替代品所对应的”优惠” $V_i$。</p>
+<p>如果两人地位等级差距超过了 <em>M</em>，就不能”间接交易”。</p>
+<p>你必须根据这些数据来计算出探险家最少需要多少金币才能娶到酋长的女儿。 </p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入第一行是两个整数 <em>M</em>，<em>N</em>，依次表示地位等级差距限制和物品的总数。接下来按照编号从小到大依次给出了 <em>N</em></p>
+<p> 个物品的描述。每个物品的描述开头是三个非负整数 <em>P</em>、<em>L</em>、<em>X</em>，依次表示该物品的价格、主人的地位等级和替代品总数。</p>
+<p>接下来 <em>X</em> 行每行包括两个整数 <em>T</em> 和 <em>V</em>，分别表示替代品的编号和”优惠价格”。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出最少需要的金币数。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>如何建图？</p>
+<p>我们考虑抽象出一个新的起点。然后连接起点和每件物品，边权为每件物品的初始价格。</p>
+<p>按照替代品的关系以及替代价格建图。</p>
+<p>如果不考虑等级的限制，那么此时在此图上跑最短路即可。</p>
+<p>现在难点就是如何处理等级问题。</p>
+<p>我们可以枚举包含1号点的，且长度等于m的区间全体，将点的等级限制在这个区间上跑最短路即可。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> heapq <span class="keyword">import</span> *</span><br><span class="line">N=<span class="number">105</span></span><br><span class="line">g=[[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*N <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">price=[<span class="number">0</span>]*N</span><br><span class="line">level=[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*N</span><br><span class="line">m,n=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="comment"># for i in range(1,n+1):</span></span><br><span class="line"><span class="comment">#     g[i][i] = 0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    p,l,x=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    g[<span class="number">0</span>][i]=<span class="built_in">min</span>(g[<span class="number">0</span>][i],p)</span><br><span class="line">    level[i]=l</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(x):</span><br><span class="line">        a,b=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">        g[a][i]=<span class="built_in">min</span>(g[a][i],b)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dijkstra</span>(<span class="params">down,up</span>):</span><br><span class="line">    dis=[<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)]*N</span><br><span class="line">    st=[<span class="literal">False</span>]*N</span><br><span class="line">    dis[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">        t=-<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> st[j] <span class="keyword">and</span> (t==-<span class="number">1</span> <span class="keyword">or</span> dis[j]&lt;dis[t]):</span><br><span class="line">                t=j</span><br><span class="line">        st[t]=<span class="literal">True</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> down&lt;=level[j]&lt;=up <span class="keyword">and</span> dis[j]&gt;dis[t]+g[t][j]:</span><br><span class="line">                dis[j]=dis[t]+g[t][j]</span><br><span class="line">    <span class="keyword">return</span> dis[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">ans=<span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(level[<span class="number">1</span>]-m,level[<span class="number">1</span>]+<span class="number">1</span>):</span><br><span class="line">    ans=<span class="built_in">min</span>(ans,dijkstra(i,i+m))</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
+        <tag>Dijkstra</tag>
         <tag>最短路</tag>
       </tags>
   </entry>
