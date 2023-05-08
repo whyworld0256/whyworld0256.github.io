@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="哈希表模拟散列表维护一个集合，支持如下几种操作：  I x，插入一个数 x；  Q x，询问数 x 是否在集合中出现过；   现在要进行 N次操作，对于每个询问操作输出对应的结果。 输入格式第一行包含整数 N，表示操作数量。接下来 N 行，每行包含一个操作指令，操作指令为 I x，Q x 中的一种。 输出格式对于每个询问指令 Q x，输出一个询问结果，如果 x 在集合中出现过，则输出 Yes，否则">
+<meta name="description" content="哈希表模拟散列表维护一个集合，支持如下几种操作：  I x，插入一个数 x；  Q x，询问数 x 是否在集合中出现过；   现在要进行 N次操作，对于每个询问操作输出对应的结果。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="哈希表">
 <meta property="og:url" content="http://example.com/2023/04/30/%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
 <meta property="og:site_name" content="最伟大的博客">
-<meta property="og:description" content="哈希表模拟散列表维护一个集合，支持如下几种操作：  I x，插入一个数 x；  Q x，询问数 x 是否在集合中出现过；   现在要进行 N次操作，对于每个询问操作输出对应的结果。 输入格式第一行包含整数 N，表示操作数量。接下来 N 行，每行包含一个操作指令，操作指令为 I x，Q x 中的一种。 输出格式对于每个询问指令 Q x，输出一个询问结果，如果 x 在集合中出现过，则输出 Yes，否则">
+<meta property="og:description" content="哈希表模拟散列表维护一个集合，支持如下几种操作：  I x，插入一个数 x；  Q x，询问数 x 是否在集合中出现过；   现在要进行 N次操作，对于每个询问操作输出对应的结果。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-04-30T05:21:07.000Z">
-<meta property="article:modified_time" content="2023-04-30T07:12:29.949Z">
+<meta property="article:modified_time" content="2023-05-07T09:13:35.124Z">
 <meta property="article:author" content="王海宇">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="哈希表">
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  273
+                  278
                 </span>
               
 
@@ -416,11 +416,13 @@
 </li>
 </ol>
 <p>现在要进行 <em>N</em>次操作，对于每个询问操作输出对应的结果。</p>
+<span id="more"></span>
 <h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>N</em>，表示操作数量。接下来 <em>N</em> 行，每行包含一个操作指令，操作指令为 <code>I x</code>，<code>Q x</code> 中的一种。</p>
 <h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问指令 <code>Q x</code>，输出一个询问结果，如果 <em>x</em> 在集合中出现过，则输出 <code>Yes</code>，否则输出 <code>No</code>。每个结果占一行。</p>
 <h3 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h3><p>数组加链表（数组实现）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">N=<span class="number">100003</span></span><br><span class="line">h=[-<span class="number">1</span>]*N</span><br><span class="line">e=[<span class="number">0</span>]*N</span><br><span class="line">ne=[<span class="number">0</span>]*N</span><br><span class="line">idx=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    k=x%N</span><br><span class="line">    e[idx]=x</span><br><span class="line">    ne[idx]=h[k] <span class="comment"># h[k] 是头节点</span></span><br><span class="line">    h[k]=idx</span><br><span class="line">    idx+=<span class="number">1</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    k=x%N</span><br><span class="line">    i=h[k]</span><br><span class="line">    <span class="keyword">while</span> i!=-<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> e[i]==x:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        i=ne[i]</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    op,a=<span class="built_in">input</span>().split()</span><br><span class="line">    <span class="keyword">if</span> op==<span class="string">&#x27;I&#x27;</span>:</span><br><span class="line">        insert(<span class="built_in">int</span>(a))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> find(<span class="built_in">int</span>(a)):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Yes&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;No&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">        </span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-<h2 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h2>
+<h2 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h2><p>不想更新了</p>
+
       
     </div>
     
@@ -560,7 +562,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -571,7 +573,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -672,7 +674,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">57.5k</span>
+    <span title="Site words total count">60.2k</span>
   
 </div>
 <!--

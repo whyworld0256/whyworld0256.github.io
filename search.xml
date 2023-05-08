@@ -78,27 +78,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Lebesgue可测集的若干等价刻画</title>
-    <url>/2023/04/03/Lebesgue%E5%8F%AF%E6%B5%8B%E9%9B%86%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%AD%89%E4%BB%B7%E5%88%BB%E7%94%BB/</url>
-    <content><![CDATA[<p>$E\subset R^n$, 下列等价：</p>
-<ol>
-<li>E为Lebesgue可测集</li>
-<li>对于任意的$\epsilon &gt; 0$, 存在开集 $O$, $E\subset O$, 使得$m^{*} (O\backslash E)&lt;\epsilon$</li>
-<li>对于任意的$\epsilon &gt; 0$, 存在闭集 $F$, $F\subset E$, 使得$m^{*} (E\backslash F)&lt;\epsilon$</li>
-<li>任意集合$T\subset R^n$, 成立 <script type="math/tex">m^{*}(T)=m^{*}(T \cap E)+m^{*}(T \cap E ^{c})</script></li>
-<li>存在 $G_{\delta}$ 集 $G$ , $E\subset G$, 使得$m^{*} (G\backslash E)=0$</li>
-<li>存在 $F_{\delta}$ 集 $F$ , $F\subset E$, 使得$m^{*} (E\backslash F)=0$</li>
-<li>存在 $G_{\delta}$ 集 $G$  与 $F_{\delta}$ 集 $F$ , $F\subset E\subset G$, 使得 $m^{*} (G\backslash F)=0$</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数学</category>
-      </categories>
-      <tags>
-        <tag>实变函数</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode第341场周赛</title>
     <url>/2023/04/16/Leetcode%E7%AC%AC341%E5%9C%BA%E5%91%A8%E8%B5%9B/</url>
     <content><![CDATA[<h1 id="1-一最多的行"><a href="#1-一最多的行" class="headerlink" title="1.一最多的行"></a>1.一最多的行</h1><p>给你一个大小为 <code>m x n</code> 的二进制矩阵 <code>mat</code> ，请你找出包含最多 <strong>1</strong> 的行的下标（从 <strong>0</strong> 开始）以及这一行中 <strong>1</strong> 的数目。</p>
@@ -2034,11 +2013,13 @@
 </li>
 </ol>
 <p>现在要进行 <em>N</em>次操作，对于每个询问操作输出对应的结果。</p>
+<span id="more"></span>
 <h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>N</em>，表示操作数量。接下来 <em>N</em> 行，每行包含一个操作指令，操作指令为 <code>I x</code>，<code>Q x</code> 中的一种。</p>
 <h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问指令 <code>Q x</code>，输出一个询问结果，如果 <em>x</em> 在集合中出现过，则输出 <code>Yes</code>，否则输出 <code>No</code>。每个结果占一行。</p>
 <h3 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h3><p>数组加链表（数组实现）</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100003</span></span><br><span class="line">h=[-<span class="number">1</span>]*N</span><br><span class="line">e=[<span class="number">0</span>]*N</span><br><span class="line">ne=[<span class="number">0</span>]*N</span><br><span class="line">idx=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    k=x%N</span><br><span class="line">    e[idx]=x</span><br><span class="line">    ne[idx]=h[k] <span class="comment"># h[k] 是头节点</span></span><br><span class="line">    h[k]=idx</span><br><span class="line">    idx+=<span class="number">1</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    k=x%N</span><br><span class="line">    i=h[k]</span><br><span class="line">    <span class="keyword">while</span> i!=-<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> e[i]==x:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        i=ne[i]</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    op,a=<span class="built_in">input</span>().split()</span><br><span class="line">    <span class="keyword">if</span> op==<span class="string">&#x27;I&#x27;</span>:</span><br><span class="line">        insert(<span class="built_in">int</span>(a))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> find(<span class="built_in">int</span>(a)):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Yes&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;No&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">        </span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-<h2 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h2>]]></content>
+<h2 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h2><p>不想更新了</p>
+]]></content>
       <categories>
         <category>算法</category>
       </categories>
@@ -2484,7 +2465,8 @@
   <entry>
     <title>离散化</title>
     <url>/2023/05/05/%E7%A6%BB%E6%95%A3%E5%8C%96/</url>
-    <content><![CDATA[<h1 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h1><p>此时我们有$10^5$ 个数，但是数的取值范围为$10^9$, 如果在某个问题中我们需要将这些数作为下标使用，那么我们需要去开一个长度为$10^9$ 的数组，但是我们只会用到其中$10^5$ 个位置，因此这样会造成很大的空间浪费。此时我们引出离散化。</p>
+    <content><![CDATA[<h1 id="离散化-要求保序"><a href="#离散化-要求保序" class="headerlink" title="离散化(要求保序)"></a>离散化(要求保序)</h1><p><strong>离散化是在不改变数据相对大小的条件下，对数据进行相应的缩小。</strong></p>
+<p>此时我们有$10^5$ 个数，但是数的取值范围为$10^9$, 如果在某个问题中我们需要将这些数作为下标使用，那么我们需要去开一个长度为$10^9$ 的数组，但是我们只会用到其中$10^5$ 个位置，因此这样会造成很大的空间浪费。此时我们引出离散化。</p>
 <p>如果我们不需要这些数的具体数值，那么我们完全可以将这$10^5$ 个取值范围为$10^9$ 的数映射到 $0\sim 10^5$ ，这样我们只需要一个长度为$10^5$ 的数组即可。</p>
 <p>如何映射呢：现在给我们5个数：$1,5,3,6,10000$</p>
 <p>我们先将数组排序，然后把每个数映射到它的下标即可了,并且在这之前我们需要去重, 否则同样的数却映射到不同的值去了。</p>
@@ -2500,6 +2482,7 @@
 <h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>首先观察数据范围，</p>
 <p>我们发现位置的范围特别大$-10^9\sim 10^9$, 但是操作和查询次数只有$-10^5\sim 10^5$，因此使用离散化。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> bisect <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> bisect_left(index,x)+<span class="number">1</span>  <span class="comment">#加1的原因是方便后面前缀和。</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=[]</span><br><span class="line">index=[]</span><br><span class="line">query=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    x,c=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    nums.append((x,c))</span><br><span class="line">    index.append(x)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    a,b=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    index.append(a)</span><br><span class="line">    index.append(b)</span><br><span class="line">    query.append((a,b))</span><br><span class="line">    </span><br><span class="line">index=<span class="built_in">list</span>(<span class="built_in">set</span>(index))</span><br><span class="line">index.sort()</span><br><span class="line">N=[<span class="number">0</span>]*<span class="number">3</span>*<span class="number">100000</span></span><br><span class="line"><span class="keyword">for</span> x,c <span class="keyword">in</span> nums:</span><br><span class="line">    N[find(x)]+=c</span><br><span class="line">s=[<span class="number">0</span>]*<span class="number">3</span>*<span class="number">100000</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(s)):</span><br><span class="line">    s[i]=s[i-<span class="number">1</span>]+N[i]</span><br><span class="line"><span class="keyword">for</span> a,b <span class="keyword">in</span> query:</span><br><span class="line">    <span class="built_in">print</span>(s[find(b)]-s[find(a)-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="离散化-不要求保序"><a href="#离散化-不要求保序" class="headerlink" title="离散化(不要求保序)"></a>离散化(不要求保序)</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">maps = &#123;&#125;</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> cnt</span><br><span class="line">    <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> maps:</span><br><span class="line">        cnt += <span class="number">1</span></span><br><span class="line">        maps[x] = cnt</span><br><span class="line">    <span class="keyword">return</span> maps[x]</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2550,6 +2533,139 @@
         <tag>数据结构</tag>
         <tag>并查集</tag>
         <tag>离散化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>奇偶游戏</title>
+    <url>/2023/05/08/%E5%A5%87%E5%81%B6%E6%B8%B8%E6%88%8F/</url>
+    <content><![CDATA[<h1 id="奇偶游戏"><a href="#奇偶游戏" class="headerlink" title="奇偶游戏"></a>奇偶游戏</h1><p>小 <em>A</em> 和小 <em>B</em> 在玩一个游戏。首先，小 <em>A</em> 写了一个由 0 和 1 组成的序列 <em>S</em>，长度为 <em>N</em>。</p>
+<p>然后，小 <em>B</em> 向小 <em>A</em> 提出了 <em>M</em> 个问题。在每个问题中，小 <em>B</em> 指定两个数 <em>l</em> 和 <em>r</em>，小 <em>A</em> 回答 <em>S</em>[<em>l</em>∼<em>r</em>] 中有奇数个 1 还是偶数个 1。机智的小 <em>B</em> 发现小 <em>A</em> 有可能在撒谎。例如，小 <em>A</em> 曾经回答过 <em>S</em>[1∼3] 中有奇数个 1，<em>S</em>[4∼6] 中有偶数个 1，现在又回答 <em>S</em>[1∼6] 中有偶数个 1，显然这是自相矛盾的。</p>
+<p>请你帮助小 <em>B</em> 检查这 <em>M</em> 个答案，并指出在至少多少个回答之后可以确定小 <em>A</em> 一定在撒谎。</p>
+<p>即求出一个最小的 <em>k</em>，使得 01 序列 <em>S</em> 满足第 1∼<em>k</em> 个回答，但不满足第 1∼<em>k</em>+1 个回答。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含一个整数 <em>N</em>，表示 01 序列长度。第二行包含一个整数 <em>M</em>，表示问题数量。</p>
+<p>接下来 <em>M</em> 行，每行包含一组问答：两个整数 <em>l</em> 和 <em>r</em>，以及回答 <code>even</code> 或 <code>odd</code>，用以描述 <em>S</em>[<em>l</em>∼<em>r</em>] 中有偶数个 1 还是奇数个 1。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数 <em>k</em>，表示 01 序列满足第 1∼<em>k</em> 个回答，但不满足第 1∼<em>k</em>+1 个回答，如果 01 序列满足所有回答，则输出问题总数量。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$N\le 10^9, M\le 5000$</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p><strong>方法一：带边权的并查集</strong>（存储相对关系，并且这种关系有传递性）（类比食物链那道题）</p>
+<p>首先我们需要把<strong>一个范围中有奇数个1或者是偶数个1</strong>这样的条件转化为跟<strong>点</strong>相关的条件，这样才能用并查集来处理</p>
+<p>显然前缀和可以处理这个问题。</p>
+<p>$s[i]$ 表示$sum(s[1\sim i])$, 那么$s[i \sim j]$ 中有奇数个1，表示$s[j]$ 和 $s[i-1]$ 的奇偶性不相同。</p>
+<p>$s[i\sim j]$ 中有偶数个1表示$s[j]$ 和$s[i-1]$ 的奇偶性相同。</p>
+<p>$d$ 数组存每个点到它的根节点的距离，$d=0$ 表示它和根节点的奇偶性相同，$d=1$ 表示它和根节点的奇偶性不相同。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">5005</span></span><br><span class="line">d=[<span class="number">0</span>]*N</span><br><span class="line">p=[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">mapp=&#123;&#125;</span><br><span class="line">idx=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">x</span>): <span class="comment">#离散化</span></span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> mapp.get(x):</span><br><span class="line">        idx+=<span class="number">1</span></span><br><span class="line">        mapp[x]=idx</span><br><span class="line">    <span class="keyword">return</span> mapp[x]</span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">if</span> p[x]!=x:</span><br><span class="line">        q=find(p[x])</span><br><span class="line">        d[x]+=d[p[x]]</span><br><span class="line">        p[x]=q</span><br><span class="line">    <span class="keyword">return</span> p[x]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">m=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">res=m</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r,s=<span class="built_in">input</span>().split()</span><br><span class="line">    l,r=<span class="built_in">int</span>(l),<span class="built_in">int</span>(r)</span><br><span class="line">    x,y=get(l-<span class="number">1</span>),get(r) <span class="comment">#离散化,不用保序</span></span><br><span class="line">    px,py=find(x),find(y)</span><br><span class="line">    <span class="keyword">if</span> s==<span class="string">&#x27;even&#x27;</span>:</span><br><span class="line">        <span class="keyword">if</span> px==py <span class="keyword">and</span> (d[x]-d[y])%<span class="number">2</span>!=<span class="number">0</span>: <span class="comment">#px=py 表示二者已经产生了关系了，也就是说只要两个点有关系，它们就在同一个集合当中，(d[x]-d[y])%2!=0表示二者奇偶性不同</span></span><br><span class="line">            res=i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> px!=py: <span class="comment">#二者还没有产生关系，那就让二者奇偶性相同</span></span><br><span class="line">            p[px]=py</span><br><span class="line">            d[px]=d[y]-d[x]</span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        <span class="keyword">if</span> px==py <span class="keyword">and</span> (d[x]-d[y])%<span class="number">2</span>==<span class="number">0</span>: <span class="comment"># (d[x]-d[y])%2==0表示二者奇偶性相同。</span></span><br><span class="line">            res=i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> px!=py:</span><br><span class="line">            p[px]=py</span><br><span class="line">            d[px]=d[y]+<span class="number">1</span>-d[x]</span><br><span class="line"><span class="built_in">print</span>(res)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>方法二：扩展域</strong>（枚举的思想）</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字符串哈希</title>
+    <url>/2023/05/07/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/</url>
+    <content><![CDATA[<p>给定一个长度为 <em>n</em> 的字符串，再给定 <em>m</em> 个询问，每个询问包含四个整数$l_1,l_2,l_3,l_4$，请你判断 $[l_1,l_2]$ 和 $[l_3,l_4]$</p>
+<p> 这两个区间所包含的字符串子串是否完全相同。字符串中只包含大小写英文字母和数字。</p>
+<span id="more"></span>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>n</em> 和 <em>m</em>，表示字符串长度和询问次数。</p>
+<p>第二行包含一个长度为 <em>n</em> 的字符串，字符串中只包含大小写英文字母和数字。接下来 <em>m</em> 行，每行包含四个整数$l_1,l_2,l_3,l_4$，表示一次询问所涉及的两个区间。</p>
+<p>注意，字符串的位置从 1 开始编号。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问输出一个结果，如果两个字符串子串完全相同则输出 <code>Yes</code>，否则输出 <code>No</code>。每个结果占一行。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$1\le n,m\le 10^5$</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>现在给你一个字符串$s=ABCD$ ，我们将其看成是一个$p$ 进制数，然后用$1,2,3,4$ 分别代替$A,B,C,D$ ,则$ABCD$ 对应于一个$p$ 进制数，$(1234)_p$, 相应的$10$ 进制数为$1<em>p^3+2</em>p^2+3<em>p^3+4</em>p^0$, 通过这种方式我们将一个字符串转化为了一个数字。</p>
+<p>当然，这个数可能非常大，所以我们要再模上一个较大的数$Q$ .</p>
+<p>当然有可能发生哈希冲突，但是根据经验，$p=131,13331$, $Q=2^{64}$ ，那么发生冲突的可能性就非常小，因此就不考虑哈希冲突。</p>
+<p>现在我们定义$h[i]$ 表示子串$s[1\sim i]$的哈希值，即前缀哈希，计算公式：$h[i]=h[i−1]×p+str[i] $的ascii编码</p>
+<p>下面我们考虑如何使用前缀哈希计算出所有子串的哈希值。</p>
+<p>例如我们想去求$s[L\sim R]$ 的哈希值，已知的是$h[i]$.</p>
+<p>计算公式：$h[R]-h[L-1]*p^{R-L+1}$</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">s=<span class="built_in">input</span>()</span><br><span class="line">mod=<span class="number">1</span>&lt;&lt;<span class="number">64</span></span><br><span class="line">h=[<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line">p=<span class="number">131</span></span><br><span class="line">pp=[<span class="number">1</span>]*(n+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">l,r</span>):</span><br><span class="line">    <span class="keyword">return</span> (h[r]-h[l-<span class="number">1</span>]*pp[r-l+<span class="number">1</span>])%mod</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    h[i]=(h[i-<span class="number">1</span>]*p+<span class="built_in">ord</span>(s[i-<span class="number">1</span>]))%mod</span><br><span class="line">    pp[i]=pp[i-<span class="number">1</span>]*p%mod</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l1,r1,l2,r2=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="keyword">if</span> get(l1,r1)==get(l2,r2):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Yes&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;No&#x27;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>字符串哈希</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>银河英雄传说</title>
+    <url>/2023/05/08/%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/</url>
+    <content><![CDATA[<h1 id="银河英雄传说"><a href="#银河英雄传说" class="headerlink" title="银河英雄传说"></a>银河英雄传说</h1><p>有一个划分为 <em>N</em> 列的星际战场，各列依次编号为 1,2,…,<em>N</em>。</p>
+<p>有 <em>N</em> 艘战舰，也依次编号为 1,2,…,<em>N</em>，其中第 <em>i</em> 号战舰处于第 <em>i</em> 列。</p>
+<p>有 <em>T</em> 条指令，每条指令格式为以下两种之一：</p>
+<ol>
+<li><p><code>M i j</code>，表示让第 <em>i</em> 号战舰所在列的全部战舰保持原有顺序，接在第 <em>j</em> 号战舰所在列的尾部。</p>
+</li>
+<li><p><code>C i j</code>，表示询问第 <em>i</em> 号战舰与第 <em>j</em> 号战舰当前是否处于同一列中，如果在同一列中，它们之间间隔了多少艘战舰。</p>
+</li>
+</ol>
+<p>现在需要你编写一个程序，处理一系列的指令。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 <em>T</em>，表示共有 <em>T</em> 条指令。</p>
+<p>接下来 <em>T</em> 行，每行一个指令，指令有两种形式：<code>M i j</code> 或 <code>C i j</code>。</p>
+<p>其中 <em>M</em> 和 <em>C</em> 为大写字母表示指令类型，<em>i</em> 和 <em>j</em> 为整数，表示指令涉及的战舰编号。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>你的程序应当依次对输入的每一条指令进行分析和处理： </p>
+<p>如果是 <code>M i j</code> 形式，则表示舰队排列发生了变化，你的程序要注意到这一点，但是不要输出任何信息； </p>
+<p>如果是 <code>C i j</code> 形式，你的程序要输出一行，仅包含一个整数，表示在同一列上，第 <em>i</em></p>
+<p> 号战舰与第 <em>j</em> 号战舰之间布置的战舰数目，如果第 <em>i</em> 号战舰与第 <em>j</em> 号战舰当前不在同一列上，则输出 −1。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>带权并查集，权是点到根节点的距离。</p>
+<p>然后发现我们在求长度的时候需要用到每一列的长度，因此用$lenth$ 数组来维护每一列的长度。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">N=<span class="number">30005</span></span><br><span class="line">p=[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">d=[<span class="number">0</span>]*N</span><br><span class="line">lenth=[<span class="number">1</span>]*N</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">if</span> x!=p[x]:</span><br><span class="line">        q=find(p[x])</span><br><span class="line">        d[x]+=d[p[x]]</span><br><span class="line">        p[x]=q</span><br><span class="line">    <span class="keyword">return</span> p[x]</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check</span>(<span class="params">i,j</span>):</span><br><span class="line">    fi,fj=find(i),find(j)</span><br><span class="line">    <span class="keyword">if</span> fi==fj:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">abs</span>(d[i]-d[j])-<span class="number">1</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">i,j</span>):</span><br><span class="line">    fi,fj=find(i),find(j)</span><br><span class="line">    <span class="keyword">if</span> fi!=fj:</span><br><span class="line">        p[fi]=fj</span><br><span class="line">        d[fi]+=lenth[fj]</span><br><span class="line">        lenth[fj]+=lenth[fi]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(t):</span><br><span class="line">    s,x,y=sys.stdin.readline().split()</span><br><span class="line">    x=<span class="built_in">int</span>(x)</span><br><span class="line">    y=<span class="built_in">int</span>(y)</span><br><span class="line">    <span class="keyword">if</span> s==<span class="string">&#x27;M&#x27;</span>:</span><br><span class="line">        merge(x,y)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(check(x,y))</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>食物链</title>
+    <url>/2023/05/08/%E9%A3%9F%E7%89%A9%E9%93%BE/</url>
+    <content><![CDATA[<h2 id="2-食物链"><a href="#2-食物链" class="headerlink" title="2. 食物链"></a>2. 食物链</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>动物王国中有三类动物 <em>A</em>,<em>B</em>,<em>C</em>，这三类动物的食物链构成了有趣的环形。<em>A</em> 吃 <em>B</em>，<em>B</em> 吃 <em>C</em>，<em>C</em> 吃 <em>A</em>。</p>
+<p>现有 <em>N</em> 个动物，以 1∼<em>N</em> 编号。</p>
+<p>每个动物都是 <em>A</em>,<em>B</em>,<em>C</em>中的一种，但是我们并不知道它到底是哪一种。</p>
+<p>有人用两种说法对这 <em>N</em>个动物所构成的食物链关系进行描述：</p>
+<p>第一种说法是 <code>1 X Y</code>，表示 <em>X</em>和 <em>Y</em>是同类。第二种说法是 <code>2 X Y</code>，表示 <em>X</em> 吃 <em>Y</em>。</p>
+<p>此人对 <em>N</em>个动物，用上述两种说法，一句接一句地说出 <em>K</em> 句话，这 <em>K</em>句话有的是真的，有的是假的。</p>
+<p>当一句话满足下列三条之一时，这句话就是假话，否则就是真话。</p>
+<ol>
+<li>当前的话与前面的某些真的话冲突，就是假话；</li>
+<li><p>当前的话中 <em>X</em> 或 <em>Y</em> 比 <em>N</em> 大，就是假话；</p>
+</li>
+<li><p>当前的话表示 <em>X</em> 吃 <em>X</em>，就是假话。</p>
+</li>
+</ol>
+<p>你的任务是根据给定的 <em>N</em> 和 <em>K</em> 句话，输出假话的总数。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行是两个整数 <em>N</em> 和 <em>K</em>，以一个空格分隔。以下 <em>K</em> 行每行是三个正整数 <em>D</em>，<em>X</em>，<em>Y</em>，两数之间用一个空格隔开，其中 <em>D</em> 表示说法的种类。</p>
+<p>若 <em>D</em>=1，则表示 <em>X</em> 和 <em>Y</em> 是同类。</p>
+<p>若 <em>D</em>=2，则表示 <em>X</em> 吃 <em>Y</em>。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>只有一个整数，表示假话的数目。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>如果$x,y$ 作为了上面两种说法中的对象，那么我们称$x,y$ 之间存在关系。</p>
+<p>首先有一个事实：如果我们如果我们知道了$x,y$ ， $y,z$ 之间有关系，那么我们一定知道$x,z$ 之间有关系。</p>
+<p>例如：</p>
+<p>$x$ 可以吃$y$, $y$ 可以吃$z$, 那么$z$ 可以吃$x$</p>
+<p>如果$x$ 可以吃$y$ , $y$ 与$z$ 同类，那么$x$ 可以吃 $z$ </p>
+<p>对此，我们可以定义$x$ 和 $y$ 之间的距离$d$</p>
+<ul>
+<li>$d\%3==1$ ：$x$ 可以吃 $y$</li>
+<li>$d\%3==2$ ：$y$ 可以吃 $x$ </li>
+<li><p>$d\%3==0$ ：$x$ 与 $y$ 同类</p>
+<p>注意，上述$x$ 和 $y$ 不可以交换位置。</p>
+</li>
+</ul>
+<p>对于每个点，我们用$d$ 数组存下它到根节点的距离，这样任意给我两个点，我都可以算出这两个点之间的距离。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">50010</span></span><br><span class="line">d=[<span class="number">0</span>]*N</span><br><span class="line">p=[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):  <span class="comment"># 找到根节点，并且将d[x] 更新为x到根节点的距离</span></span><br><span class="line">    <span class="keyword">if</span> p[x]!=x:</span><br><span class="line">        q=find(p[x])  </span><br><span class="line">        d[x]+=d[p[x]]</span><br><span class="line">        p[x]=q</span><br><span class="line">    <span class="keyword">return</span> p[x]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n,k=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">res=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">    t,x,y=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="keyword">if</span> x&gt;n <span class="keyword">or</span> y&gt;n:</span><br><span class="line">        res+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        px,py=find(x),find(y)</span><br><span class="line">        <span class="keyword">if</span> t==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> px==py <span class="keyword">and</span> (d[x]-d[y])%<span class="number">3</span>!=<span class="number">0</span>: <span class="comment">#px==py表示x和y的关系已经明确了，后面那句话表示不合法</span></span><br><span class="line">                res+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> px!=py: <span class="comment"># 此时x和y之间还没有关系，即合法</span></span><br><span class="line">                p[px]=py</span><br><span class="line">                d[px]=d[y]-d[x]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> px==py <span class="keyword">and</span> (d[x]-d[y]-<span class="number">1</span>)%<span class="number">3</span>!=<span class="number">0</span>:</span><br><span class="line">                res+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> px!=py:</span><br><span class="line">                p[px]=py</span><br><span class="line">                d[px]=d[y]+<span class="number">1</span>-d[x]</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
 </search>

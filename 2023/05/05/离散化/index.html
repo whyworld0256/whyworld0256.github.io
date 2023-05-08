@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="离散化此时我们有$10^5$ 个数，但是数的取值范围为$10^9$, 如果在某个问题中我们需要将这些数作为下标使用，那么我们需要去开一个长度为$10^9$ 的数组，但是我们只会用到其中$10^5$ 个位置，因此这样会造成很大的空间浪费。此时我们引出离散化。 如果我们不需要这些数的具体数值，那么我们完全可以将这$10^5$ 个取值范围为$10^9$ 的数映射到 $0\sim 10^5$ ，这样我们只">
+<meta name="description" content="离散化(要求保序)离散化是在不改变数据相对大小的条件下，对数据进行相应的缩小。 此时我们有$10^5$ 个数，但是数的取值范围为$10^9$, 如果在某个问题中我们需要将这些数作为下标使用，那么我们需要去开一个长度为$10^9$ 的数组，但是我们只会用到其中$10^5$ 个位置，因此这样会造成很大的空间浪费。此时我们引出离散化。 如果我们不需要这些数的具体数值，那么我们完全可以将这$10^5$ 个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="离散化">
 <meta property="og:url" content="http://example.com/2023/05/05/%E7%A6%BB%E6%95%A3%E5%8C%96/index.html">
 <meta property="og:site_name" content="最伟大的博客">
-<meta property="og:description" content="离散化此时我们有$10^5$ 个数，但是数的取值范围为$10^9$, 如果在某个问题中我们需要将这些数作为下标使用，那么我们需要去开一个长度为$10^9$ 的数组，但是我们只会用到其中$10^5$ 个位置，因此这样会造成很大的空间浪费。此时我们引出离散化。 如果我们不需要这些数的具体数值，那么我们完全可以将这$10^5$ 个取值范围为$10^9$ 的数映射到 $0\sim 10^5$ ，这样我们只">
+<meta property="og:description" content="离散化(要求保序)离散化是在不改变数据相对大小的条件下，对数据进行相应的缩小。 此时我们有$10^5$ 个数，但是数的取值范围为$10^9$, 如果在某个问题中我们需要将这些数作为下标使用，那么我们需要去开一个长度为$10^9$ 的数组，但是我们只会用到其中$10^5$ 个位置，因此这样会造成很大的空间浪费。此时我们引出离散化。 如果我们不需要这些数的具体数值，那么我们完全可以将这$10^5$ 个">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-05-05T15:45:59.000Z">
-<meta property="article:modified_time" content="2023-05-07T09:11:51.433Z">
+<meta property="article:modified_time" content="2023-05-08T06:36:16.444Z">
 <meta property="article:author" content="王海宇">
 <meta property="article:tag" content="离散化">
 <meta name="twitter:card" content="summary">
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  593
+                  654
                 </span>
               
 
@@ -407,7 +407,8 @@
       
 
       
-        <h1 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h1><p>此时我们有$10^5$ 个数，但是数的取值范围为$10^9$, 如果在某个问题中我们需要将这些数作为下标使用，那么我们需要去开一个长度为$10^9$ 的数组，但是我们只会用到其中$10^5$ 个位置，因此这样会造成很大的空间浪费。此时我们引出离散化。</p>
+        <h1 id="离散化-要求保序"><a href="#离散化-要求保序" class="headerlink" title="离散化(要求保序)"></a>离散化(要求保序)</h1><p><strong>离散化是在不改变数据相对大小的条件下，对数据进行相应的缩小。</strong></p>
+<p>此时我们有$10^5$ 个数，但是数的取值范围为$10^9$, 如果在某个问题中我们需要将这些数作为下标使用，那么我们需要去开一个长度为$10^9$ 的数组，但是我们只会用到其中$10^5$ 个位置，因此这样会造成很大的空间浪费。此时我们引出离散化。</p>
 <p>如果我们不需要这些数的具体数值，那么我们完全可以将这$10^5$ 个取值范围为$10^9$ 的数映射到 $0\sim 10^5$ ，这样我们只需要一个长度为$10^5$ 的数组即可。</p>
 <p>如何映射呢：现在给我们5个数：$1,5,3,6,10000$</p>
 <p>我们先将数组排序，然后把每个数映射到它的下标即可了,并且在这之前我们需要去重, 否则同样的数却映射到不同的值去了。</p>
@@ -423,6 +424,7 @@
 <h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>首先观察数据范围，</p>
 <p>我们发现位置的范围特别大$-10^9\sim 10^9$, 但是操作和查询次数只有$-10^5\sim 10^5$，因此使用离散化。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bisect <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> bisect_left(index,x)+<span class="number">1</span>  <span class="comment">#加1的原因是方便后面前缀和。</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">nums=[]</span><br><span class="line">index=[]</span><br><span class="line">query=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    x,c=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    nums.append((x,c))</span><br><span class="line">    index.append(x)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    a,b=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    index.append(a)</span><br><span class="line">    index.append(b)</span><br><span class="line">    query.append((a,b))</span><br><span class="line">    </span><br><span class="line">index=<span class="built_in">list</span>(<span class="built_in">set</span>(index))</span><br><span class="line">index.sort()</span><br><span class="line">N=[<span class="number">0</span>]*<span class="number">3</span>*<span class="number">100000</span></span><br><span class="line"><span class="keyword">for</span> x,c <span class="keyword">in</span> nums:</span><br><span class="line">    N[find(x)]+=c</span><br><span class="line">s=[<span class="number">0</span>]*<span class="number">3</span>*<span class="number">100000</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(s)):</span><br><span class="line">    s[i]=s[i-<span class="number">1</span>]+N[i]</span><br><span class="line"><span class="keyword">for</span> a,b <span class="keyword">in</span> query:</span><br><span class="line">    <span class="built_in">print</span>(s[find(b)]-s[find(a)-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="离散化-不要求保序"><a href="#离散化-不要求保序" class="headerlink" title="离散化(不要求保序)"></a>离散化(不要求保序)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">maps = &#123;&#125;</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">global</span> cnt</span><br><span class="line">    <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> maps:</span><br><span class="line">        cnt += <span class="number">1</span></span><br><span class="line">        maps[x] = cnt</span><br><span class="line">    <span class="keyword">return</span> maps[x]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -561,7 +563,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -572,7 +574,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -638,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">离散化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">数据范围</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">1.1.1.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%8C%96-%E8%A6%81%E6%B1%82%E4%BF%9D%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">离散化(要求保序)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">数据范围</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">1.1.1.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%8C%96-%E4%B8%8D%E8%A6%81%E6%B1%82%E4%BF%9D%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">离散化(不要求保序)</span></a></li></ol></div>
             
 
           </div>
@@ -673,7 +675,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">57.5k</span>
+    <span title="Site words total count">60.2k</span>
   
 </div>
 <!--
