@@ -2668,4 +2668,55 @@
         <tag>并查集</tag>
       </tags>
   </entry>
+  <entry>
+    <title>树状数组</title>
+    <url>/2023/05/08/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h1 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h1><p><strong>树状数组是一个查询和修改复杂度都为log(n)的数据结构。主要用于数组的单点修改以及区间求和</strong>。</p>
+<p>在过去的学习中我们知道</p>
+<p>对于前缀和数组：修改操作：$O(n)$,  区间和: $O(1)$</p>
+<p>对于差分数组：修改操作： $O(1)$,   区间和: $O(n)$</p>
+<img src="/2023/05/08/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/a.png" class="">
+<img src="/2023/05/08/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/b.png" class="">
+<img src="/2023/05/08/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/c.png" class="">
+<img src="/2023/05/08/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/d.png" class="">
+<p><strong>前缀和就是把前驱加起来。</strong></p>
+<p><strong>改变某个数就是把它和它的所有祖先节点都改了。</strong></p>
+<img src="/2023/05/08/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/f.png" class="">
+<img src="/2023/05/08/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/g.png" class="">
+<img src="/2023/05/08/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/h.png" class="">
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>树状数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>楼兰图腾</title>
+    <url>/2023/05/10/%E6%A5%BC%E5%85%B0%E5%9B%BE%E8%85%BE/</url>
+    <content><![CDATA[<h1 id="楼兰图腾"><a href="#楼兰图腾" class="headerlink" title="楼兰图腾"></a>楼兰图腾</h1><p>在完成了分配任务之后，西部 314 来到了楼兰古城的西部。</p>
+<p>相传很久以前这片土地上(比楼兰古城还早)生活着两个部落，一个部落崇拜尖刀(<code>V</code>)，一个部落崇拜铁锹(<code>∧</code>)，他们分别用 <code>V</code> 和 <code>∧</code> 的形状来代表各自部落的图腾。西部 314</p>
+<p> 在楼兰古城的下面发现了一幅巨大的壁画，壁画上被标记出了 <em>n</em> 个点，经测量发现这 <em>n</em> 个点的水平位置和竖直位置是两两不同的。</p>
+<p>西部 314 认为这幅壁画所包含的信息与这 <em>n</em> 个点的相对位置有关，因此不妨设坐标分别为 (1,<em>y</em>1),(2,<em>y</em>2),…,(<em>n</em>,<em>y**n</em>)，其中 <em>y</em>1∼<em>y**n</em> 是 1 到 <em>n</em> 的一个排列。西部 314 打算研究这幅壁画中包含着多少个图腾。</p>
+<p>如果三个点 $(i,y_i),(j,y_j),(k,y_k)$</p>
+<p> 满足 1≤<em>i</em>&lt;<em>j</em>&lt;<em>k</em>≤<em>n</em> 且 $y_i&gt;y_j,y_j&lt;y_k$，则称这三个点构成 <code>V</code> 图腾;</p>
+<p>如果三个点 $(i,y_i),(j,y_j),(k,y_k)$</p>
+<p> 满足 1≤<em>i</em>&lt;<em>j</em>&lt;<em>k</em>≤<em>n</em> 且  $y_i<y_j,y_j>y_k$</p>
+<p>，则称这三个点构成 <code>∧</code> 图腾;</p>
+<p>西部 314 想知道，这 <em>n</em> 个点中两个部落图腾的数目。因此，你需要编写一个程序来求出 <code>V</code> 的个数和 <code>∧</code> 的个数。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行一个数 <em>n</em>。</p>
+<p>第二行是 <em>n</em> 个数，分别代表$y_1,y_2\cdots y_n$</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>两个数，中间用空格隔开，依次为 <code>V</code> 的个数和 <code>∧</code> 的个数。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>对于所有数据，<em>n</em>≤200000，且输出答案不会超过 <em>i<strong>n</strong>t</em>64。$y_1\sim y_n$ 是 1 到 <em>n</em> 的一个排列。</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>树状数组</tag>
+      </tags>
+  </entry>
 </search>
