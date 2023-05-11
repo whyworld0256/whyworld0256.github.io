@@ -2731,14 +2731,75 @@
     <content><![CDATA[<h1 id="一个简单的整数问题"><a href="#一个简单的整数问题" class="headerlink" title="一个简单的整数问题"></a>一个简单的整数问题</h1><p>给定长度为 <em>N</em> 的数列 <em>A</em>，然后输入 <em>M</em> 行操作指令。</p>
 <p>第一类指令形如 <code>C l r d</code>，表示把数列中第 <em>l</em>∼<em>r</em> 个数都加 <em>d</em>。</p>
 <p>第二类指令形如 <code>Q x</code>，表示询问数列中第 <em>x</em> 个数的值。对于每个询问，输出一个整数表示答案。</p>
+<span id="more"></span>
 <h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含两个整数 <em>N</em> 和 <em>M</em>。</p>
 <p>第二行包含 <em>N</em> 个整数 <em>A</em>[<em>i</em>]。</p>
 <p>接下来 <em>M</em> 行表示 <em>M</em> 条指令，每条指令的格式如题目描述所示。</p>
 <h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问，输出一个整数表示答案。每个答案占一行。</p>
-<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>如果考虑直接使用树状数组，对于第一类指令，我们只能遍历$l\sim r$ 然后使用$add$, 显然这样太慢了。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>本题要求实现两个操作，区间加and单点查询。</p>
+<p>如果考虑直接使用树状数组，对于第一类指令，我们只能遍历$l\sim r$ 然后使用$add$, 显然这样太慢了。</p>
 <p>对于修改操作，差分数组是最快的，但是差分数组要去询问即求前缀和就很慢，因此我们将差分和树状数组相结合。</p>
 <p>就是把在差分数组的基础上建立树状数组。因此对于第一类指令，我们只需使用两次$add$ ，而第二类指令既是前缀和。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100005</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">a=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">b=[<span class="number">0</span>]*N</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    b[i]=a[i]-a[i-<span class="number">1</span>]</span><br><span class="line">tr=[<span class="number">0</span>]*N</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lowbit</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x&amp;(-x)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,c</span>):</span><br><span class="line">    <span class="keyword">while</span> x&lt;=n:</span><br><span class="line">        tr[x]+=c</span><br><span class="line">        x+=lowbit(x)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ask</span>(<span class="params">x</span>):</span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> x&gt;=<span class="number">1</span>:</span><br><span class="line">        ans+=tr[x]</span><br><span class="line">        x-=lowbit(x)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    add(i,b[i])</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    s,*array=<span class="built_in">input</span>().split()</span><br><span class="line">    <span class="keyword">if</span> s==<span class="string">&#x27;C&#x27;</span>:</span><br><span class="line">        l,r,d=<span class="built_in">int</span>(array[<span class="number">0</span>]),<span class="built_in">int</span>(array[<span class="number">1</span>]),<span class="built_in">int</span>(array[<span class="number">2</span>])</span><br><span class="line">        add(l,d)</span><br><span class="line">        add(r+<span class="number">1</span>,-d)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        x=<span class="built_in">int</span>(array[<span class="number">0</span>])</span><br><span class="line">        <span class="built_in">print</span>(ask(x))</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>树状数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>迷一样的牛</title>
+    <url>/2023/05/11/%E8%BF%B7%E4%B8%80%E6%A0%B7%E7%9A%84%E7%89%9B/</url>
+    <content><![CDATA[<h1 id="谜一样的牛"><a href="#谜一样的牛" class="headerlink" title="谜一样的牛"></a>谜一样的牛</h1><p>有 <em>n</em> 头奶牛，已知它们的身高为 1∼<em>n</em></p>
+<p> 且各不相同，但不知道每头奶牛的具体身高。现在这 <em>n</em></p>
+<p> 头奶牛站成一列，已知第 <em>i</em> 头牛前面有 <em>A**i</em> 头牛比它低，求每头奶牛的身高。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第 1 行：输入整数 <em>n</em>。</p>
+<p>第 2..<em>n</em> 行：每行输入一个整数 <em>A**i</em>，第 <em>i</em> 行表示第 <em>i</em> 头牛前面有 <em>A**i</em> 头牛比它低。<br> （注意：因为第 1 头牛前面没有牛，所以并没有将它列出）</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出包含 <em>n</em> 行，每行输出一个整数表示牛的身高。</p>
+<p>第 <em>i</em> 行输出第 <em>i</em> 头牛的身高。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤<em>n</em>≤10^5^</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>我们应该总是去思考如何把这道题转化为树状数组能做的一到题。</p>
+<p>首先如果我们从前往后看数据，没办法进行推理，因为越靠后的数据蕴含的信息更多，因此我们从后往前看。</p>
+<p>举个例子：$1,2,1,0$</p>
+<p>最后一个数是0，表明最后一头牛的高度在所有牛中排第一位（越小越矮）</p>
+<p>倒数第二个数为1，表明倒数第二头牛的高度在前4头牛中排名第2.</p>
+<p>以此类推。</p>
+<p>因此我们把操作转化为了求前$k$ 头牛中第$n_k$ 矮的牛是多少。</p>
+<p>用前缀和加二分可以求出这个结果。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">lowbit</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x&amp;(-x)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,c</span>):</span><br><span class="line">    <span class="keyword">while</span> x&lt;=n:</span><br><span class="line">        tr[x]+=c</span><br><span class="line">        x+=lowbit(x)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ask</span>(<span class="params">x</span>):</span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> x&gt;=<span class="number">1</span>:</span><br><span class="line">        ans+=tr[x]</span><br><span class="line">        x-=lowbit(x)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">N=<span class="number">100005</span></span><br><span class="line">h=[<span class="number">0</span>]*N</span><br><span class="line">ans=[<span class="number">0</span>]*N</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">    h[i]=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">tr=[<span class="number">0</span>]*N</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    add(i,<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    k=h[i]+<span class="number">1</span> <span class="comment">#剩下的数中第k小的数</span></span><br><span class="line">    l,r=<span class="number">1</span>,n</span><br><span class="line">    <span class="keyword">while</span> l&lt;r: <span class="comment"># 二分</span></span><br><span class="line">        mid=(l+r)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> ask(mid)&gt;=k:</span><br><span class="line">            r=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l=mid+<span class="number">1</span></span><br><span class="line">    ans[i]=l <span class="comment">#存储答案</span></span><br><span class="line">    add(l,-<span class="number">1</span>) <span class="comment"># 表示这个数被用掉了</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span>(ans[i])</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>树状数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一个简单整数问题2</title>
+    <url>/2023/05/11/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E6%95%B4%E6%95%B0%E9%97%AE%E9%A2%982/</url>
+    <content><![CDATA[<h1 id="一个简单的整数问题2"><a href="#一个简单的整数问题2" class="headerlink" title="一个简单的整数问题2"></a>一个简单的整数问题2</h1><p>给定一个长度为 <em>N</em> 的数列 <em>A</em>，以及 <em>M</em> 条指令，每条指令可能是以下两种之一：</p>
+<ol>
+<li><p><code>C l r d</code>，表示把 $A[l],A[l+1]\cdots A[r]$ 都加上 <em>d</em>。</p>
+</li>
+<li><p><code>Q l r</code>，表示询问数列中第$l \sim r$ 个数的和。</p>
+</li>
+</ol>
+<p>对于每个询问，输出一个整数表示答案。</p>
+<span id="more"></span>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行两个整数 <em>N</em>,<em>M</em>。第二行 <em>N</em> 个整数 $A[i]$</p>
+<p>接下来 <em>M</em> 行表示 <em>M</em> 条指令，每条指令的格式如题目描述所示。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问，输出一个整数表示答案。每个答案占一行。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>本题与上一题的区别在于：上题只叫我们查询一个数，因此一个前缀和就解决了。但是此题需要查询一个区间和。</p>
+<p>对于求区间和我们依然选择去求前缀和，但是这样的话我们需要对树状数组求$r$次前缀和</p>
+<p>$a[1]+\cdots a[r]=\sum\limits_{i=1}^{r}a[i]= \sum\limits_{k=1}^{r} \sum\limits_{i=1}^{k}b[i]=(\sum\limits_{i=1}^{r}b[i])<em>(r+1)-\sum\limits_{i=1}^{r}i</em>b[i]$</p>
+<p>通过上面的式子，我们把$a[r]$ 的前缀和转化为了两个前缀和，分别为$b[i]$, $i*b[i]$</p>
+<p>因此我们同时维护两个树状数组即可，一个建立在差分数组$b[i]$ 上，一个建立在$i*b[i]$ 这个数组上。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N=<span class="number">100005</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">a=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">b=[<span class="number">0</span>]*N</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tr1=[<span class="number">0</span>]*N<span class="comment"># 维护b[i]前缀和</span></span><br><span class="line">tr2=[<span class="number">0</span>]*N<span class="comment"># 维护i*b[i] 前缀和</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lowbit</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x&amp;(-x)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,c,tr</span>):</span><br><span class="line">    <span class="keyword">while</span> x&lt;=n:</span><br><span class="line">        tr[x]+=c</span><br><span class="line">        x+=lowbit(x)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ask</span>(<span class="params">x,tr</span>):</span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> x&gt;=<span class="number">1</span>:</span><br><span class="line">        ans+=tr[x]</span><br><span class="line">        x-=lowbit(x)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">qianzhuihe</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> ask(x,tr1)*(x+<span class="number">1</span>)-ask(x,tr2)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    b[i]=a[i]-a[i-<span class="number">1</span>]</span><br><span class="line">    add(i,b[i],tr1)</span><br><span class="line">    add(i,b[i]*i,tr2)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    s,*array=<span class="built_in">input</span>().split()</span><br><span class="line">    <span class="keyword">if</span> s==<span class="string">&#x27;C&#x27;</span>:</span><br><span class="line">        l,r,d=<span class="built_in">int</span>(array[<span class="number">0</span>]),<span class="built_in">int</span>(array[<span class="number">1</span>]),<span class="built_in">int</span>(array[<span class="number">2</span>])</span><br><span class="line">        add(l,d,tr1)</span><br><span class="line">        add(l,l*d,tr2)</span><br><span class="line">        add(r+<span class="number">1</span>,-d,tr1)</span><br><span class="line">        add(r+<span class="number">1</span>,-(r+<span class="number">1</span>)*d,tr2)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        l,r=<span class="built_in">int</span>(array[<span class="number">0</span>]),<span class="built_in">int</span>(array[<span class="number">1</span>])</span><br><span class="line">        <span class="built_in">print</span>(qianzhuihe(r)-qianzhuihe(l-<span class="number">1</span>))</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>数据结构</category>
