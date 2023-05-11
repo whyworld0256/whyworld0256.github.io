@@ -87,7 +87,7 @@
 <meta property="og:description" content="楼兰图腾在完成了分配任务之后，西部 314 来到了楼兰古城的西部。 相传很久以前这片土地上(比楼兰古城还早)生活着两个部落，一个部落崇拜尖刀(V)，一个部落崇拜铁锹(∧)，他们分别用 V 和 ∧ 的形状来代表各自部落的图腾。西部 314  在楼兰古城的下面发现了一幅巨大的壁画，壁画上被标记出了 n 个点，经测量发现这 n 个点的水平位置和竖直位置是两两不同的。 西部 314 认为这幅壁画所包含的信">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-05-10T08:45:03.000Z">
-<meta property="article:modified_time" content="2023-05-10T08:49:42.940Z">
+<meta property="article:modified_time" content="2023-05-10T13:53:27.701Z">
 <meta property="article:author" content="王海宇">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="树状数组">
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  421
+                  773
                 </span>
               
 
@@ -387,7 +387,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -419,9 +419,15 @@
 <p>，则称这三个点构成 <code>∧</code> 图腾;</p>
 <p>西部 314 想知道，这 <em>n</em> 个点中两个部落图腾的数目。因此，你需要编写一个程序来求出 <code>V</code> 的个数和 <code>∧</code> 的个数。</p>
 <h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行一个数 <em>n</em>。</p>
-<p>第二行是 <em>n</em> 个数，分别代表$y_1,y_2\cdots y_n$</p>
+<p>第二行是 <em>n</em> 个数，分别代表 $y_1,y_2\cdots y_n$</p>
 <h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>两个数，中间用空格隔开，依次为 <code>V</code> 的个数和 <code>∧</code> 的个数。</p>
-<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>对于所有数据，<em>n</em>≤200000，且输出答案不会超过 <em>i<strong>n</strong>t</em>64。$y_1\sim y_n$ 是 1 到 <em>n</em> 的一个排列。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>对于所有数据，<em>n</em>≤200000，且输出答案不会超过 int64。$y_1\sim y_n$ 是 1 到 <em>n</em> 的一个排列。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>我们如何把这个问题转化为一个可以用树状数组解决的问题？</p>
+<p>以图腾<code>V</code> 为例，我们考虑去求以每个点为<code>V</code> 下面那个点而构成的<code>V</code> 的个数，然后求和便是全部<code>V</code> 的个数。</p>
+<p>求以$y_k$ 为中间点的<code>V</code> 的个数只需统计$y_k$左边在范围$[y_k+1,n]$的点的个数，然后统计$y_k$ 右边在范围$[y_k+1,n]$的点的个数，二者相乘就是结果。</p>
+<p>然后统计个数我们可以用前缀和来求。</p>
+<p>这样的话，我们只需要两个操作：给某个位置加1，求区间和。因此可以用树状数组来做。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">a=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">N=<span class="number">200005</span></span><br><span class="line">tr=[<span class="number">0</span>]*N <span class="comment">#tr[i] 存当前i出现的次数</span></span><br><span class="line">greater=[<span class="number">0</span>]*N <span class="comment">#greater[i] 存储a[i] 左边比他大的个数</span></span><br><span class="line">lower=[<span class="number">0</span>]*N <span class="comment"># lower[i] 存储a[i] 左边比他小的个数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lowbit</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x&amp;(-x)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,c</span>):</span><br><span class="line">    <span class="keyword">while</span> x&lt;=n:</span><br><span class="line">        tr[x]+=c</span><br><span class="line">        x+=lowbit(x)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ask</span>(<span class="params">x</span>): <span class="comment">#前缀和</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> x&gt;=<span class="number">1</span>:</span><br><span class="line">        ans+=tr[x]</span><br><span class="line">        x-=lowbit(x)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    y=a[i]</span><br><span class="line">    greater[i]=ask(n)-ask(y)</span><br><span class="line">    lower[i]=ask(y-<span class="number">1</span>)</span><br><span class="line">    add(y,<span class="number">1</span>) <span class="comment"># 把当前这个数加到树状数组中去</span></span><br><span class="line">tr = [<span class="number">0</span>]*N</span><br><span class="line">ans1=ans2=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    y=a[i]</span><br><span class="line">    ans1+=greater[i]*(ask(n)-ask(y))</span><br><span class="line">    ans2+=lower[i]*ask(y-<span class="number">1</span>)</span><br><span class="line">    add(y,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(ans1,end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ans2)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -478,6 +484,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/05/10/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B4%E6%95%B0%E9%97%AE%E9%A2%98/" rel="prev" title="一个简单的整数问题">
+                一个简单的整数问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -558,7 +568,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -635,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A5%BC%E5%85%B0%E5%9B%BE%E8%85%BE"><span class="nav-number">1.</span> <span class="nav-text">楼兰图腾</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">数据范围</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A5%BC%E5%85%B0%E5%9B%BE%E8%85%BE"><span class="nav-number">1.</span> <span class="nav-text">楼兰图腾</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">数据范围</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">1.0.1.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -670,7 +680,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">60.7k</span>
+    <span title="Site words total count">61.5k</span>
   
 </div>
 <!--

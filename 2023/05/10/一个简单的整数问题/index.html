@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="算法,图论,拓扑排序," />
+  <meta name="keywords" content="数据结构,树状数组," />
 
 
 
@@ -79,19 +79,18 @@
 
 
 
-<meta name="description" content="有向图的拓扑序列给定一个 n 个点 m 条边的有向图，点的编号是 1 到 n，图中可能存在重边和自环。 请输出任意一个该有向图的拓扑序列，如果拓扑序列不存在，则输出 −1。 若一个由图中所有点构成的序列 A 满足：对于图中的每条边 (x,y)，x 在 A 中都出现在 y 之前，则称 A 是该图的一个拓扑序列。">
+<meta name="description" content="一个简单的整数问题给定长度为 N 的数列 A，然后输入 M 行操作指令。 第一类指令形如 C l r d，表示把数列中第 l∼r 个数都加 d。 第二类指令形如 Q x，表示询问数列中第 x 个数的值。对于每个询问，输出一个整数表示答案。 输入格式第一行包含两个整数 N 和 M。 第二行包含 N 个整数 A[i]。 接下来 M 行表示 M 条指令，每条指令的格式如题目描述所示。 输出格式对于每个询">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拓扑排序">
-<meta property="og:url" content="http://example.com/2023/05/01/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="一个简单的整数问题">
+<meta property="og:url" content="http://example.com/2023/05/10/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B4%E6%95%B0%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="最伟大的博客">
-<meta property="og:description" content="有向图的拓扑序列给定一个 n 个点 m 条边的有向图，点的编号是 1 到 n，图中可能存在重边和自环。 请输出任意一个该有向图的拓扑序列，如果拓扑序列不存在，则输出 −1。 若一个由图中所有点构成的序列 A 满足：对于图中的每条边 (x,y)，x 在 A 中都出现在 y 之前，则称 A 是该图的一个拓扑序列。">
+<meta property="og:description" content="一个简单的整数问题给定长度为 N 的数列 A，然后输入 M 行操作指令。 第一类指令形如 C l r d，表示把数列中第 l∼r 个数都加 d。 第二类指令形如 Q x，表示询问数列中第 x 个数的值。对于每个询问，输出一个整数表示答案。 输入格式第一行包含两个整数 N 和 M。 第二行包含 N 个整数 A[i]。 接下来 M 行表示 M 条指令，每条指令的格式如题目描述所示。 输出格式对于每个询">
 <meta property="og:locale">
-<meta property="article:published_time" content="2023-05-01T07:41:35.000Z">
-<meta property="article:modified_time" content="2023-05-02T10:32:09.115Z">
+<meta property="article:published_time" content="2023-05-10T14:16:17.000Z">
+<meta property="article:modified_time" content="2023-05-10T14:24:00.538Z">
 <meta property="article:author" content="王海宇">
-<meta property="article:tag" content="算法">
-<meta property="article:tag" content="图论">
-<meta property="article:tag" content="拓扑排序">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="树状数组">
 <meta name="twitter:card" content="summary">
 
 
@@ -122,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2023/05/01/拓扑排序/"/>
+  <link rel="canonical" href="http://example.com/2023/05/10/一个简单的整数问题/"/>
 
 
 
 
 
-  <title>拓扑排序 | 最伟大的博客</title>
+  <title>一个简单的整数问题 | 最伟大的博客</title>
   
 
 
@@ -289,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/01/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/10/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B4%E6%95%B0%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -306,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">拓扑排序</h1>
+          <h1 class="post-title" itemprop="name headline">一个简单的整数问题</h1>
         
 
         <div class="post-meta">
@@ -318,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-05-01T15:41:35+08:00">
-                2023-05-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-05-10T22:16:17+08:00">
+                2023-05-10
               </time>
             
 
@@ -341,8 +340,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">图论</span>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -372,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  454
+                  430
                 </span>
               
 
@@ -409,20 +408,17 @@
       
 
       
-        <h1 id="有向图的拓扑序列"><a href="#有向图的拓扑序列" class="headerlink" title="有向图的拓扑序列"></a>有向图的拓扑序列</h1><p>给定一个 <em>n</em> 个点 <em>m</em> 条边的有向图，点的编号是 1 到 <em>n</em>，图中可能存在重边和自环。</p>
-<p>请输出任意一个该有向图的拓扑序列，如果拓扑序列不存在，则输出 −1。</p>
-<p>若一个由图中所有点构成的序列 <em>A</em> 满足：对于图中的每条边 (<em>x</em>,<em>y</em>)，<em>x</em> 在 <em>A</em> 中都出现在 <em>y</em> 之前，则称 <em>A</em> 是该图的一个拓扑序列。</p>
-<span id="more"></span>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含两个整数 <em>n</em> 和 <em>m</em>。</p>
-<p>接下来 <em>m</em> 行，每行包含两个整数 <em>x</em> 和 <em>y</em>，表示存在一条从点 <em>x</em> 到点 <em>y</em> 的有向边 (<em>x</em>,<em>y</em>)。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>共一行，如果存在拓扑序列，则输出任意一个合法的拓扑序列即可。否则输出 −1。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>一个图能进行拓扑排序的充要条件是它是一个有向无环图。</p>
-<ul>
-<li>点的出度：以该点为起点的边的数量</li>
-<li>点的入度：以该点为终点的边的数量</li>
-</ul>
-<p>拓扑排序中入度为0的点作为起点。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line">N = <span class="number">100010</span></span><br><span class="line">M = <span class="number">2</span> * N</span><br><span class="line">graph = [-<span class="number">1</span>] * N</span><br><span class="line">e = [<span class="number">0</span>] * M</span><br><span class="line">ne = [<span class="number">0</span>] * M</span><br><span class="line">idx = <span class="number">0</span>   <span class="comment"># 指针</span></span><br><span class="line">in_degree = [<span class="number">0</span>] * N <span class="comment"># 每个点的入度</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a,b</span>):</span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    e[idx]=b</span><br><span class="line">    ne[idx]=graph[a]</span><br><span class="line">    graph[a]=idx</span><br><span class="line">    idx+=<span class="number">1</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">topsort</span>():</span><br><span class="line">    que=deque()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> in_degree[i]==<span class="number">0</span>:</span><br><span class="line">            que.append(i)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> que:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;-1&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">    tmp=[]</span><br><span class="line">    <span class="comment"># bfs</span></span><br><span class="line">    <span class="keyword">while</span> que:</span><br><span class="line">        node=que.popleft()</span><br><span class="line">        tmp.append(node) <span class="comment"># 加入到序列中去。</span></span><br><span class="line">        cur=graph[node] <span class="comment">#指针</span></span><br><span class="line">        <span class="comment"># 遍历所有邻接点。</span></span><br><span class="line">        <span class="keyword">while</span> cur!=-<span class="number">1</span>:</span><br><span class="line">            j=e[cur]</span><br><span class="line">            in_degree[j]-=<span class="number">1</span> <span class="comment">#把临界点的入度全部减掉1</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> in_degree[j]: <span class="comment">#如果减到0了</span></span><br><span class="line">                que.append(j)</span><br><span class="line">            cur=ne[cur]</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(tmp)!=n:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;-1&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>,tmp)))</span><br><span class="line">            </span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    a,b=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    add(a,b)</span><br><span class="line">    in_degree[b]+=<span class="number">1</span></span><br><span class="line">    </span><br><span class="line">topsort()</span><br></pre></td></tr></table></figure>
+        <h1 id="一个简单的整数问题"><a href="#一个简单的整数问题" class="headerlink" title="一个简单的整数问题"></a>一个简单的整数问题</h1><p>给定长度为 <em>N</em> 的数列 <em>A</em>，然后输入 <em>M</em> 行操作指令。</p>
+<p>第一类指令形如 <code>C l r d</code>，表示把数列中第 <em>l</em>∼<em>r</em> 个数都加 <em>d</em>。</p>
+<p>第二类指令形如 <code>Q x</code>，表示询问数列中第 <em>x</em> 个数的值。对于每个询问，输出一个整数表示答案。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含两个整数 <em>N</em> 和 <em>M</em>。</p>
+<p>第二行包含 <em>N</em> 个整数 <em>A</em>[<em>i</em>]。</p>
+<p>接下来 <em>M</em> 行表示 <em>M</em> 条指令，每条指令的格式如题目描述所示。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个询问，输出一个整数表示答案。每个答案占一行。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p>如果考虑直接使用树状数组，对于第一类指令，我们只能遍历$l\sim r$ 然后使用$add$, 显然这样太慢了。</p>
+<p>对于修改操作，差分数组是最快的，但是差分数组要去询问即求前缀和就很慢，因此我们将差分和树状数组相结合。</p>
+<p>就是把在差分数组的基础上建立树状数组。因此对于第一类指令，我们只需使用两次$add$ ，而第二类指令既是前缀和。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">N=<span class="number">100005</span></span><br><span class="line">n,m=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">a=[<span class="number">0</span>]+<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">b=[<span class="number">0</span>]*N</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    b[i]=a[i]-a[i-<span class="number">1</span>]</span><br><span class="line">tr=[<span class="number">0</span>]*N</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lowbit</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x&amp;(-x)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,c</span>):</span><br><span class="line">    <span class="keyword">while</span> x&lt;=n:</span><br><span class="line">        tr[x]+=c</span><br><span class="line">        x+=lowbit(x)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ask</span>(<span class="params">x</span>):</span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> x&gt;=<span class="number">1</span>:</span><br><span class="line">        ans+=tr[x]</span><br><span class="line">        x-=lowbit(x)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    add(i,b[i])</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    s,*array=<span class="built_in">input</span>().split()</span><br><span class="line">    <span class="keyword">if</span> s==<span class="string">&#x27;C&#x27;</span>:</span><br><span class="line">        l,r,d=<span class="built_in">int</span>(array[<span class="number">0</span>]),<span class="built_in">int</span>(array[<span class="number">1</span>]),<span class="built_in">int</span>(array[<span class="number">2</span>])</span><br><span class="line">        add(l,d)</span><br><span class="line">        add(r+<span class="number">1</span>,-d)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        x=<span class="built_in">int</span>(array[<span class="number">0</span>])</span><br><span class="line">        <span class="built_in">print</span>(ask(x))</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -440,11 +436,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
           
-            <a href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag"># 图论</a>
-          
-            <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" rel="tag"># 拓扑排序</a>
+            <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag"># 树状数组</a>
           
         </div>
       
@@ -472,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2023/05/01/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8/" rel="next" title="图的存储和遍历">
-                <i class="fa fa-chevron-left"></i> 图的存储和遍历
+              <a href="/2023/05/10/%E6%A5%BC%E5%85%B0%E5%9B%BE%E8%85%BE/" rel="next" title="楼兰图腾">
+                <i class="fa fa-chevron-left"></i> 楼兰图腾
               </a>
             
           </div>
@@ -481,10 +475,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2023/05/01/Bellman-Ford/" rel="prev" title="Bellman_Ford">
-                Bellman_Ford <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -642,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E5%90%91%E5%9B%BE%E7%9A%84%E6%8B%93%E6%89%91%E5%BA%8F%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">有向图的拓扑序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">输出格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.0.1.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B4%E6%95%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一个简单的整数问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">输出格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">1.0.1.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
