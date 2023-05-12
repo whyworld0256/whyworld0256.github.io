@@ -327,6 +327,400 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/08/%E9%A3%9F%E7%89%A9%E9%93%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="最伟大的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/05/08/%E9%A3%9F%E7%89%A9%E9%93%BE/" itemprop="url">食物链</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-05-08T14:14:30+08:00">
+                2023-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  767
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="2-食物链"><a href="#2-食物链" class="headerlink" title="2. 食物链"></a>2. 食物链</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>动物王国中有三类动物 <em>A</em>,<em>B</em>,<em>C</em>，这三类动物的食物链构成了有趣的环形。<em>A</em> 吃 <em>B</em>，<em>B</em> 吃 <em>C</em>，<em>C</em> 吃 <em>A</em>。</p>
+<p>现有 <em>N</em> 个动物，以 1∼<em>N</em> 编号。</p>
+<p>每个动物都是 <em>A</em>,<em>B</em>,<em>C</em>中的一种，但是我们并不知道它到底是哪一种。</p>
+<p>有人用两种说法对这 <em>N</em>个动物所构成的食物链关系进行描述：</p>
+<p>第一种说法是 <code>1 X Y</code>，表示 <em>X</em>和 <em>Y</em>是同类。第二种说法是 <code>2 X Y</code>，表示 <em>X</em> 吃 <em>Y</em>。</p>
+<p>此人对 <em>N</em>个动物，用上述两种说法，一句接一句地说出 <em>K</em> 句话，这 <em>K</em>句话有的是真的，有的是假的。</p>
+<p>当一句话满足下列三条之一时，这句话就是假话，否则就是真话。</p>
+<ol>
+<li>当前的话与前面的某些真的话冲突，就是假话；</li>
+<li><p>当前的话中 <em>X</em> 或 <em>Y</em> 比 <em>N</em> 大，就是假话；</p>
+</li>
+<li><p>当前的话表示 <em>X</em> 吃 <em>X</em>，就是假话。</p>
+</li>
+</ol>
+<p>你的任务是根据给定的 <em>N</em> 和 <em>K</em> 句话，输出假话的总数。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行是两个整数 <em>N</em> 和 <em>K</em>，以一个空格分隔。以下 <em>K</em> 行每行是三个正整数 <em>D</em>，<em>X</em>，<em>Y</em>，两数之间用一个空格隔开，其中 <em>D</em> 表示说法的种类。</p>
+<p>若 <em>D</em>=1，则表示 <em>X</em> 和 <em>Y</em> 是同类。</p>
+<p>若 <em>D</em>=2，则表示 <em>X</em> 吃 <em>Y</em>。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>只有一个整数，表示假话的数目。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>如果$x,y$ 作为了上面两种说法中的对象，那么我们称$x,y$ 之间存在关系。</p>
+<p>首先有一个事实：如果我们如果我们知道了$x,y$ ， $y,z$ 之间有关系，那么我们一定知道$x,z$ 之间有关系。</p>
+<p>例如：</p>
+<p>$x$ 可以吃$y$, $y$ 可以吃$z$, 那么$z$ 可以吃$x$</p>
+<p>如果$x$ 可以吃$y$ , $y$ 与$z$ 同类，那么$x$ 可以吃 $z$ </p>
+<p>对此，我们可以定义$x$ 和 $y$ 之间的距离$d$</p>
+<ul>
+<li>$d\%3==1$ ：$x$ 可以吃 $y$</li>
+<li>$d\%3==2$ ：$y$ 可以吃 $x$ </li>
+<li><p>$d\%3==0$ ：$x$ 与 $y$ 同类</p>
+<p>注意，上述$x$ 和 $y$ 不可以交换位置。</p>
+</li>
+</ul>
+<p>对于每个点，我们用$d$ 数组存下它到根节点的距离，这样任意给我两个点，我都可以算出这两个点之间的距离。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">N=<span class="number">50010</span></span><br><span class="line">d=[<span class="number">0</span>]*N</span><br><span class="line">p=[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):  <span class="comment"># 找到根节点，并且将d[x] 更新为x到根节点的距离</span></span><br><span class="line">    <span class="keyword">if</span> p[x]!=x:</span><br><span class="line">        q=find(p[x])  </span><br><span class="line">        d[x]+=d[p[x]]</span><br><span class="line">        p[x]=q</span><br><span class="line">    <span class="keyword">return</span> p[x]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n,k=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">res=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">    t,x,y=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="keyword">if</span> x&gt;n <span class="keyword">or</span> y&gt;n:</span><br><span class="line">        res+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        px,py=find(x),find(y)</span><br><span class="line">        <span class="keyword">if</span> t==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> px==py <span class="keyword">and</span> (d[x]-d[y])%<span class="number">3</span>!=<span class="number">0</span>: <span class="comment">#px==py表示x和y的关系已经明确了，后面那句话表示不合法</span></span><br><span class="line">                res+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> px!=py: <span class="comment"># 此时x和y之间还没有关系，即合法</span></span><br><span class="line">                p[px]=py</span><br><span class="line">                d[px]=d[y]-d[x]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> px==py <span class="keyword">and</span> (d[x]-d[y]-<span class="number">1</span>)%<span class="number">3</span>!=<span class="number">0</span>:</span><br><span class="line">                res+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> px!=py:</span><br><span class="line">                p[px]=py</span><br><span class="line">                d[px]=d[y]+<span class="number">1</span>-d[x]</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/08/%E5%A5%87%E5%81%B6%E6%B8%B8%E6%88%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="最伟大的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/05/08/%E5%A5%87%E5%81%B6%E6%B8%B8%E6%88%8F/" itemprop="url">奇偶游戏</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-05-08T13:04:42+08:00">
+                2023-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  831
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="奇偶游戏"><a href="#奇偶游戏" class="headerlink" title="奇偶游戏"></a>奇偶游戏</h1><p>小 <em>A</em> 和小 <em>B</em> 在玩一个游戏。首先，小 <em>A</em> 写了一个由 0 和 1 组成的序列 <em>S</em>，长度为 <em>N</em>。</p>
+<p>然后，小 <em>B</em> 向小 <em>A</em> 提出了 <em>M</em> 个问题。在每个问题中，小 <em>B</em> 指定两个数 <em>l</em> 和 <em>r</em>，小 <em>A</em> 回答 <em>S</em>[<em>l</em>∼<em>r</em>] 中有奇数个 1 还是偶数个 1。机智的小 <em>B</em> 发现小 <em>A</em> 有可能在撒谎。例如，小 <em>A</em> 曾经回答过 <em>S</em>[1∼3] 中有奇数个 1，<em>S</em>[4∼6] 中有偶数个 1，现在又回答 <em>S</em>[1∼6] 中有偶数个 1，显然这是自相矛盾的。</p>
+<p>请你帮助小 <em>B</em> 检查这 <em>M</em> 个答案，并指出在至少多少个回答之后可以确定小 <em>A</em> 一定在撒谎。</p>
+<p>即求出一个最小的 <em>k</em>，使得 01 序列 <em>S</em> 满足第 1∼<em>k</em> 个回答，但不满足第 1∼<em>k</em>+1 个回答。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含一个整数 <em>N</em>，表示 01 序列长度。第二行包含一个整数 <em>M</em>，表示问题数量。</p>
+<p>接下来 <em>M</em> 行，每行包含一组问答：两个整数 <em>l</em> 和 <em>r</em>，以及回答 <code>even</code> 或 <code>odd</code>，用以描述 <em>S</em>[<em>l</em>∼<em>r</em>] 中有偶数个 1 还是奇数个 1。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数 <em>k</em>，表示 01 序列满足第 1∼<em>k</em> 个回答，但不满足第 1∼<em>k</em>+1 个回答，如果 01 序列满足所有回答，则输出问题总数量。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$N\le 10^9, M\le 5000$</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p><strong>方法一：带边权的并查集</strong>（存储相对关系，并且这种关系有传递性）（类比食物链那道题）</p>
+<p>首先我们需要把<strong>一个范围中有奇数个1或者是偶数个1</strong>这样的条件转化为跟<strong>点</strong>相关的条件，这样才能用并查集来处理</p>
+<p>显然前缀和可以处理这个问题。</p>
+<p>$s[i]$ 表示$sum(s[1\sim i])$, 那么$s[i \sim j]$ 中有奇数个1，表示$s[j]$ 和 $s[i-1]$ 的奇偶性不相同。</p>
+<p>$s[i\sim j]$ 中有偶数个1表示$s[j]$ 和$s[i-1]$ 的奇偶性相同。</p>
+<p>$d$ 数组存每个点到它的根节点的距离，$d=0$ 表示它和根节点的奇偶性相同，$d=1$ 表示它和根节点的奇偶性不相同。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">N=<span class="number">5005</span></span><br><span class="line">d=[<span class="number">0</span>]*N</span><br><span class="line">p=[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)]</span><br><span class="line">mapp=&#123;&#125;</span><br><span class="line">idx=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">x</span>): <span class="comment">#离散化</span></span><br><span class="line">    <span class="keyword">global</span> idx</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> mapp.get(x):</span><br><span class="line">        idx+=<span class="number">1</span></span><br><span class="line">        mapp[x]=idx</span><br><span class="line">    <span class="keyword">return</span> mapp[x]</span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">if</span> p[x]!=x:</span><br><span class="line">        q=find(p[x])</span><br><span class="line">        d[x]+=d[p[x]]</span><br><span class="line">        p[x]=q</span><br><span class="line">    <span class="keyword">return</span> p[x]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">m=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">res=m</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    l,r,s=<span class="built_in">input</span>().split()</span><br><span class="line">    l,r=<span class="built_in">int</span>(l),<span class="built_in">int</span>(r)</span><br><span class="line">    x,y=get(l-<span class="number">1</span>),get(r) <span class="comment">#离散化,不用保序</span></span><br><span class="line">    px,py=find(x),find(y)</span><br><span class="line">    <span class="keyword">if</span> s==<span class="string">&#x27;even&#x27;</span>:</span><br><span class="line">        <span class="keyword">if</span> px==py <span class="keyword">and</span> (d[x]-d[y])%<span class="number">2</span>!=<span class="number">0</span>: <span class="comment">#px=py 表示二者已经产生了关系了，也就是说只要两个点有关系，它们就在同一个集合当中，(d[x]-d[y])%2!=0表示二者奇偶性不同</span></span><br><span class="line">            res=i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> px!=py: <span class="comment">#二者还没有产生关系，那就让二者奇偶性相同</span></span><br><span class="line">            p[px]=py</span><br><span class="line">            d[px]=d[y]-d[x]</span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        <span class="keyword">if</span> px==py <span class="keyword">and</span> (d[x]-d[y])%<span class="number">2</span>==<span class="number">0</span>: <span class="comment"># (d[x]-d[y])%2==0表示二者奇偶性相同。</span></span><br><span class="line">            res=i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> px!=py:</span><br><span class="line">            p[px]=py</span><br><span class="line">            d[px]=d[y]+<span class="number">1</span>-d[x]</span><br><span class="line"><span class="built_in">print</span>(res)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>方法二：扩展域</strong>（枚举的思想）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/07/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1786,358 +2180,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/03/%E7%BD%91%E7%BB%9C%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="最伟大的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/05/03/%E7%BD%91%E7%BB%9C%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4/" itemprop="url">网络延迟时间</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-05-03T11:03:28+08:00">
-                2023-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">图论</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  138
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="网络延迟时间"><a href="#网络延迟时间" class="headerlink" title="网络延迟时间"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/network-delay-time/description/?languageTags=python3">网络延迟时间</a></h1><p>本题就是Dijkstra 的直接应用，但是要熟悉leetcode中存图的方式。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">networkDelayTime</span>(<span class="params">self, times: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], n: <span class="built_in">int</span>, k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        g=defaultdict(<span class="built_in">dict</span>)</span><br><span class="line">        <span class="keyword">for</span> a,b,c <span class="keyword">in</span> times:</span><br><span class="line">            g[a][b]=c</span><br><span class="line">        N=<span class="number">105</span></span><br><span class="line">        state=[<span class="number">0</span>]*N</span><br><span class="line">        dis=[inf]*N</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">dijkstra</span>():</span><br><span class="line">            <span class="keyword">nonlocal</span> dis,state</span><br><span class="line">            heap=[]</span><br><span class="line">            heappush(heap,(<span class="number">0</span>,k))</span><br><span class="line">            dis[k]=<span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> heap:</span><br><span class="line">                distance,node=heappop(heap)</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> state[node]:</span><br><span class="line">                    state[node]=<span class="number">1</span></span><br><span class="line">                    <span class="keyword">for</span> b <span class="keyword">in</span> g[node]:</span><br><span class="line">                        <span class="keyword">if</span> dis[b]&gt;distance+g[node][b]:</span><br><span class="line">                            dis[b]=distance+g[node][b]</span><br><span class="line">                            heappush(heap,(dis[b],b))</span><br><span class="line">            ans=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">                ans=<span class="built_in">max</span>(ans,dis[i])</span><br><span class="line">            <span class="keyword">if</span> ans==inf:</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> ans</span><br><span class="line">        <span class="keyword">return</span> dijkstra()</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/02/%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="最伟大的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/05/02/%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95/" itemprop="url">匈牙利算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-05-02T18:26:52+08:00">
-                2023-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">图论</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  669
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="二分图的最大匹配"><a href="#二分图的最大匹配" class="headerlink" title="二分图的最大匹配"></a>二分图的最大匹配</h1><h3 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h3><p>二分图的匹配：给定一个二分图 <em>G</em>，在 <em>G</em> 的一个子图 <em>M</em> 中，<em>M</em> 的边集 {<em>E</em>} 中的任意两条边都不依附于同一个顶点，则称 <em>M</em> 是一个匹配。</p>
-<p><strong>匹配的两个重点：1. 匹配是边的集合；2. 在该集合中，任意两条边不能有共同的顶点</strong>。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2023/05/02/%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
 
@@ -2193,7 +2235,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2289,7 +2331,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">63.9k</span>
+    <span title="Site words total count">65.4k</span>
   
 </div>
 <!--

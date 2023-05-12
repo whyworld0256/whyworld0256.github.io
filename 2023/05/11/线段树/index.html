@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="用一维数组来存线段树： 若当前节点编号为$x$,   其父节点为$x&#x2F;&#x2F;2$, 也可表示为$x&gt;&gt;1$,   左儿子为$2*x$,也可表示为$x&lt;&lt;1$  右儿子为$2*x+1$, 也可表示为$x&lt;&lt;1|1$ 最大数给定一个正整数数列 a1,a2,…,an，每一个数都在 0∼p−1  之间。可以对这列数进行两种操作：  添加操作：向序列后添加一个数，序">
+<meta name="description" content="用一维数组来存线段树： 若当前节点编号为$x$,   其父节点为$x&#x2F;&#x2F;2$, 也可表示为$x&gt;&gt;1$,   左儿子为$2*x$,也可表示为$x&lt;&lt;1$  右儿子为$2*x+1$, 也可表示为$x&lt;&lt;1|1$ 五个基本操作 pushup： 通过子节点信息，计算父节点的信息 build： 将一段区间初始化为线段树 modify： 修改某个点或区间 que">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线段树">
 <meta property="og:url" content="http://example.com/2023/05/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/index.html">
 <meta property="og:site_name" content="最伟大的博客">
-<meta property="og:description" content="用一维数组来存线段树： 若当前节点编号为$x$,   其父节点为$x&#x2F;&#x2F;2$, 也可表示为$x&gt;&gt;1$,   左儿子为$2*x$,也可表示为$x&lt;&lt;1$  右儿子为$2*x+1$, 也可表示为$x&lt;&lt;1|1$ 最大数给定一个正整数数列 a1,a2,…,an，每一个数都在 0∼p−1  之间。可以对这列数进行两种操作：  添加操作：向序列后添加一个数，序">
+<meta property="og:description" content="用一维数组来存线段树： 若当前节点编号为$x$,   其父节点为$x&#x2F;&#x2F;2$, 也可表示为$x&gt;&gt;1$,   左儿子为$2*x$,也可表示为$x&lt;&lt;1$  右儿子为$2*x+1$, 也可表示为$x&lt;&lt;1|1$ 五个基本操作 pushup： 通过子节点信息，计算父节点的信息 build： 将一段区间初始化为线段树 modify： 修改某个点或区间 que">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/2023/05/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/a.png">
 <meta property="og:image" content="http://example.com/2023/05/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/b.png">
@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://example.com/2023/05/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/d.png">
 <meta property="og:image" content="http://example.com/2023/05/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/f.png">
 <meta property="article:published_time" content="2023-05-11T11:24:09.000Z">
-<meta property="article:modified_time" content="2023-05-11T13:14:20.935Z">
+<meta property="article:modified_time" content="2023-05-12T11:52:28.160Z">
 <meta property="article:author" content="王海宇">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="线段树">
@@ -377,7 +377,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  679
+                  136
                 </span>
               
 
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -424,28 +424,14 @@
 <p>其父节点为$x//2$, 也可表示为$x&gt;&gt;1$,  </p>
 <p>左儿子为$2*x$,也可表示为$x&lt;&lt;1$ </p>
 <p>右儿子为$2*x+1$, 也可表示为$x&lt;&lt;1|1$</p>
-<h1 id="最大数"><a href="#最大数" class="headerlink" title="最大数"></a>最大数</h1><p>给定一个正整数数列 <em>a</em>1,<em>a</em>2,…,an，每一个数都在 0∼<em>p</em>−1</p>
-<p> 之间。可以对这列数进行两种操作：</p>
-<ol>
-<li><p>添加操作：向序列后添加一个数，序列长度变成 <em>n</em>+1；</p>
-</li>
-<li><p>询问操作：询问这个序列中最后 <em>L</em>个数中最大的数是多少。</p>
-</li>
-</ol>
-<p>程序运行的最开始，整数序列为空。</p>
-<p>一共要对整数序列进行 <em>m</em>次操作。</p>
-<p>写一个程序，读入操作的序列，并输出询问操作的答案。</p>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行有两个正整数 <em>m</em>,<em>p</em>，意义如题目描述；</p>
-<p>接下来 <em>m</em> 行，每一行表示一个操作。</p>
-<p>如果该行的内容是 <code>Q L</code>，则表示这个操作是询问序列中最后 <em>L</em> 个数的最大数是多少；</p>
-<p>如果是 <code>A t</code>，则表示向序列后面加一个数，加入的数是 (<em>t</em>+<em>a</em>) <em>m<strong>o</strong>d</em> <em>p</em></p>
-<p>。其中，<em>t</em> 是输入的参数，<em>a</em> 是在这个添加操作之前最后一个询问操作的答案（如果之前没有询问操作，则 <em>a</em>=0）。</p>
-<p>第一个操作一定是添加操作。对于询问操作，<em>L</em>&gt;0 且不超过当前序列的长度。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每一个询问操作，输出一行。该行只有一个数，即序列中最后 <em>L</em>个数的最大数。</p>
-<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$1\le m\le 2*10^5$</p>
-<p>$1\le p\le 2*10^9$</p>
-<p>$0\le t&lt;p$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">N=<span class="number">200005</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,l,r,v=<span class="number">0</span></span>):</span><br><span class="line">        self.l=l</span><br><span class="line">        self.r=r</span><br><span class="line">        self.v=v</span><br><span class="line">tr=[<span class="literal">None</span>]*<span class="number">4</span>*N</span><br><span class="line">n,last=<span class="number">0</span>,<span class="number">0</span></span><br><span class="line">m,p=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">build</span>(<span class="params">u,l,r</span>): <span class="comment"># 建树</span></span><br><span class="line">    <span class="keyword">global</span> tr</span><br><span class="line">    tr[u]=Node(l,r)</span><br><span class="line">    <span class="keyword">if</span> l==r:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    mid=(l+r)//<span class="number">2</span></span><br><span class="line">    build(u*<span class="number">2</span>,l,mid); build(u*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">query</span>(<span class="params">u,l,r</span>): <span class="comment">#查询区间[l,r]的最大值</span></span><br><span class="line">    <span class="keyword">global</span> tr</span><br><span class="line">    <span class="keyword">if</span> tr[u].l&gt;=l <span class="keyword">and</span> tr[u].r&lt;=r:</span><br><span class="line">        <span class="keyword">return</span> tr[u].v</span><br><span class="line">    mid=(tr[u].l+tr[u].r)//<span class="number">2</span></span><br><span class="line">    v=<span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> l&lt;=mid:</span><br><span class="line">        v=query(u*<span class="number">2</span>,l,r)</span><br><span class="line">    <span class="keyword">if</span> r&gt;mid: <span class="comment">#注意是大于</span></span><br><span class="line">        v=<span class="built_in">max</span>(v,query(u*<span class="number">2</span>+<span class="number">1</span>,l,r))</span><br><span class="line">    <span class="keyword">return</span> v</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">modify</span>(<span class="params">u,x,v</span>): <span class="comment">#修改x位置的值为v</span></span><br><span class="line">    <span class="keyword">global</span> tr</span><br><span class="line">    <span class="keyword">if</span> tr[u].l==x <span class="keyword">and</span> tr[u].r==x:</span><br><span class="line">        tr[u].v=v</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        mid=(tr[u].l+tr[u].r)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> x&lt;=mid:</span><br><span class="line">            modify(u*<span class="number">2</span>,x,v)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            modify(u*<span class="number">2</span>+<span class="number">1</span>,x,v)</span><br><span class="line">        tr[u].v=<span class="built_in">max</span>(tr[u*<span class="number">2</span>].v,tr[u*<span class="number">2</span>+<span class="number">1</span>].v)</span><br><span class="line">        </span><br><span class="line">build(<span class="number">1</span>,<span class="number">1</span>,m)</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    op,num=sys.stdin.readline().split()</span><br><span class="line">    l=<span class="built_in">int</span>(num)</span><br><span class="line">    <span class="keyword">if</span> op==<span class="string">&#x27;A&#x27;</span>:</span><br><span class="line">        n+=<span class="number">1</span></span><br><span class="line">        modify(<span class="number">1</span>,n,(l+last)%p)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        last=query(<span class="number">1</span>,n-l+<span class="number">1</span>,n)</span><br><span class="line">        <span class="built_in">print</span>(last)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<h1 id="五个基本操作"><a href="#五个基本操作" class="headerlink" title="五个基本操作"></a>五个基本操作</h1><ul>
+<li>pushup： 通过子节点信息，计算父节点的信息</li>
+<li>build： 将一段区间初始化为线段树</li>
+<li>modify： 修改某个点或区间</li>
+<li>query： 查询某一段区间的信息</li>
+<li>pushdown： 将父节点的修改传递到子节点</li>
+</ul>
+<p>​    </p>
 
       
     </div>
@@ -586,7 +572,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -663,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">最大数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">数据范围</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">五个基本操作</span></a></li></ol></div>
             
 
           </div>
@@ -698,7 +684,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">63.9k</span>
+    <span title="Site words total count">65.4k</span>
   
 </div>
 <!--
