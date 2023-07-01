@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="英语每日练," />
+  <meta name="keywords" content="回溯," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="英语每日练2——泰坦号">
+<meta name="description" content="分割回文串题目描述给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是 回文串 。返回 s 所有可能的分割方案。 回文串 是正着读和反着读都一样的字符串。 分析ans数组去存储最终答案，path数组去存储每一次合法的分割方案. 我们暴力去枚举每种分割方案，在每次分出一个字串的时候去判断其是否为回文串,如果是，加入path, 递归终止时，将path 加入到ans中。 代码123456789">
 <meta property="og:type" content="article">
-<meta property="og:title" content="英语每日练2——泰坦号">
-<meta property="og:url" content="http://example.com/2023/06/30/%E8%8B%B1%E8%AF%AD%E6%AF%8F%E6%97%A5%E7%BB%832%E2%80%94%E2%80%94%E6%B3%B0%E5%9D%A6%E5%8F%B7/index.html">
+<meta property="og:title" content="分割回文串">
+<meta property="og:url" content="http://example.com/2023/07/01/%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/index.html">
 <meta property="og:site_name" content="最伟大的博客">
-<meta property="og:description" content="英语每日练2——泰坦号">
+<meta property="og:description" content="分割回文串题目描述给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是 回文串 。返回 s 所有可能的分割方案。 回文串 是正着读和反着读都一样的字符串。 分析ans数组去存储最终答案，path数组去存储每一次合法的分割方案. 我们暴力去枚举每种分割方案，在每次分出一个字串的时候去判断其是否为回文串,如果是，加入path, 递归终止时，将path 加入到ans中。 代码123456789">
 <meta property="og:locale">
-<meta property="article:published_time" content="2023-06-30T12:22:43.000Z">
-<meta property="article:modified_time" content="2023-06-30T13:02:43.025Z">
+<meta property="article:published_time" content="2023-07-01T09:41:13.000Z">
+<meta property="article:modified_time" content="2023-07-01T12:05:10.980Z">
 <meta property="article:author" content="王海宇">
-<meta property="article:tag" content="英语每日练">
+<meta property="article:tag" content="回溯">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2023/06/30/英语每日练2——泰坦号/"/>
+  <link rel="canonical" href="http://example.com/2023/07/01/分割回文串/"/>
 
 
 
 
 
-  <title>英语每日练2——泰坦号 | 最伟大的博客</title>
+  <title>分割回文串 | 最伟大的博客</title>
   
 
 
@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/30/%E8%8B%B1%E8%AF%AD%E6%AF%8F%E6%97%A5%E7%BB%832%E2%80%94%E2%80%94%E6%B3%B0%E5%9D%A6%E5%8F%B7/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/01/%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">英语每日练2——泰坦号</h1>
+          <h1 class="post-title" itemprop="name headline">分割回文串</h1>
         
 
         <div class="post-meta">
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-06-30T20:22:43+08:00">
-                2023-06-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-01T17:41:13+08:00">
+                2023-07-01
               </time>
             
 
@@ -338,7 +338,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  349
+                  234
                 </span>
               
 
@@ -361,10 +361,6 @@
           
 
           
-              <div class="post-description">
-                  英语每日练2——泰坦号
-              </div>
-          
 
         </div>
       </header>
@@ -379,49 +375,11 @@
       
 
       
-        <blockquote>
-<p>This morning, an ROV, or Remote Opereted Vehicle from the vessel Horizon Arctic, discovered the tail cone of the Titan submersible , approximately 1600 feet from the bow of  the Titanic on the seafloor. The ROV subsequently found additional debris.</p>
-</blockquote>
-<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
-<li>vessel: 船，血管</li>
-<li>submersible: 潜水器</li>
-<li>tail cone：尾椎</li>
-<li>bow： 鞠躬，点头，船首</li>
-<li>subsequently：随后</li>
-<li>debries: 残骸</li>
-</ul>
-<blockquote>
-<p>In consultation with experts from within the unified command, the debris is consistent with the catastrophic loss of the pressure chamber. Upon this determination, we immediately notified the families. On behalf of the United States Coast Guard, and the entire unified command, I offer my deepest condolences to the families.</p>
-</blockquote>
-<h3 id="知识点-1"><a href="#知识点-1" class="headerlink" title="知识点"></a>知识点</h3><ul>
-<li>consultation: 商讨</li>
-<li>unified command：联合指挥所</li>
-<li>be consistent with: 与……一致</li>
-<li>notify: 通知</li>
-<li>condolence:  吊唁，哀悼，慰问</li>
-<li>upon the determination: 经过确认后</li>
-<li>chamber: 房间，室，腔，舱</li>
-</ul>
-<blockquote>
-<p>I can only imagine, what this has been like for them. And I hope that discovery provides some solace during the difficult time. Additionally, we’ve been in close contact with the British and French consul general, to ensure that they are fully apprized, and that their concerns are being addressed. the outpouring of support in this highly complex search operation has been robust and immensely appreciated. </p>
-</blockquote>
-<h3 id="知识点-2"><a href="#知识点-2" class="headerlink" title="知识点"></a>知识点</h3><ul>
-<li>solace:  安慰，慰藉</li>
-<li>consul general： 总领事</li>
-<li>apprize： 通知</li>
-<li>outpouring： （强烈感情的）倾吐，流露；涌现，喷涌</li>
-<li>robust： 强健的，强壮的，强烈的</li>
-<li>immensely： 非常</li>
-</ul>
-<blockquote>
-<p>We are grateful for the rapid mobilization of experts on the undersea search and rescue, and we thank all of the agencies and personnel for this full spectrum of international assistance that’s been provided. The ROVs will remain on scene and continue to gather information. Again, our most heartfelt condolences go out to the loved ones of the crew.</p>
-</blockquote>
-<h3 id="知识点-3"><a href="#知识点-3" class="headerlink" title="知识点"></a>知识点</h3><ul>
-<li>mobilization：动员</li>
-<li>personnel： 全体人员</li>
-<li>spectrum： 范围</li>
-<li>crew：全体船员</li>
-</ul>
+        <h1 id="分割回文串"><a href="#分割回文串" class="headerlink" title="分割回文串"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/palindrome-partitioning/description/">分割回文串</a></h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给你一个字符串 <code>s</code>，请你将 <code>s</code> 分割成一些子串，使每个子串都是 <strong>回文串</strong> 。返回 <code>s</code> 所有可能的分割方案。</p>
+<p><strong>回文串</strong> 是正着读和反着读都一样的字符串。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><code>ans</code>数组去存储最终答案，<code>path</code>数组去存储每一次合法的分割方案.</p>
+<p>我们暴力去枚举每种分割方案，在每次分出一个字串的时候去判断其是否为回文串,如果是，加入<code>path</code>, 递归终止时，将<code>path</code> 加入到<code>ans</code>中。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">partition</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">str</span>]]:</span><br><span class="line">        ans=[]</span><br><span class="line">        path=[]</span><br><span class="line">        n=<span class="built_in">len</span>(s)</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">i</span>): <span class="comment">#i是当前字串起始位置</span></span><br><span class="line">            <span class="keyword">if</span> i==n:<span class="comment">#递归出口</span></span><br><span class="line">                ans.append(path.copy())</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i,n): <span class="comment">#j是当前字串的结尾位置</span></span><br><span class="line">                t=s[i:(j+<span class="number">1</span>)]</span><br><span class="line">                <span class="keyword">if</span> t==t[::-<span class="number">1</span>]:</span><br><span class="line">                    path.append(t)</span><br><span class="line">                    dfs(j+<span class="number">1</span>)</span><br><span class="line">                    path.pop()<span class="comment"># 恢复现场</span></span><br><span class="line">        dfs(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -439,7 +397,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%AF%8F%E6%97%A5%E7%BB%83/" rel="tag"># 英语每日练</a>
+            <a href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag"># 回溯</a>
           
         </div>
       
@@ -467,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2023/06/28/%E8%8B%B1%E8%AF%AD%E6%AF%8F%E6%97%A5%E7%BB%831%E2%80%94%E2%80%94BlackPink%E6%BC%94%E5%94%B1%E4%BC%9AJennie%E4%B8%AD%E9%80%94%E9%80%80%E5%9C%BA/" rel="next" title="英语每日练1——BlackPink演唱会Jennie中途退场">
-                <i class="fa fa-chevron-left"></i> 英语每日练1——BlackPink演唱会Jennie中途退场
+              <a href="/2023/07/01/%E6%89%BE%E5%88%B0%E6%9C%80%E9%95%BF%E7%9A%84%E5%8D%8A%E9%87%8D%E5%A4%8D%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="找到最长的半重复子字符串">
+                <i class="fa fa-chevron-left"></i> 找到最长的半重复子字符串
               </a>
             
           </div>
@@ -477,8 +435,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2023/06/30/%E5%91%A8%E6%9D%B0%E4%BC%A6%E6%AD%8C%E6%9B%B2%E6%8E%A8%E8%8D%90/" rel="prev" title="周杰伦歌曲推荐">
-                周杰伦歌曲推荐 <i class="fa fa-chevron-right"></i>
+              <a href="/2023/07/01/%E6%B1%82%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%E7%9A%84%E6%83%A9%E7%BD%9A%E6%95%B0/" rel="prev" title="求一个整数的惩罚数">
+                求一个整数的惩罚数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -628,7 +586,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9-1"><span class="nav-number">2.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9-2"><span class="nav-number">3.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9-3"><span class="nav-number">4.</span> <span class="nav-text">知识点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">分割回文串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.0.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.0.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
