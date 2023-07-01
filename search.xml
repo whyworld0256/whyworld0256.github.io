@@ -101,4 +101,20 @@
         <tag>音乐</tag>
       </tags>
   </entry>
+  <entry>
+    <title>找到最长的半重复子字符串</title>
+    <url>/2023/07/01/%E6%89%BE%E5%88%B0%E6%9C%80%E9%95%BF%E7%9A%84%E5%8D%8A%E9%87%8D%E5%A4%8D%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h1 id="找到最长的半重复子字符串"><a href="#找到最长的半重复子字符串" class="headerlink" title="找到最长的半重复子字符串"></a><a href="https://leetcode.cn/problems/find-the-longest-semi-repetitive-substring/description/">找到最长的半重复子字符串</a></h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给你一个下标从 <strong>0</strong> 开始的字符串 <code>s</code> ，这个字符串只包含 <code>0</code> 到 <code>9</code> 的数字字符。</p>
+<p>如果一个字符串 <code>t</code> 中至多有一对相邻字符是相等的，那么称这个字符串 <code>t</code> 是 <strong>半重复的</strong> 。例如，<code>0010</code> 、<code>002020</code> 、<code>0123</code> 、<code>2002</code> 和 <code>54944</code> 是半重复字符串，而 <code>00101022</code> 和 <code>1101234883</code> 不是。</p>
+<p>请你返回 <code>s</code> 中最长 <strong>半重复</strong> 子字符串的长度。一个 <strong>子字符串</strong> 是一个字符串中一段连续 <strong>非空</strong> 的字符。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题目要求一个字符串中最长的半重复子字符串的长度，很自然的想法是考虑双指针。</p>
+<p>我们的右指针不断向前走，并且不断判断当前子字符串是否是<strong>半重复的</strong>，这里可以去维护当前子字符串中<strong>相邻并相同字符对</strong>的个数</p>
+<p>只要这样的字符对个数为2时，说明当前子字符串不合法，我们便去移动左指针，移动多少呢？</p>
+<p>我们不断移动左指针，使得当前左指针所指位置和其后一个位置的元素相同即可，这样我们可以将该子字符串中的一个<strong>相邻并相同字符对</strong>去掉。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestSemiRepetitiveSubstring</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        left=<span class="number">0</span> <span class="comment">#左指针</span></span><br><span class="line">        ans=<span class="number">1</span>  <span class="comment">#最终答案</span></span><br><span class="line">        cnt=<span class="number">0</span>  <span class="comment">#当前子字符串中相邻且相同字符对的个数</span></span><br><span class="line">        <span class="keyword">for</span> right <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(s)):</span><br><span class="line">            <span class="keyword">if</span> s[right]==s[right-<span class="number">1</span>]:</span><br><span class="line">                cnt+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> cnt&gt;<span class="number">1</span>:</span><br><span class="line">                left+=<span class="number">1</span> <span class="comment">#加1的目的是：从当前子字符串的第2个位置开始判断.</span></span><br><span class="line">                <span class="keyword">while</span> s[left]!=s[left-<span class="number">1</span>]:</span><br><span class="line">                    left+=<span class="number">1</span></span><br><span class="line">                cnt=<span class="number">1</span></span><br><span class="line">            ans=<span class="built_in">max</span>(ans,right-left+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
 </search>

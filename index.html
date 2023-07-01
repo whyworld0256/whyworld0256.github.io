@@ -260,7 +260,7 @@
             
 	<div class="tag-cloud">
 	  <div class="tag-cloud-tags" id="tags">
-		<a href="/tags/%E8%8B%B1%E8%AF%AD%E6%AF%8F%E6%97%A5%E7%BB%83/" style="font-size: 16px; color: #fff">英语每日练</a> <a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 16px; color: #fff">音乐</a>
+		<a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 16px; color: #fff">双指针</a> <a href="/tags/%E8%8B%B1%E8%AF%AD%E6%AF%8F%E6%97%A5%E7%BB%83/" style="font-size: 16px; color: #fff">英语每日练</a> <a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 16px; color: #fff">音乐</a>
 	  </div>
 	</div>
 	<br>
@@ -303,6 +303,164 @@
 
 
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/01/%E6%89%BE%E5%88%B0%E6%9C%80%E9%95%BF%E7%9A%84%E5%8D%8A%E9%87%8D%E5%A4%8D%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="最伟大的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/07/01/%E6%89%BE%E5%88%B0%E6%9C%80%E9%95%BF%E7%9A%84%E5%8D%8A%E9%87%8D%E5%A4%8D%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url">找到最长的半重复子字符串</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-01T15:49:43+08:00">
+                2023-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  438
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="找到最长的半重复子字符串"><a href="#找到最长的半重复子字符串" class="headerlink" title="找到最长的半重复子字符串"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-longest-semi-repetitive-substring/description/">找到最长的半重复子字符串</a></h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给你一个下标从 <strong>0</strong> 开始的字符串 <code>s</code> ，这个字符串只包含 <code>0</code> 到 <code>9</code> 的数字字符。</p>
+<p>如果一个字符串 <code>t</code> 中至多有一对相邻字符是相等的，那么称这个字符串 <code>t</code> 是 <strong>半重复的</strong> 。例如，<code>0010</code> 、<code>002020</code> 、<code>0123</code> 、<code>2002</code> 和 <code>54944</code> 是半重复字符串，而 <code>00101022</code> 和 <code>1101234883</code> 不是。</p>
+<p>请你返回 <code>s</code> 中最长 <strong>半重复</strong> 子字符串的长度。一个 <strong>子字符串</strong> 是一个字符串中一段连续 <strong>非空</strong> 的字符。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题目要求一个字符串中最长的半重复子字符串的长度，很自然的想法是考虑双指针。</p>
+<p>我们的右指针不断向前走，并且不断判断当前子字符串是否是<strong>半重复的</strong>，这里可以去维护当前子字符串中<strong>相邻并相同字符对</strong>的个数</p>
+<p>只要这样的字符对个数为2时，说明当前子字符串不合法，我们便去移动左指针，移动多少呢？</p>
+<p>我们不断移动左指针，使得当前左指针所指位置和其后一个位置的元素相同即可，这样我们可以将该子字符串中的一个<strong>相邻并相同字符对</strong>去掉。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestSemiRepetitiveSubstring</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        left=<span class="number">0</span> <span class="comment">#左指针</span></span><br><span class="line">        ans=<span class="number">1</span>  <span class="comment">#最终答案</span></span><br><span class="line">        cnt=<span class="number">0</span>  <span class="comment">#当前子字符串中相邻且相同字符对的个数</span></span><br><span class="line">        <span class="keyword">for</span> right <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(s)):</span><br><span class="line">            <span class="keyword">if</span> s[right]==s[right-<span class="number">1</span>]:</span><br><span class="line">                cnt+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> cnt&gt;<span class="number">1</span>:</span><br><span class="line">                left+=<span class="number">1</span> <span class="comment">#加1的目的是：从当前子字符串的第2个位置开始判断.</span></span><br><span class="line">                <span class="keyword">while</span> s[left]!=s[left-<span class="number">1</span>]:</span><br><span class="line">                    left+=<span class="number">1</span></span><br><span class="line">                cnt=<span class="number">1</span></span><br><span class="line">            ans=<span class="built_in">max</span>(ans,right-left+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -820,7 +978,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -833,7 +991,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -907,7 +1065,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">578</span>
+    <span title="Site words total count">1k</span>
   
 </div>
 <!--
