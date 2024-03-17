@@ -11,4 +11,5 @@ title: Awards
 
 ## Competitions
 
-- Apr 2023：**Second prize in LanQiao python programming contest **<br>
+- Apr 2023：**Second prize in LanQiao python programming contest** <br>
+
