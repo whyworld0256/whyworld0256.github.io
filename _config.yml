@@ -1,24 +1,20 @@
-title: Hanlin Cai
+title: Haiyu Wang
 # tagline: Here is personal website of Hanlin Cai. Powered by Jekyll, based on the Minimal Mistakes theme.
 # description: Two roads diverged in woods, I took the one less traveled by.
 #Comment out url when working locally to resolve base urls correctly
-url: https://caihanlin.com
+url: https://whyworld0256.github.io
 
 # Owner/author information
 owner:
   name: Haiyu Wang  
-  avatar: hanlin.jpg
+  # avatar: hanlin.jpg
   # bio: Two roads diverged in woods, I took the one less traveled by.
   email: 979627946@qq.com
-  cv: https://caihanlin.com/file/CV-HanlinCAI.pdf
+  # cv: https://caihanlin.com/file/CV-HanlinCAI.pdf
   # Social networking links are used in author-bio sidebar. Update and remove as you like.
-  twitter: lancecai2002
+  # twitter: lancecai2002
   github: whyworld0256
-  researchgate: https://www.researchgate.net/profile/Hanlin-Cai
-  # facebook: caihanlin2002
-  # instagram: lancecai2002
-  # lastfm:
-  # tumblr:
+ #  researchgate: https://www.researchgate.net/profile/Hanlin-Cai
   # For Google Authorship https://plus.google.com/authorship
   # google_plus:
 
@@ -73,8 +69,7 @@ kramdown:
 
 # disqus settings:
 disqus:
-  shortname: lancecai
-
+  shortname: Haiyu Wang
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "minimal-mistakes.sublime-project", "minimal-mistakes.sublime-workspace"]
 
