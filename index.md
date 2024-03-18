@@ -4,8 +4,6 @@ layout: page
 
 # About Me
 
-<img src="https://caihanlin.com/caihanlin.jpg" class="floatpic" width="360" height="480">
-
 Here is **Haiyu Wang (王海宇)**.
 
 I am a junior undergrad majoring in **Pure mathematics** at Sichuan University . 
@@ -20,9 +18,9 @@ I am a junior undergrad majoring in **Pure mathematics** at Sichuan University .
 
 ## Research Interests
 
-- Machine Learning
-- Deep Learning
+- Machine Learning， Deep Learning
 - Computer Architecture
+- mlsys
 - HPC
 - Parallel computing
 
