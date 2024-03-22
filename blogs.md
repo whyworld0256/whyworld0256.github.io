@@ -6,9 +6,13 @@ title: Blogs
 
 
 
-# 2024
+# ML/DL
 
 [深度学习入门- CNN for MNIST](https://whyworld0256.github.io/blogs/深度学习入门- CNN for MNIST) <br>
 
 
+
+# OS
+
+[xv6 kernel - vm.c](https://whyworld0256.github.io/blogs/xv6源码解读-vm.c) <br>
 
