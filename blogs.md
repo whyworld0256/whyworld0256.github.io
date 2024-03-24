@@ -14,7 +14,7 @@ title: Blogs
 
 # OS
 
-[xv6 kernel - vm.c](https://whyworld0256.github.io/blogs/xv6源码解读-vm.c) <br>
+[xv6 kernel - vm.c](https://whyworld0256.github.io/blogs/xv6源码解读-vm.c)<br>
 
-[mit 6.s081 lab 3](https://whyworld0256.github.io/blogs/mit 6.s081  lab 3 ) <br>
+[mit 6.s081 lab 3](https://whyworld0256.github.io/blogs/mit-6.s081-lab-3)<br>
 
