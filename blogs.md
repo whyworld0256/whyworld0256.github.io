@@ -22,4 +22,5 @@ title: Blogs
 
 # Parallel Computing
 
-[Openmp Summay Card](https://whyworld0256.github.io/file/OpenMP3.0-SummarySpec)
+[Openmp Summay Card](https://whyworld0256.github.io/file/OpenMP3.0-SummarySpec.pdf)
+
