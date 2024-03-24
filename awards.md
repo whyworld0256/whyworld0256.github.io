@@ -6,8 +6,8 @@ title: Awards
 
 ## Scholarships
 
-- Dec 2023:   **SCU Second Class  Scholarship** <br>
-- Dec 2022：**SCU First Class  Scholarship** <br>
+- Dec 2023:   **SCU Second Class  Scholarship** (4%) <br>
+- Dec 2022：**SCU First Class  Scholarship** (2%) <br>
 
 ## Competitions
 
