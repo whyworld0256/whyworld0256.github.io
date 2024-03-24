@@ -4,8 +4,6 @@ permalink: /blogs/index.html
 title: Blogs
 ---
 
-
-
 # ML/DL
 
 - [A Deep Learning Example for Beginners](https://whyworld0256.github.io/blogs/深度学习入门- CNN for MNIST) <br>
@@ -22,5 +20,8 @@ title: Blogs
 
 # Parallel Computing
 
-[Openmp Summay Card](https://whyworld0256.github.io/file/OpenMP3.0-SummarySpec.pdf)
+- [Openmp Summay Card](https://whyworld0256.github.io/file/OpenMP3.0-SummarySpec.pdf)
 
+# Computer Architecture
+
+- [RISC-V Reference Card](https://whyworld0256.github.io/file/reference-card.pdf)
