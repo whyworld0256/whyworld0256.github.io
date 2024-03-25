@@ -18,6 +18,8 @@ title: Blogs
 
 - [mit 6.s081 lab 3](https://whyworld0256.github.io/blogs/mit-6.s081-lab-3)<br>
 
+- [mit 6.s081 lab 4](https://whyworld0256.github.io/blogs/mit-6.s081-lab-4)<br>
+
 # Parallel Computing
 
 - [Openmp Summay Card](https://whyworld0256.github.io/file/OpenMP3.0-SummarySpec.pdf)
