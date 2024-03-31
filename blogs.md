@@ -42,4 +42,4 @@ title: Blogs
 
 # Competitive Programming
 
-- [蓝桥杯周赛第8场](https://whyworld0256.github.io/blogs/蓝桥周赛第8场.md) <br>
+- [蓝桥杯周赛第8场](https://whyworld0256.github.io/blogs/蓝桥周赛第8场) <br>
