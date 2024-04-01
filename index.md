@@ -20,7 +20,7 @@ I am a junior undergrad majoring in **Pure Mathematics** at Sichuan University .
 
 - Machine Learning/Deep Learning
 - Computer Architecture
-- mlsys/dlsys
+- mlsys/dlsys(distributed system, compiler, framework)
 - HPC
 - Parallel Computing
 
