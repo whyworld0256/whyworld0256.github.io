@@ -11,7 +11,7 @@ title: Blogs
 - [cmu 10714 hw 1](https://whyworld0256.github.io/blogs/cmu10714-hw-1)
 - [Transformer Implementation](https://whyworld0256.github.io/blogs/Transformer Implementation)
 - [PyTorch Quickstart](https://whyworld0256.github.io/blogs/PyTorch Quickstart)
-- [PyTorch-nn.RNN-nn.LSTM](https://whyworld0256.github.io/blogs/PyTorch-nn.RNN-nn.LSTM])
+- [PyTorch-nn.RNN-nn.LSTM](https://whyworld0256.github.io/blogs/nn.RNN-nn.LSTM])
 
 # OS
 
