@@ -60,6 +60,6 @@ title: Resources
 - [Atcoder](https://atcoder.jp/)
 - [Atcoder Problems](https://kenkoooo.com/atcoder#/table/)
 - [洛谷](https://www.luogu.com.cn/)
-- [leetcode](https://leetcode.cn/)
+- [leetcode](https://leetcode.cn/)<br>
 
 - [灵茶山艾府](https://github.com/EndlessCheng)
