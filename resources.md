@@ -6,14 +6,20 @@ title: Resources
 
 # ML/DL
 
-- [PKU-TANGENT nlp-tutorial](https://github.com/PKU-TANGENT/nlp-tutorial#%E4%BB%BB%E5%8A%A1%E4%B8%80%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB)
 - [PyTorch Tutorials](https://pytorch.org/tutorials/)
-- [Introduction to CNN / PyTorch](https://www.kaggle.com/code/chinawhy/99-5-introduction-to-cnn-w-pytorch)
 - [Andrej Karpathy's  personal page](https://karpathy.ai/)
 - [Andrej Karpathy's blog](https://karpathy.github.io/)
 - [Hung-yi Lee's Youtube](https://www.youtube.com/@HungyiLeeNTU)
-- [从ViT到Swin，10篇顶会论文看Transformer在CV领域的发展历程 ](https://mp.weixin.qq.com/s?__biz=MzIyOTUyMDIwNg==&mid=2247484203&idx=1&sn=54074645fcf23fc21b4463f0a60df9af&chksm=e840250adf37ac1c37b56c4727081533080e3d89b4f1dc90f787fdc5129d4e3893ae6e3cfcce&scene=21#wechat_redirect)
+
+##### NLP
+
 - [大语言模型核心技术-Transformer 详解 ](https://juejin.cn/post/7219249005904166949)
+- [PKU-TANGENT nlp-tutorial](https://github.com/PKU-TANGENT/nlp-tutorial#%E4%BB%BB%E5%8A%A1%E4%B8%80%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB)
+
+##### CV
+
+- [Introduction to CNN / PyTorch](https://www.kaggle.com/code/chinawhy/99-5-introduction-to-cnn-w-pytorch)
+- [从ViT到Swin，10篇顶会论文看Transformer在CV领域的发展历程 ](https://mp.weixin.qq.com/s?__biz=MzIyOTUyMDIwNg==&mid=2247484203&idx=1&sn=54074645fcf23fc21b4463f0a60df9af&chksm=e840250adf37ac1c37b56c4727081533080e3d89b4f1dc90f787fdc5129d4e3893ae6e3cfcce&scene=21#wechat_redirect)
 
 ### Paper
 
