@@ -10,7 +10,7 @@ I am a junior undergrad majoring in **Pure Mathematics** at Sichuan University .
 
 ## Academic Background
 
-**<font color='red'>[Highlight]</font> I am actively looking for PhD or MSc position to start in 2025 Fall. Contact me if you have any leads!**
+**<font color='red'>[Highlight]</font> I am actively looking for PhD or Master position to start in 2025 Fall. Contact me if you have any leads!**
 
 - **Sep 2021 - June 2025:**    Sichuan University  - mathematics and applied mathematics (Elite Class) , BSc 
 
@@ -20,9 +20,8 @@ I am a junior undergrad majoring in **Pure Mathematics** at Sichuan University .
 
 - Machine Learning/Deep Learning
 - Computer Architecture
-- mlsys/dlsys(distributed system, compiler, framework)
+- mlsys/dlsys
 - HPC
-- Parallel Computing
 
 ---
 

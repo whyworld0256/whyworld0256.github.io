@@ -62,4 +62,4 @@ title: Resources
 - [洛谷](https://www.luogu.com.cn/)
 - [leetcode](https://leetcode.cn/)
 
-- [灵茶山艾府 ' s github](https://github.com/EndlessCheng)
+- [灵茶山艾府](https://github.com/EndlessCheng)
