@@ -18,7 +18,7 @@ I am a junior undergrad majoring in **Pure Mathematics** at Sichuan University .
 
 ## Research Interests
 
-- Machine Learning/Deep Learning
+- Machine Learning/Deep Learning (NLP,computer vision)
 - Computer Architecture
 - mlsys/dlsys
 - HPC
