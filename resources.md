@@ -12,7 +12,7 @@ title: Resources
 - [Hung-yi Lee's Youtube](https://www.youtube.com/@HungyiLeeNTU)
 - [colah's blog](http://colah.github.io/)
 
-##### NLP
+### NLP
 
 - [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 
@@ -23,7 +23,7 @@ title: Resources
 - [ELMO, BERT, GPT](https://www.youtube.com/watch?v=UYPa347-DdE&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=61)
 - [HuggingFace-transformers系列的介绍以及在下游任务中的使用](https://www.cnblogs.com/dongxiong/p/12763923.html)
 
-##### CV
+### CV
 
 - [Introduction to CNN / PyTorch](https://www.kaggle.com/code/chinawhy/99-5-introduction-to-cnn-w-pytorch)
 - [从ViT到Swin，10篇顶会论文看Transformer在CV领域的发展历程 ](https://mp.weixin.qq.com/s?__biz=MzIyOTUyMDIwNg==&mid=2247484203&idx=1&sn=54074645fcf23fc21b4463f0a60df9af&chksm=e840250adf37ac1c37b56c4727081533080e3d89b4f1dc90f787fdc5129d4e3893ae6e3cfcce&scene=21#wechat_redirect)
