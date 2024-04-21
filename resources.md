@@ -13,6 +13,7 @@ title: Resources
 
 ##### NLP
 
+- [LSTM-CRF](【【论文复现代码数据集见评论区】LSTM-CRF 知识图谱、信息抽取中最经典的论文之一，模型精讲+代码复现，你值得拥有】https://www.bilibili.com/video/BV1K54y117yD?vd_source=b18932b619d828e88b5dd6a9be1a515e)
 - [大语言模型核心技术-Transformer 详解 ](https://juejin.cn/post/7219249005904166949)
 - [PKU-TANGENT nlp-tutorial](https://github.com/PKU-TANGENT/nlp-tutorial#%E4%BB%BB%E5%8A%A1%E4%B8%80%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB)
 
@@ -29,13 +30,15 @@ title: Resources
 - [Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation](https://arxiv.org/abs/1406.1078)
 - [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/abs/1409.3215)
 - [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
-
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 - [On the Relationship between Self-Attention and Convolutional Layers](https://arxiv.org/abs/1911.03584)
 - [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
 - [Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention](https://arxiv.org/abs/2006.16236)
 - [Long Range Arena: A Benchmark for Efficient Transformers](https://arxiv.org/abs/2011.04006)
 - [Efficient Transformers: A Survey](https://arxiv.org/abs/2009.06732)
+- [Improving Language Understanding by Generative Pre-Training](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf)(GPT)
+- [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
+- [Language Models are Unsupervised Multitask Learners](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) (GPT2)
 
 # CS Online Courses
 
