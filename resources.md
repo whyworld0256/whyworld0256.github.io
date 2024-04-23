@@ -19,6 +19,7 @@ title: Resources
 - [LSTM-CRF](https://www.bilibili.com/video/BV1K54y117yD?vd_source=b18932b619d828e88b5dd6a9be1a515e)
 - [word embedding](https://www.youtube.com/watch?v=X7PH3NuYW0Q)
 - [大语言模型核心技术-Transformer 详解 ](https://juejin.cn/post/7219249005904166949)
+- [Transformer 详解](https://wmathor.com/index.php/archives/1438/)
 - [PKU-TANGENT nlp-tutorial](https://github.com/PKU-TANGENT/nlp-tutorial#%E4%BB%BB%E5%8A%A1%E4%B8%80%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB)
 - [ELMO, BERT, GPT](https://www.youtube.com/watch?v=UYPa347-DdE&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=61)
 - [BERT 的 PyTorch 实现](https://wmathor.com/index.php/archives/1457/)
@@ -56,6 +57,7 @@ title: Resources
 - [cs229: "Machine Learning"](https://cs229.stanford.edu/index.html-backup-fall23)
 - [cs224n: "Natural Language Processing with Deep Learning"](http://web.stanford.edu/class/cs224n/)
 - [cs231n: "Deep Learning for Computer Vision"](https://cs231n.stanford.edu/)
+- [6.8300/6.8301: Advances in Computer Vision](https://advances-in-vision.github.io/schedule.html)
 
 # Parallel Computing
 
