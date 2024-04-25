@@ -62,6 +62,8 @@ title: Resources
 - [cs224n: "Natural Language Processing with Deep Learning"](http://web.stanford.edu/class/cs224n/)
 - [cs231n: "Deep Learning for Computer Vision"](https://cs231n.stanford.edu/)
 - [6.8300/6.8301: Advances in Computer Vision](https://advances-in-vision.github.io/schedule.html)
+- [cs267: Applications of Parallel Computers](https://sites.google.com/lbl.gov/cs267-spr2022/home)
+- [mit 6.5940: TinyML and Efficient Deep Learning Computing](https://hanlab.mit.edu/courses/2023-fall-65940)
 
 # Parallel Computing
 
@@ -72,9 +74,10 @@ title: Resources
 - [cuda初学，有什么书籍资料推荐](https://www.zhihu.com/question/21059179)
 - [有没有一本讲解gpu和CUDA编程的经典入门书籍？](https://www.zhihu.com/question/26570985/answer/3374598901)
 
-# Computer Architecture
+# Sys
 
 - [RISC-V Reference Card](https://whyworld0256.github.io/file/reference-card.pdf)
+- [ML system 入坑指南](https://zhuanlan.zhihu.com/p/608318764)
 
 # Competitive Programming
 
