@@ -12,13 +12,13 @@ I am a junior undergrad majoring in **Pure Mathematics** at Sichuan University .
 
 **<font color='red'>[Highlight]</font> I am actively looking for PhD or Master position to start in 2025 Fall. Contact me if you have any leads!**
 
-- **Sep 2021 - June 2025:**    Sichuan University  - mathematics and applied mathematics (Elite Class) , BSc.
+- **Sep 2021 - June 2025:**    Sichuan University  - Mathematics and Applied Mathematics (Elite Class) , BSc.
 
 ---
 
 ## Research Interests
 
-- Machine Learning/Deep Learning (NLP,computer vision)
+- NLP
 - mlsys/dlsys
 - HPC
 
