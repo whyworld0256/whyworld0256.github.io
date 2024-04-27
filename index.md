@@ -18,7 +18,7 @@ I am a junior undergrad majoring in **Pure Mathematics** at Sichuan University .
 
 ## Research Interests
 
-- NLP
+- NLP， Computer Vision
 - mlsys
 - HPC
 
