@@ -24,6 +24,7 @@ title: Resources
 - [ELMO, BERT, GPT](https://www.youtube.com/watch?v=UYPa347-DdE&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=61)
 - [BERT 的 PyTorch 实现](https://wmathor.com/index.php/archives/1457/)
 - [HuggingFace-transformers系列的介绍以及在下游任务中的使用](https://www.cnblogs.com/dongxiong/p/12763923.html)
+- [Let's build GPT: from scratch, in code, spelled out.](https://www.youtube.com/watch?v=kCc8FmEb1nY)
 
 ### CV
 
