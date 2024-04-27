@@ -15,11 +15,11 @@ title: Resources
 ### NLP
 
 - [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
-
 - [LSTM-CRF](https://www.bilibili.com/video/BV1K54y117yD?vd_source=b18932b619d828e88b5dd6a9be1a515e)
 - [word embedding](https://www.youtube.com/watch?v=X7PH3NuYW0Q)
 - [大语言模型核心技术-Transformer 详解 ](https://juejin.cn/post/7219249005904166949)
 - [Transformer 详解](https://wmathor.com/index.php/archives/1438/)
+- [理解Transformer——从一个pytorch项目出发](https://zhuanlan.zhihu.com/p/439196812)
 - [PKU-TANGENT nlp-tutorial](https://github.com/PKU-TANGENT/nlp-tutorial#%E4%BB%BB%E5%8A%A1%E4%B8%80%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB)
 - [ELMO, BERT, GPT](https://www.youtube.com/watch?v=UYPa347-DdE&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=61)
 - [BERT 的 PyTorch 实现](https://wmathor.com/index.php/archives/1457/)
