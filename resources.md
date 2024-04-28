@@ -25,6 +25,8 @@ title: Resources
 - [BERT 的 PyTorch 实现](https://wmathor.com/index.php/archives/1457/)
 - [HuggingFace-transformers系列的介绍以及在下游任务中的使用](https://www.cnblogs.com/dongxiong/p/12763923.html)
 - [Let's build GPT: from scratch, in code, spelled out.](https://www.youtube.com/watch?v=kCc8FmEb1nY)
+- [Decoding Strategies in Large Language Models](https://mlabonne.github.io/blog/posts/2023-06-07-Decoding_strategies.html)(Greedy Search, Beam Search, Top-k sampling)
+- [llm-course](https://github.com/mlabonne/llm-course)
 
 ### CV
 
@@ -46,15 +48,16 @@ title: Resources
 - [Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation](https://arxiv.org/abs/1406.1078)
 - [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/abs/1409.3215)
 - [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
-- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)(Transformer)
 - [On the Relationship between Self-Attention and Convolutional Layers](https://arxiv.org/abs/1911.03584)
 - [Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention](https://arxiv.org/abs/2006.16236)
 - [Long Range Arena: A Benchmark for Efficient Transformers](https://arxiv.org/abs/2011.04006)
 - [Efficient Transformers: A Survey](https://arxiv.org/abs/2009.06732)
 - [Improving Language Understanding by Generative Pre-Training](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf)(GPT)
-- [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
+- [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)(Bert)
 - [Language Models are Unsupervised Multitask Learners](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) (GPT2)
 - [XLNet: Generalized Autoregressive Pretraining for Language Understanding](https://arxiv.org/abs/1906.08237)(XLNet)
+- [LLaMA: Open and Efficient Foundation Language Models](https://arxiv.org/pdf/2302.13971)(LLaMA)
 
 ##### CV
 
