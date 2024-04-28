@@ -64,6 +64,7 @@ title: Resources
 
 - [Online normalizer calculation for softmax](https://arxiv.org/pdf/1805.02867v2)
 - [From Online Softmax to FlashAttention](https://courses.cs.washington.edu/courses/cse599m/23sp/notes/flashattn.pdf)
+- [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/pdf/2205.14135)
 
 # CS Online Courses
 
