@@ -61,6 +61,8 @@ title: Resources
 
 ##### CV
 
+- [Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf) (Resnet)
+
 - [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)(ViT)
 
 ##### MLsys
@@ -72,6 +74,7 @@ title: Resources
 # CS Online Courses
 
 - [cmu15-123: "Introduction to Computer Systems"](http://csapp.cs.cmu.edu/)
+- [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)
 - [cs61c: "Great Ideas in Computer Architecture"](https://cs61c.org/sp24/)
 - [mit 6.s081: "Operating System Engineering"](https://pdos.csail.mit.edu/6.828/2020/index.html)
 - [cmu10-714: "Deep Learning Systems ,  Algorithms and Implementation"](https://dlsyscourse.org/)
