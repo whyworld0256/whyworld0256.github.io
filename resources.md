@@ -31,6 +31,13 @@ title: Resources
 - [Introduction to CNN / PyTorch](https://www.kaggle.com/code/chinawhy/99-5-introduction-to-cnn-w-pytorch)
 - [从ViT到Swin，10篇顶会论文看Transformer在CV领域的发展历程 ](https://mp.weixin.qq.com/s?__biz=MzIyOTUyMDIwNg==&mid=2247484203&idx=1&sn=54074645fcf23fc21b4463f0a60df9af&chksm=e840250adf37ac1c37b56c4727081533080e3d89b4f1dc90f787fdc5129d4e3893ae6e3cfcce&scene=21#wechat_redirect)
 
+### Mlsys
+
+- [Modest Understanding on LLM](https://bytedance.larkoffice.com/docx/doxcn3zm448MK9sK6pHuPsqtH8f)
+- [RISC-V Reference Card](https://whyworld0256.github.io/file/reference-card.pdf)
+
+- [ML system 入坑指南](https://zhuanlan.zhihu.com/p/608318764)
+
 ### Paper
 
 ##### NLP
@@ -52,6 +59,11 @@ title: Resources
 ##### CV
 
 - [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)(ViT)
+
+##### MLsys
+
+- [Online normalizer calculation for softmax](https://arxiv.org/pdf/1805.02867v2)
+- [From Online Softmax to FlashAttention](https://courses.cs.washington.edu/courses/cse599m/23sp/notes/flashattn.pdf)
 
 # CS Online Courses
 
@@ -75,10 +87,10 @@ title: Resources
 - [cuda初学，有什么书籍资料推荐](https://www.zhihu.com/question/21059179)
 - [有没有一本讲解gpu和CUDA编程的经典入门书籍？](https://www.zhihu.com/question/26570985/answer/3374598901)
 
-# Sys
+# Books
 
-- [RISC-V Reference Card](https://whyworld0256.github.io/file/reference-card.pdf)
-- [ML system 入坑指南](https://zhuanlan.zhihu.com/p/608318764)
+- [Speech and Language Processing](https://web.stanford.edu/~jurafsky/slpdraft/ed3book.pdf)
+- [Operating System: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/Homework/homework.html)
 
 # Competitive Programming
 
