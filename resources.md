@@ -81,6 +81,7 @@ title: Resources
 - [6.8300/6.8301: Advances in Computer Vision](https://advances-in-vision.github.io/schedule.html)
 - [cs267: Applications of Parallel Computers](https://sites.google.com/lbl.gov/cs267-spr2022/home)
 - [mit 6.5940: TinyML and Efficient Deep Learning Computing](https://hanlab.mit.edu/courses/2023-fall-65940)
+- [CMSC 5743 Efficient Computing of Deep Neural Networks](https://www.cse.cuhk.edu.hk/~byu/CMSC5743/2023Fall/index.html)
 
 # Parallel Computing
 
