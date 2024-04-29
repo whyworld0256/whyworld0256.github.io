@@ -6,7 +6,7 @@ layout: page
 
 Here is **Haiyu Wang (王海宇)**.
 
-I am a junior undergrad majoring in **Pure Mathematics** at Sichuan University . 
+I am a junior undergrad majoring in **Mathematics and Applied Mathematics** at Sichuan University . 
 
 ## Academic Background
 
@@ -18,7 +18,7 @@ I am a junior undergrad majoring in **Pure Mathematics** at Sichuan University .
 
 ## Research Interests
 
-- NLP,  Computer Vision
+- NLP
 - mlsys
 - HPC
 
