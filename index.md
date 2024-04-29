@@ -18,9 +18,9 @@ I am a junior undergrad majoring in **Mathematics and Applied Mathematics** at S
 
 ## Research Interests
 
-- NLP，Computer Vision
-- mlsys
-- HPC
+- Machine Learning
+- NLP
+- HPC, mlsys
 
 ---
 
