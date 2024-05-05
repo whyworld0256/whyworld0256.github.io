@@ -79,6 +79,7 @@ title: Resources
 - [mit 6.s081: "Operating System Engineering"](https://pdos.csail.mit.edu/6.828/2020/index.html)
 - [cmu10-714: "Deep Learning Systems ,  Algorithms and Implementation"](https://dlsyscourse.org/)
 - [cs229: "Machine Learning"](https://cs229.stanford.edu/index.html-backup-fall23)
+- [cs230: "Deep Learning"](http://cs230.stanford.edu/)
 - [cs224n: "Natural Language Processing with Deep Learning"](http://web.stanford.edu/class/cs224n/)
 - [cs231n: "Deep Learning for Computer Vision"](https://cs231n.stanford.edu/)
 - [6.8300/6.8301: Advances in Computer Vision](https://advances-in-vision.github.io/schedule.html)
