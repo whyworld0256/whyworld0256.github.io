@@ -62,8 +62,11 @@ title: Resources
 ##### CV
 
 - [Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf) (Resnet)
-
 - [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)(ViT)
+- [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)(diffusion)
+- [High-Resolution Image Synthesis with Latent Diffusion Models](stable diffusion)
+- [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](FID)
+- [Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/pdf/2103.00020)(CLIP)
 
 ##### MLsys
 
