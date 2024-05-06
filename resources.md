@@ -103,6 +103,8 @@ title: Resources
 
 - [Speech and Language Processing](https://web.stanford.edu/~jurafsky/slpdraft/ed3book.pdf)
 - [Operating System: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/Homework/homework.html)
+- [Deep Learning](https://www.deeplearningbook.org/)(Ian Goodfellow and Yoshua Bengio and Aaron Courville)
+- [CS229 Lecture Notes(Andrew Ng)](https://cs229.stanford.edu/notes2022fall/main_notes.pdf)
 
 # Competitive Programming
 
