@@ -106,6 +106,8 @@ title: Resources
 - [Deep Learning](https://www.deeplearningbook.org/)(Ian Goodfellow and Yoshua Bengio and Aaron Courville)
 - [CS229 Lecture Notes(Andrew Ng)](https://cs229.stanford.edu/notes2022fall/main_notes.pdf)
 - [李宏毅深度学习讲义](https://github.com/datawhalechina/leedl-tutorial/)
+- [Understanding Machine Learning: From Theory to Algorithms](https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf)
+- [Mathematical Analysis of Machine Learning Algorithms](https://tongzhang-ml.org/lt-book/lt-book.pdf)
 
 # Competitive Programming
 
