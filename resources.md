@@ -11,6 +11,7 @@ title: Resources
 - [Andrej Karpathy's blog](https://karpathy.github.io/)
 - [Hung-yi Lee's Youtube](https://www.youtube.com/@HungyiLeeNTU)
 - [colah's blog](http://colah.github.io/)
+- [国内外有哪些活跃的概率机器学习/统计学习的组？](https://www.zhihu.com/question/648428000)
 
 ### NLP
 
