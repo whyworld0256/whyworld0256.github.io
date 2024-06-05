@@ -120,3 +120,10 @@ title: Resources
 - [leetcode](https://leetcode.cn/)<br>
 
 - [灵茶山艾府](https://github.com/EndlessCheng)
+
+# Research Advice
+
+- [对 PhD 一年级新生有什么建议？](https://www.zhihu.com/question/32210068/answer/2095465800)
+
+- [读博总结的总结：整理优质的CS读博(PhD)总结和建议文章](https://zhuanlan.zhihu.com/p/347223193)
+- [A list of resources on how/why to do a PhD ](https://github.com/macoj/phd)
