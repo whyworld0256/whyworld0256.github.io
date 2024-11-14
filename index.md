@@ -12,17 +12,15 @@ I am a junior undergrad majoring in **Mathematics and Applied Mathematics** at S
 
 ## Academic Background
 
-**<font color='red'>[Highlight]</font> I am actively looking for PhD position to start in 2025 Fall. Contact me if you have any leads!**
+**<font color='red'>[Highlight]</font> I am actively looking for PhD position to start in 2025 Fall. **
 
-- **Sep 2021 - June 2025:**    Sichuan University  - Mathematics and Applied Mathematics (Elite Class) , BSc.
+- **Sep 2021 - June 2025:**    Sichuan University  - Mathematics and Applied Mathematics  , BSc.
 
 ---
 
 ## Research Interests
 
-- Machine Learning 
-- Deep Learning
-- HPC, Machine Learning System
+- Mathematical theory of deep learning
 
 ---
 
