@@ -16,7 +16,7 @@ I am a senior undergrad majoring in **Mathematics and Applied Mathematics** at S
 
 ## Research Interests
 
-- Mathematical theory of deep learning
+- Deep Learning Theory
 
 ---
 
