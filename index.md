@@ -6,12 +6,13 @@ layout: page
 
 Here is **Haiyu Wang (王海宇)**.
 
-I am a senior undergrad majoring in **Mathematics and Applied Mathematics** at Sichuan University . 
+I am currently a senior undergrad majoring in **Mathematics and Applied Mathematics** at Sichuan University. 
 
 ## Academic Background
 
-- **Sep 2021 - June 2025:**    Sichuan University  - Mathematics and Applied Mathematics  , BSc.
-
+- **Sep 2021 - June 2025:**    Sichuan University  - Mathematics and Applied Mathematics, BSc.
+- **Aug 2025 - Jun 2029(Expected):** The Chinese University of Hong Kong - Statistics, PhD.
+ 
 ---
 
 ## Research Interests
